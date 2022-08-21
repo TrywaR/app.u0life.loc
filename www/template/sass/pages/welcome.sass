@@ -1,0 +1,217 @@
+// .welcome_container
+.welcome_container
+  padding: 0
+  overflow-x: hidden
+
+  ._section
+    position: relative
+    z-index: 1
+
+    & > ._block
+      display: flex
+      align-items: center
+      padding: 5rem 2rem
+
+      ._content
+        flex-grow: 1
+
+      & > ._icon
+        position: absolute
+        top: 0
+        right: 0
+        display: flex
+        justify-content: center
+        align-items: center
+        font-size: 10em
+        padding: 1rem
+        box-sizing: border-box
+        transform: rotate(30deg)
+        opacity: .1
+        z-index: -1
+
+      ._block_title
+        font-size: 6em
+        line-height: 1em
+        font-weight: 600
+
+      ul
+        display: flex
+        flex-direction: column
+
+        li
+          box-sizing: border-box
+          padding: 1rem
+          margin: .5rem
+          border-radius: $border_radius
+          @include shadow_default
+
+    &._title
+      ._block
+        color: white
+        background: linear-gradient(rgba(24, 26, 32, .8),rgba(35, 36, 36, .9))
+
+        ._content
+          display: flex
+          justify-content: center
+          flex-direction: column
+          text-align: center
+          max-width: 40rem
+          margin: auto
+
+          .block_logo
+            & > ._value
+              width: 20rem
+              max-width: 100%
+              min-height: 7rem
+              margin-bottom: 2rem
+
+              & > ._version
+                bottom: -.5rem
+
+          h1
+            position: relative
+            display: flex
+            justify-content: center
+            padding-bottom: 2rem
+            font-size: 7em
+            line-height: 1
+            font-weight: 600
+            z-index: 1
+            text-shadow: .15rem .15rem 0 $color_main
+
+            span
+              color: rgba(118, 97, 219, 0.7)
+
+            &:after
+              content: ''
+              position: absolute
+              bottom: 0
+              left: 0
+              right: 0
+              width: 6rem
+              height: .12rem
+              background: white
+              background: $color_main
+              opacity: .3
+              margin: auto
+              border-radius: $border_radius
+
+          p
+            display: flex
+            padding: .3rem 1rem
+            margin: 0
+            opacity: .5
+      ._bg
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        overflow: hidden
+        z-index: -1
+        background: url(../imgs/welcome_bg.jpg) no-repeat center center
+        background-size: contain
+        // opacity: .4
+
+        video
+          object-fit: cover
+          min-width: 100%
+          width: 100%
+          min-height: 100%
+
+    &._times
+      background: $color_main_time_dark
+
+      ._block_title,
+      ._icon
+        color: $color_main_time
+
+    &._moneys
+      background: $color_main_money_dark
+
+      ._block_title,
+      ._icon
+        color: $color_main_money
+
+    &._moneysforhour
+
+    &._info
+      padding-top: 4rem
+      padding-bottom: 4rem
+
+      &:after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: .15rem
+        background: linear-gradient(to right, $color_main 35%, rgba(255,255,255,0) 100%)
+        opacity: .5
+        z-index: -1
+
+      ._icon
+        top: 6rem
+        right: 1rem
+        opacity: 1
+        background: $color_text
+        border-radius: 50%
+        padding: .5rem
+        color: $color_main_dark_ultra
+
+    &._start
+      position: relative
+      z-index: 1
+
+      &:after
+        content: ''
+        position: absolute
+        top: -10%
+        left: -10%
+        right: -10%
+        height: 110%
+        width: 120%
+        background: $color_main_dark_ultra
+        border-radius: 50% 50% 0 0
+        z-index: -1
+
+@media screen and (max-width:1200px)
+  body
+    main
+      .welcome_container
+        padding: 0 0 4rem 0 ! important
+
+        ._section
+          &._title
+            ._block
+              position: relative
+              z-index: 1
+
+              ._content
+                max-width: 100%
+
+                .block_logo
+                  & > ._value
+                    min-height: 5rem
+                    margin-bottom: 2rem
+
+                    & > ._version
+                      bottom: -1rem
+                      font-size: .7rem
+
+                h1
+                  font-weight: 600
+                  font-size: 5em
+                  line-height: 1
+
+                h2
+                  font-size: 5rem
+
+              ._bg
+                video
+
+          ._block
+            padding: 4rem 1rem
+
+            ._content
+// .welcome_container x

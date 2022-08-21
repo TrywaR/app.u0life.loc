@@ -1,0 +1,51 @@
+.moneyforhour_block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 400; }
+  .moneyforhour_block > ._info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    opacity: 0.5; }
+    .moneyforhour_block > ._info > ._money, .moneyforhour_block > ._info > ._time {
+      display: flex;
+      padding: 0.2rem; }
+      .moneyforhour_block > ._info > ._money > ._icon, .moneyforhour_block > ._info > ._time > ._icon {
+        display: flex;
+        padding-right: 0.3rem;
+        font-size: 0.3em;
+        line-height: 0.8em;
+        opacity: 0.6; }
+      .moneyforhour_block > ._info > ._money > ._value, .moneyforhour_block > ._info > ._time > ._value {
+        display: flex;
+        font-size: 0.5em;
+        line-height: 0.8em; }
+  .moneyforhour_block > ._result {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1.2rem 0;
+    font-weight: 600; }
+    .moneyforhour_block > ._result._active_ {
+      display: flex; }
+    .moneyforhour_block > ._result > ._icon {
+      display: flex;
+      padding-right: 0.5rem; }
+    .moneyforhour_block > ._result > ._value {
+      margin-top: 0.2rem; }
+    .moneyforhour_block > ._result > ._title {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 1.2rem 0 0;
+      font-size: 0.5em;
+      line-height: 0.8em;
+      opacity: 0.6;
+      font-weight: 300; }
+
+/*# sourceMappingURL=analytics.css.map */

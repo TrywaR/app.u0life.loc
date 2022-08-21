@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,yBAAW;EACT,OAAO,EAAE,WAAW",
+"sources": ["../../sass/pages/info.sass"],
+"names": [],
+"file": "info.css"
+}

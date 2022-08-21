@@ -1,0 +1,81 @@
+// .block_content_loader
+.block_content_loader
+  position: relative
+  z-index: 1
+  // height: 80vh ! important
+  height: 100% ! important
+  overflow: auto ! important
+  overflow-x: hidden ! important
+  background: $color_main_dark_ultra
+  padding: .5rem ! important
+  box-sizing: border-box ! important
+  border-radius: $border_radius ! important
+  @include shadow_default
+  @include scroll
+  @include transition_default
+
+  & > ._loading
+    display: flex
+    flex-direction: column
+    padding: 1rem
+    box-sizing: border-box
+    width: 100%
+    height: 100%
+    justify-content: center
+    align-items: center
+
+    svg
+      margin-top: .5rem
+      font-size: 2em
+      line-height: 2em
+
+  & > ._error_result,
+  & > ._not_result
+    display: flex
+    flex-direction: column
+    padding: 1rem
+    box-sizing: border-box
+    height: 100%
+    justify-content: center
+    align-items: center
+
+    svg
+      margin-top: .5rem
+      font-size: 2em
+      line-height: 2em
+
+  & > *
+    position: relative
+    z-index: 1
+    margin-bottom: .3rem
+    border-radius: $border_radius
+    background: $color_main_dark
+
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      border-radius: $border_radius
+      background: linear-gradient(to right, $color_main_dark_ultra, rgba(0,0,0,0))
+      box-shadow: inset 0 0 .2rem 0 rgba(255,255,255,.1), .1rem .1rem 0 0 rgba(0,0,0,.2)
+      opacity: .5
+      z-index: -1
+
+  &:after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: radial-gradient($color_main, rgba(0,0,0,0))
+    opacity: .1
+    z-index: -1
+
+@media screen and (max-width:1199px)
+  .block_content_loader
+    padding-bottom: 5rem ! important
+// .block_content_loader x

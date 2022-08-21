@@ -1,0 +1,96 @@
+// STYLE
+body
+  position: relative
+  z-index: 1
+  overflow: hidden
+  display: flex
+  color: $color_text
+  // background: $color_main_dark
+  background: $color_body_bg
+  font-family: $font_default
+  font-size: 16px
+  line-height: 26px
+  font-weight: 400
+  overflow-x: hidden
+  max-width: 100%
+  min-height: 100vh
+
+  &:before,
+  &:after
+    content: ''
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: -1
+
+  header
+    position: relative
+    display: flex
+    flex-direction: column
+    overflow-x: hidden
+    overflow-y: auto
+    max-height: 100vh
+    @include scroll
+
+    &:after
+      content: ''
+      position: absolute
+      top: -4rem
+      right: -1rem
+      width: 10rem
+      height: 10rem
+      border-radius: 50%
+      background: radial-gradient($color_main, $color_main_dark)
+      filter: blur(1.9rem)
+      opacity: .1
+      z-index: -1
+
+  main
+    position: relative
+    flex-grow: 100
+    display: flex
+    flex-direction: column
+    padding: 1rem
+    box-sizing: border-box
+    overflow-x: hidden
+    overflow-y: auto
+    max-height: 100vh
+    overflow: auto
+    @include scroll
+
+  footer
+    display: flex
+    overflow-x: hidden
+    overflow-y: auto
+    max-height: 100vh
+    @include scroll
+
+@media screen and (min-width:1199px)
+  body
+    header
+      min-width: 15rem
+      max-width: 15rem
+
+      &._full_
+        min-width: 25%
+
+    main
+      min-width: 50%
+
+    footer
+      min-width: 25%
+
+@media screen and (max-width:1200px)
+  body
+    font-size: 14px
+    line-height: 22px
+    flex-direction: column
+
+    header
+    main
+      height: 100vh
+      padding-bottom: 5rem
+
+    footer

@@ -1,0 +1,97 @@
+.block_times
+  .block_chart
+    background: $color_main_time_dark
+
+  .sub_title
+    color: $color_main_time
+
+    &:after
+      background: linear-gradient(to right, $color_main_time 35%, rgba(255,255,255,0) 100%)
+
+  .block_loading
+    &:before,
+    &:after
+      border-color: $color_main_time ! important
+
+    ._icon
+      color: $color_main_time ! important
+
+.time
+  display: flex
+  align-items: flex-end
+  justify-content: center
+  opacity: 0
+
+  &._category_show_true,
+  &._project_show_true,
+  &._task_show_true
+    ._date
+      padding-bottom: 0
+
+    ._subs
+      display: flex
+
+  &._category_show_true
+    ._category
+      display: flex
+
+  &._project_show_true
+    ._project
+      display: flex
+
+  &._task_show_true
+    ._task
+      display: flex
+
+  ._date
+    display: flex
+    opacity: .5
+    font-size: .8em
+    font-weight: lighter
+    padding-bottom: .5rem
+
+  ._subs
+    display: none
+    padding: .4rem .2rem .6rem
+
+    > *
+      padding-right: .5rem
+
+  ._category,
+  ._project,
+  ._task
+    opacity: .5
+    font-size: .9em
+    font-weight: lighter
+    display: none
+
+  ._title
+
+  &._show_
+    opacity: 1
+
+.times_category
+  .times_category-name
+  .times_category-data
+    position: relative
+    z-index: 1
+
+    .list-group-item
+      background: none
+
+    .times_category-data_bg
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      z-index: -1
+      opacity: .1
+      border-radius: $border_radius
+
+@media screen and (max-width:1000px)
+  .time
+    flex-direction: column
+
+    .btn-group
+      padding-top: .5rem

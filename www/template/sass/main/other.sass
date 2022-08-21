@@ -1,0 +1,561 @@
+// .block_logo
+.block_logo
+  display: flex
+  justify-content: center
+  font-size: 1.5rem
+  line-height: 1
+  text-transform: uppercase
+  width: 100%
+
+  &._white
+    ._value
+
+  ._value
+    position: relative
+    display: flex
+    flex-direction: column
+    width: 100%
+    justify-content: center
+    align-items: center
+    padding: .5rem
+    box-sizing: border-box
+    width: 10rem
+    // height: 5rem
+    height: 100%
+    max-height: 100%
+    min-height: 5rem
+    background: url(../../imgs/logos/logo-dark.svg) no-repeat center center
+    background-size: contain
+    text-decoration: none
+    z-index: 1
+
+    img
+      display: none
+      max-width: 10rem
+
+    ._version
+      position: absolute
+      bottom: 0
+      right: 0
+      font-size: .4em
+      line-height: .4em
+      margin-left: auto
+      opacity: .4
+      text-decoration: none
+      color: $color_text
+
+.block_social
+  display: flex
+  justify-content: center
+  align-items: center
+
+  ._item
+    display: flex
+    padding: .5rem
+    font-size: 1.3em
+    box-sizing: border-box
+    text-decoration: none
+    color: $color_text
+    opacity: .15
+
+    &.__donate
+      border-radius: $border_radius
+      background: $color_main_dark
+
+    &:hover
+      color: $color_text
+      opacity: 1
+
+@media screen and (max-width:1000px)
+  .block_logo
+    font-size: .6rem
+// .block_logo x
+
+// .block_logining
+.block_logining
+  display: flex
+  width: 100%
+  justify-content: center
+  color: $color_main
+// .block_logining x
+
+// block_user_prev
+.block_user_prev
+  display: flex
+
+  .user_prev
+    position: relative
+    display: flex
+    width: 100%
+    font-size: 1.3em
+    line-height: 1em
+    padding: 1rem
+    text-decoration: none
+    color: $color_main
+    z-index: 1
+
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      border-radius: $border_radius
+      // background: $color_main_dark
+      background: $color_body_bg
+      z-index: -1
+      @include shadow_default
+
+    ._img
+      padding: 0 .5rem 0 0
+
+    ._login
+      display: flex
+      padding-right: .2rem
+
+    ._role
+      opacity: .5
+      font-size: 1em
+      line-height: .1em
+
+      ._icon
+        font-size: .5em
+        line-height: .5em
+
+      ._value
+        font-size: .5em
+        line-height: .5em
+// block_user_prev x
+
+.block_template
+  display: none
+
+.block_content_loader
+  overflow: hidden
+  @include transition_default
+
+.text_seporator
+  margin-left: .2rem
+  margin-right: .2rem
+
+.icon
+  font-size: 1.2rem
+  line-height: 1
+  color: $color_text
+
+.switch_icons
+  & > *
+    &:nth-child(1)
+      display: flex
+    &:nth-child(2)
+      display: none
+
+  &._active_
+    & > *
+      &:nth-child(1)
+        display: none
+      &:nth-child(2)
+        display: flex
+
+.block_content_loader
+  padding: 0
+
+.block_analitycs
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: flex-start
+  font-size: 1rem
+  line-height: 1rem
+
+  & > ._prev
+    flex-grow: 1
+    position: relative
+    z-index: 1
+    padding: 1rem
+    display: flex
+    align-items: flex-start
+    justify-content: center
+    flex-wrap: wrap
+
+    & > ._icon
+      font-size: 1em
+      line-height: .8em
+      margin-right: .2rem
+      opacity: .5
+
+    & > ._title
+      font-size: .8em
+      line-height: .8em
+      opacity: .5
+
+    & > ._value
+      display: flex
+      justify-content: center
+      width: 100%
+      padding: .2rem
+      font-size: 1.3em
+      font-weight: bold
+      line-height: 1
+
+    & > ._subs
+      width: 100%
+      display: flex
+      flex-direction: column
+      padding-top: 1rem
+
+      & > ._sub
+        width: 100%
+        display: flex
+        align-items: flex-end
+        padding: .2rem
+
+        & > ._title
+          font-size: .8em
+          line-height: .8em
+          opacity: .5
+          margin-right: .5rem
+
+        & > ._value
+          &._check
+            strike
+              opacity: .4
+
+            i,
+            svg
+              margin-left: .4rem
+
+            strong
+              margin-left: .4rem
+
+        &._res
+          padding-top: .5rem
+          font-weight: 400
+
+          & > ._title
+            font-size: 1em
+
+          & > ._value
+            font-size: 1.2em
+
+    &.__success
+      color: $color_success ! important
+
+    &.__error
+      color: $color_error ! important
+
+.progress_block
+  .progress
+    opacity: 0
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    height: 100%
+    width: 100%
+    z-index: -1
+    @include transition_default
+
+  .progress-bar
+    background-color: $color_main_dark
+
+  &._edit_
+    .progress
+      opacity: .2
+
+.block_user
+  // ._user_info
+  //   padding: 1rem
+  //
+  // ._user_links
+  //   margin-top: 1rem
+  //   display: flex
+  //   font-size: 1em
+  //   line-height: 1
+  //
+  //   .icon
+  //     font-size: 1em
+  //     line-height: 1
+  //     margin-right: 1rem
+  //     text-decoration: none
+  //
+  //   a
+  //     // padding: 1rem
+
+.clock_revers
+  display: flex
+  flex-direction: column
+  padding: 1rem
+  box-sizing: border-box
+
+  ._date
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+    ._n
+      font-size: 1.2em
+      font-weight: 300
+      line-height: 1.2
+    ._s
+      font-size: .9em
+      font-weight: 300
+      line-height: 1.2
+      opacity: .8
+
+  ._timer
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: .5rem
+
+    ._icon
+      margin-right: .5rem
+      opacity: .5
+
+    ._val
+      display: flex
+      align-items: baseline
+
+      ._p
+        display: flex
+        justify-content: center
+        width: .5rem
+        font-size: .8em
+        opacity: .5
+        font-weight: 300
+      ._h
+        display: flex
+        justify-content: center
+        width: 1.3rem
+        font-size: 1em
+        opacity: .5
+        font-weight: 300
+      ._m
+        display: flex
+        justify-content: center
+        width: 1.3rem
+        font-size: 1em
+        opacity: .5
+        font-weight: 300
+      ._s
+        display: flex
+        justify-content: center
+        width: 1.4rem
+        font-size: 1em
+        font-weight: 500
+
+  ._progress
+    width: 100%
+    max-width: 20rem
+    margin: auto
+
+    ._bar
+      @include transition_default
+
+.sub_title
+  position: relative
+  font-size: 2rem
+  line-height: 2rem
+  z-index: 1
+
+  &:after
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 100%
+    height: .15rem
+    background: linear-gradient(to right, $color_main 35%, rgba(255,255,255,0) 100%)
+    opacity: .5
+    z-index: -1
+
+// block_loading
+.block_loading
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 10rem
+  height: 10rem
+  z-index: 1
+
+  &:before,
+  &:after
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: -1
+
+  &:before
+    animation: circle ease-in-out 20s
+    animation-iteration-count: infinite
+    transform-origin: 50% 50%
+    border-radius: 25% 35% 52% 25%
+    border: .13rem solid $color_main
+
+  &:after
+    animation: circle ease-in-out 15s
+    animation-iteration-count: infinite
+    transform-origin: 50% 50%
+    border-radius: 51% 40% 35% 45%
+    border: .12rem solid $color_main
+
+  ._icon
+    font-size: 1.4rem
+    line-height: 1.4rem
+    color: $color_main
+// block_loading x
+
+// elems
+.block_elems
+  ._elem
+    @include transition_default
+
+    transform-style: flat
+    transform: rotateX(25deg) translateY(4rem)
+    opacity: 0
+    transition: all .2s linear
+
+    &._show_
+      opacity: 1
+      transform: rotateX(0deg) translateY(0rem)
+// elems
+
+// .shower_content
+.shower_content
+  opacity: 0
+  height: 0
+  @include transition_default
+
+  &._show_
+    opacity: 1
+    height: auto
+// .shower_content x
+
+// .block_date
+body
+  .block_date
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    .input-group
+      background: none
+
+      &:before,
+      &:after
+        display: none
+
+      .form-select
+        background: none
+        flex-grow: inherit
+        padding: 0
+
+    ._group
+
+    ._year,
+    ._month,
+    ._day
+      font-size: 2em
+      font-weight: 400
+      padding: .5rem
+      width: auto
+      background: none
+      border: none
+
+    ._year
+    ._month
+    ._day
+// .block_date x
+
+// .block_swich
+.block_swich
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+
+  .select
+    display: flex
+    background: none
+    border: none
+    color: $color_text
+    border-radius: $border_radius
+    padding: .3rem
+    background: $color_main_dark
+
+  ._vals
+    position: relative
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    border-radius: $border_radius
+    overflow: hidden
+    z-index: 1
+
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      border-radius: $border_radius
+      background: $color_main_dark
+      opacity: .5
+      z-index: -1
+
+    ._val
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: .5rem
+      cursor: pointer
+      opacity: .5
+
+      &._select_
+        background: $color_main_dark
+        color: $color_text
+        opacity: 1
+
+  ._input
+// .block_swich x
+
+// odometer
+.odometer
+  &.odometer-theme-minimal
+    .odometer-digit
+      width: .7rem
+
+      .odometer-value
+        display: flex
+        justify-content: center
+        align-items: center
+// odometer x
+
+@media screen and (max-width:1200px)
+  .block_logo
+    ._value
+      min-height: 100%
+
+      ._version
+        bottom: -.5rem
+        font-size: .3em
+
+  .block_analitycs
+    flex-wrap: wrap
+
+    ._prev
+      display: flex
+      flex-direction: column
+      min-height: 10rem
+      max-width: 50%
+      justify-content: center

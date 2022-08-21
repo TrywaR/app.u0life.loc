@@ -1,0 +1,32 @@
+body
+  // .content_manager_buttons
+  .content_manager_buttons
+    position: relative
+    display: flex
+    width: 100%
+    height: 0%
+    margin: 0
+    padding: 0
+    justify-content: flex-end
+    align-items: flex-start
+    z-index: 9999
+
+    &._hide_
+      display: none ! important
+
+    & > *
+      display: flex
+      padding: .5rem 1rem
+      font-size: 1.2em
+      line-height: 1rem
+      margin-right: .5rem
+
+      &:last-child
+        margin-right: 0
+
+    .content_manager_sum
+      font-weight: 500
+      background: $color_main
+      border-radius: $border_radius
+      color: white
+  // .content_manager_buttons x

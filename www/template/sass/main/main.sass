@@ -1,0 +1,82 @@
+// .main_jumbotron
+.main_jumbotron
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  display: flex
+  flex-direction: column
+  z-index: 4
+
+  ._block_title
+    position: relative
+    z-index: 3
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: center
+    flex-wrap: wrap
+    width: 100%
+    height: 4rem
+    padding: .5rem 1rem
+    box-sizing: border-box
+    background: $color_main_dark
+    border-radius: $border_radius
+    margin-bottom: 1rem
+
+    ._sub
+      position: absolute
+      top: .3rem
+      left: .5rem
+
+    ._value
+      width: 80%
+      margin: 0
+
+    ._buttons
+      width: 20%
+
+  ._block_content
+    z-index: 2
+    position: absolute
+    top: -100%
+    left: 1rem
+    right: 1rem
+    display: flex
+    opacity: 1
+    background: $color_main_dark
+    border-radius: $border_radius
+    @include transition_default
+    @include shadow_default
+    // box-shadow: 0 .2rem .2rem 0 rgba(10,10,10,.6), 0 0 .6rem .6rem rgba(10,10,10,.6), inset 0 0 .1rem 0 rgba(50,50,50,.3)
+
+    &._show_
+      opacity: 1
+      top: 100%
+// .main_jumbotron x
+
+// .main_content
+.main_content
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 1
+  padding: 5rem 1rem 1rem
+  box-sizing: border-box
+  max-height: 100%
+  overflow-y: auto
+  @include scroll
+// .main_content x
+
+@media screen and (max-width:1200px)
+  body
+    main
+      .main_content
+        padding: 5rem 1rem 5rem
+
+@media screen and (min-width:1199px)
+  body
+    main
+      .main_content

@@ -1,0 +1,32 @@
+{
+  "name": "jgrowl",
+  "version": "1.4.8",
+  "author": {
+    "name": "Stan Lemon",
+    "email": "stosh1985@gmail.com",
+    "url": "http://stanlemon.net"
+  },
+  "license": "MIT",
+  "main": "jquery.jgrowl.js",
+  "style": "jquery.jgrowl.css",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/stanlemon/jGrowl.git"
+  },
+  "scripts": {
+    "build": "grunt"
+  },
+  "devDependencies": {
+    "grunt": "^1.4.0",
+    "grunt-cli": "^1.4.2",
+    "grunt-contrib-cssmin": "~2.2.1",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-contrib-less": "~2.0.0",
+    "grunt-contrib-uglify": "~3.3.0",
+    "grunt-contrib-watch": "~1.1.0",
+    "jquery": "^3.6.0"
+  },
+  "peerDependencies": {
+    "jquery": ">= 2.1.0 < 4.0.0"
+  }
+}

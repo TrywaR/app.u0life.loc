@@ -1,0 +1,76 @@
+// Настройки
+@import "config"
+@import "mixins"
+// Основные файлы стилей
+@import "../../sass/includes"
+
+body
+  &:before
+    background: linear-gradient(0deg,rgba(255, 255, 255, 0.8) 0,rgba(233, 239, 255, 0.8) 100%)
+    opacity: .8
+    z-index: -1
+
+  &:after
+    filter: blur(.1rem)
+    background: radial-gradient(circle,white 7%,#1c1a1a white)
+    z-index: -2
+
+  main
+    font-weight: 400
+
+    p
+      font-weight: 400
+
+  footer
+    .block_footer
+      ._bottom
+        ._copy
+          font-weight: 400
+
+  .block_nav
+    ._subs,
+    ._main
+      .nav-item
+        .nav-link
+          &:before
+            // top: auto
+            // height: .1rem
+            // background: $color_main
+            background: white
+
+  .welcome_container
+    ._section
+      &._title
+        ._block
+          color: $color_text
+          background: linear-gradient(rgb(228, 233, 252),rgb(244, 247, 254))
+
+          h1
+            color: $color_main
+            text-shadow: none
+
+      &._moneys
+        background: rgba(210,210,210,.1)
+
+      &._times
+        background: none
+      ._block
+        ul
+          li
+
+  .block_logo
+    display: flex
+    font-size: 1.5rem
+    line-height: 1
+    text-transform: uppercase
+    width: 100%
+
+    &._white
+      ._value
+
+    ._value
+      background: url(../../imgs/logos/logo.svg) no-repeat center center ! important
+      background-size: contain ! important
+
+  .badge
+    // color: $color_main

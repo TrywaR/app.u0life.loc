@@ -1,0 +1,39 @@
+.slick-slider
+  .slick-list
+    overflow: visible
+
+.block_slider
+  display: flex
+  padding: 0 1rem 1rem
+  overflow-y: hidden
+  overflow-x: auto
+  @include scroll
+
+  .slick-prev,
+  .slick-next
+    &:before
+      color: $color_text
+
+  ._slider_item
+    position: relative
+    display: flex
+    z-index: 1
+
+    ._slider_item_content
+      min-width: 10rem
+      max-width: 20rem
+      padding: 1.2rem 2rem
+      font-size: 1em
+      line-height: 1em
+      box-sizing: border-box
+
+    &:after
+      content: ''
+      position: absolute
+      top: .5rem
+      left: .5rem
+      right: .5rem
+      bottom: .5rem
+      border-radius: $border_radius
+      background: $color_main_dark
+      z-index: -1

@@ -1,0 +1,13 @@
+.block_donate {
+  display: flex;
+  flex-direction: column; }
+  .block_donate ._item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    font-size: 2em;
+    line-height: 2em; }
+    .block_donate ._item ._icon {
+      padding-right: 0.5rem; }
+
+/*# sourceMappingURL=buy.css.map */

@@ -1,0 +1,15 @@
+.content_filter {
+  padding: 0.5rem;
+  box-sizing: border-box;
+  width: 100%; }
+  .content_filter select._active_,
+  .content_filter input._active_ {
+    background: rgba(196, 53, 53, 0.1); }
+
+.content_filter_status {
+  position: relative;
+  z-index: 1; }
+  .content_filter_status._active_ {
+    background: rgba(196, 53, 53, 0.1); }
+
+/*# sourceMappingURL=filter.css.map */

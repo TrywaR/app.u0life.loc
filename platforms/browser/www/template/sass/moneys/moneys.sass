@@ -1,0 +1,162 @@
+.block_moneys
+  .block_chart
+    background: $color_main_money_dark
+
+  .sub_title
+    color: $color_main_money
+
+    &:after
+      background: linear-gradient(to right, $color_main_money 35%, rgba(255,255,255,0) 100%)
+
+  .block_loading
+    &:before,
+    &:after
+      border-color: $color_main_money ! important
+
+    ._icon
+      color: $color_main_money ! important
+
+.money
+  display: flex
+  align-items: flex-end
+  justify-content: center
+  opacity: 0
+
+  &._show_
+    opacity: 1
+
+  &._card_show_true,
+  &._cardto_show_true
+    ._card
+      display: flex
+
+  &._cardto_show_true
+    ._cardto
+      display: flex
+
+  &._category_show_true
+    ._sub
+      display: flex
+
+    ._category
+      display: flex
+
+  &._project_show_true
+    ._sub
+      display: flex
+
+    ._project
+      display: flex
+
+  &._task_show_true
+    ._sub
+      display: flex
+
+    ._task
+      display: flex
+
+  &._subscription_show_true
+    ._subscription
+      display: flex
+
+  ._date
+    opacity: .5
+    font-size: .8rem
+    font-weight: lighter
+    margin-right: .5rem
+
+  ._card
+    display: none
+    align-items: center
+    opacity: .5
+    font-size: .8rem
+    font-weight: lighter
+
+    i,
+    svg
+      margin-right: .2rem
+
+  ._cardto
+    display: none
+    align-items: center
+
+    small
+      margin: 0 .2rem
+
+  ._subscription
+    display: none
+
+  ._price
+    font-size: 1rem
+    font-weight: normal
+    margin-right: .5rem
+
+  ._sub
+    display: none
+    padding: .5rem
+    font-weight: lighter
+
+  ._category
+    display: none
+
+  ._project
+    display: none
+
+  ._task
+    display: none
+
+  &._type_2_
+    position: relative
+    z-index: 1
+
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      background: $color_success
+      opacity: .1
+      z-index: -1
+
+.moneys_category
+  .moneys_category-name
+  .moneys_category-data
+    position: relative
+    z-index: 1
+
+    .list-group-item
+      background: none
+
+    .moneys_category-data_bg
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      z-index: -1
+      opacity: .1
+      border-radius: $border_radius
+
+@media screen and (max-width:1000px)
+  .money
+    flex-direction: column
+
+    .rounded-pill
+      margin-left: auto
+      margin-top: .5rem
+
+    &:before
+      position: absolute
+      top: .3rem
+      left: .3rem
+      opacity: .3
+
+    .btn-group
+      padding-top: .5rem
+
+  .moneys_category
+    .moneys_category-name
+    .moneys_category-data
+      .moneys_category-data_bg

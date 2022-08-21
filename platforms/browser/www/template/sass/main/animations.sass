@@ -1,0 +1,125 @@
+@keyframes circle
+  0%
+    transform:  rotate(0deg)
+  50%
+    transform:  rotate(360deg)
+  90%
+    transform:  rotate(260deg)
+  100%
+    transform:  rotate(0deg)
+
+@keyframes scale
+  0%
+    transform:  scale(1,1)
+  50%
+    transform:  scale(1.1,1.1)
+  90%
+    transform:  scale(1.2,1.2)
+  100%
+    transform:  scale(1,1)
+
+
+// block_bg_blianer
+.block_bg_blianer
+  position: relative
+  overflow: hidden
+  z-index: 1
+
+  ._bg_blianer
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    width: 100vw
+    height: 100vw
+    margin: auto
+    z-index: -1
+    overflow: hidden
+    transform: rotate(-75deg)
+    filter: blur(.2rem)
+    opacity: .5
+
+    span
+      display: flex
+
+      animation: bg_blianer_sub ease-in-out 19s
+      animation-iteration-count: infinite
+      transform-origin: 50% 50%
+
+      &:before,
+      &:after
+        content: ''
+        position: absolute
+        z-index: -1
+        display: flex
+        border-radius: 20%
+
+        animation: bg_blianer ease-in-out 4s
+        animation-iteration-count: infinite
+        transform-origin: 50% 50%
+
+      &:nth-child(1)
+        &:before
+          width: 14rem
+          height: .15rem
+          margin-left: 42rem
+          margin-bottom: -20rem
+          background: #5a0fff
+          filter: blur(.2rem)
+
+        &:after
+          width: 12rem
+          height: .2rem
+          margin-left: 14rem
+          background: $color_main
+          filter: blur(.4rem)
+
+      &:nth-child(2)
+        margin-bottom: 5rem
+        margin-left: 1rem
+
+        &:before
+          width: 30rem
+          height: .18rem
+          margin-bottom: 20rem
+          margin-left: -2rem
+          background: #491ab0
+          filter: blur(.2rem)
+
+        &:after
+          width: 25rem
+          height: .12rem
+          margin-bottom: 45rem
+          margin-left: -12rem
+          background: #381a55
+
+      &:nth-child(3)
+        margin-bottom: 15rem
+        margin-left: 0rem
+
+        &:before
+          width: 30rem
+          height: .2rem
+          margin-bottom: .9rem
+          background: #ff6f6f
+          filter: blur(.3rem)
+
+        &:after
+          width: 5rem
+          height: .14rem
+          margin-bottom: 39rem
+          background: purple
+
+@keyframes bg_blianer
+  0%
+    transform:  translate(50rem,0rem)
+  100%
+    transform:  translate(-50rem,-2rem)
+
+@keyframes bg_blianer_sub
+  0%
+    transform:  translate(0rem,50rem)
+  100%
+    transform:  translate(0rem,0rem)
+// block_bg_blianer x

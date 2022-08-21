@@ -1,0 +1,64 @@
+// form_block
+.form_block
+  // padding: 1rem
+// form_block x
+
+// select
+select
+  background: $color_main_dark
+  color: $color_text
+
+  option
+    background: $color_main_dark
+    color: $color_text
+// select x
+
+.input_checkbox,
+.block_input
+  margin: 0 0 1rem
+
+  label
+    font-size: 1em
+    line-height: 1
+    margin-bottom: .2rem
+
+.textarea
+  min-height: 10rem ! important
+
+.block_buttons
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+
+  .button
+    &:not(:last-child)
+      margin-right: .5rem
+
+// switch
+.switch
+.switch_values
+  display: none
+  @include transition_default
+
+  &._show_
+    display: flex
+// switch x
+
+// input_timer
+.input_timer
+  ._text
+  ._input
+    width: 20%
+
+  ._seconds
+    width: 5%
+
+  ._button
+    width: 15%
+// input_timer x
+
+// .input-date_time
+.input-date_time
+  .input
+    font-size: .75em
+// .input-date_time x

@@ -1,0 +1,104 @@
+// .block_footer
+.block_footer
+  display: flex
+  width: 100%
+  flex-direction: column
+  justify-content: space-between
+
+  ._actions
+
+  ._bottom
+    ._params
+      display: flex
+      justify-content: center
+
+      ._item
+        display: flex
+        justify-content: center
+        align-items: center
+        padding: .5rem
+
+    ._social
+      padding: .5rem 0
+
+    ._lang
+      opacity: .5
+
+    ._theme
+      opacity: .5
+
+    ._copy
+      padding: 1.3rem
+      font-size: .8em
+      line-height: 1
+      text-align: center
+      font-weight: 100
+      opacity: .3
+
+      a
+        color: $color_text
+
+        &:hover
+          opacity: .5
+
+// @media screen and (orientation:landscape) and (max-width:776px)
+@media screen and (max-width:1200px)
+  .block_footer
+    ._actions
+      position: fixed
+      bottom: -50vh
+      right: 1rem
+      font-size: 2em
+      line-height: 2em
+      z-index: 9997
+      @include transition_default
+
+      &._active_
+        bottom: calc( #{$block_nav_mobile_height} + 1rem )
+
+    ._bottom
+      position: fixed
+      left: 0
+      right: 0
+      bottom: -100%
+      z-index: 9996
+      padding: 1rem
+      // background: $color_main_dark_ultra
+      @include transition_default
+      @include shadow_default
+
+      .block_social
+        ._item
+          opacity: .3
+
+      ._params
+        ._item
+          opacity: .8
+
+      ._copy
+        opacity: .3
+
+      &:after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        border-radius: $border_radius
+        background: $color_main_dark_ultra
+        opacity: .98
+        z-index: -1
+
+      &._active_
+        bottom: $block_nav_mobile_height
+
+
+@media screen and (min-width:1200px)
+  .block_footer
+    ._actions
+      padding: 1rem
+
+      .btn-group
+        display: flex
+// .block_footer х

@@ -1,0 +1,452 @@
+body
+  &._mobile_nav_active_
+    header .block_nav_header,
+    main
+      filter: blur(.1rem)
+
+  // block_nav
+  .block_nav_header
+    display: flex
+    flex-wrap: wrap
+    padding: 1rem
+    font-size: .8rem
+    line-height: 1em
+    font-weight: 300
+    align-items: center
+    justify-content: space-between
+
+    .block_logo
+      padding: 1rem
+      margin-bottom: .5rem
+
+    .block_nav_fuller
+      flex-grow: 1
+      margin-right: .5rem
+      margin-bottom: .5rem
+
+    .block_user_prev
+      flex-grow: 100
+
+  .block_nav_fuller
+    display: flex
+    box-sizing: border-box
+    @include transition_default
+
+    &._full_
+      ._btn
+        ._icon
+          svg
+            &:nth-child(1)
+              display: flex
+
+            &:nth-child(2)
+              display: none
+
+    ._btn
+      display: flex
+      justify-content: center
+      padding: 1rem
+      width: 3.2rem
+      font-size: 1.4em
+      line-height: 1.4em
+      box-sizing: border-box
+      // background: $color_main_dark
+      background: $color_body_bg
+      border-radius: $border_radius
+      color: $color_main
+      @include shadow_default
+
+      ._icon
+        svg
+          @include transition_default
+
+          &:nth-child(1)
+            display: none
+
+          &:nth-child(2)
+            display: flex
+
+  .block_nav
+    display: flex
+    align-items: flex-start
+    height: 100%
+    padding: 0 1rem 0
+    box-sizing: border-box
+    @include transition_default
+
+    &._full_
+      ._subs,
+      ._main
+        width: 100%
+
+        .nav-item
+          .nav-link
+            ._icon
+              margin-right: .5rem
+
+            ._name
+              display: flex
+
+    ._subs,
+    ._main
+      display: flex
+      height: 100%
+
+      .nav-item
+        .nav-link
+          position: relative
+          display: flex
+          align-items: center
+          font-size: 1.1em
+          line-height: 1.1em
+          padding: 1rem
+          margin-bottom: .2rem
+          box-sizing: border-box
+          color: $color_main
+          // border-radius: $border_radius
+          z-index: 1
+
+          &:before
+            content: ''
+            position: absolute
+            top: 0
+            left: 0
+            bottom: 0
+            width: 0%
+            height: 100%
+            margin: auto
+            border-radius: $border_radius
+            background: $color_main_dark
+            @include transition_default
+            z-index: -1
+
+          &._active_,
+          &:hover
+            &:before
+              width: 100%
+
+          ._icon
+            @include transition_default
+
+          ._name
+            display: none
+            @include transition_default
+
+    ._main
+      .nav-item
+        .nav-link
+          box-shadow: 0 .08rem 0 0 rgba(100,100,100,.1)
+
+    ._subs
+      position: relative
+      display: none ! important
+      z-index: 1
+
+      .nav-item
+        .nav-link
+          box-shadow: 0 .08rem 0 0 rgba(10,10,10,.1)
+
+          &:before
+            top: 4%
+            bottom: 4%
+            left: 2%
+            opacity: .4
+
+          &._active_,
+          &:hover,
+            &:before
+              width: 96%
+
+      &:before,
+      &:after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        overflow: hidden
+
+      &:before
+        border-radius: $border_radius
+        // border-top-left-radius: 0
+        // border-bottom-left-radius: 0
+        background: $color_main_dark
+        opacity: .3
+        z-index: -2
+
+      &:after
+        box-shadow: inset .1rem 0 .5rem 0 rgba(0,0,0,.1), -.1rem 0 0rem 0 rgba(100,100,100,.1)
+        border-radius: $border_radius
+        z-index: -1
+
+      &._active_
+        display: flex ! important
+
+  .block_nav_mobile_body_blocker
+    display: none
+
+@media screen and (max-width:1200px)
+  body
+    .block_nav_mobile_body_blocker
+      z-index: 9997
+
+    .block_nav_fuller
+      display: none
+
+    .block_nav
+      z-index: 9996
+
+      ._subs,
+      ._main
+        position: fixed
+        bottom: -100vh
+        left: 0
+        right: 0
+        display: flex ! important
+        flex-direction: column
+        width: 100%
+        height: auto
+        max-height: 80vh
+        overflow: auto
+        overflow-x: hidden
+        z-index: 9998
+        background: $color_main_dark_ultra
+        border-radius: $border_radius $border_radius 0 0
+        @include transition_default
+        @include shadow_default
+
+        &._mobile_active_
+          bottom: $block_nav_mobile_height
+
+        .nav-item
+          .nav-link
+            ._name
+              display: flex ! important
+
+      ._main
+      ._subs
+        &:before
+          background: $color_main_dark_ultra
+
+    .block_nav_header
+      display: none
+
+    .block_nav_mobile
+      display: flex
+      position: fixed
+      bottom: 0
+      left: 0
+      right: 0
+      z-index: 9997
+      color: $color_main
+      font-size: 1em
+      line-height: 2rem
+      font-weight: 300
+      height: $block_nav_mobile_height
+      overflow: hidden
+      box-shadow: 0 -.4rem .4rem 0 $color_main_dark_ultra, inset 0 .1rem .1rem 0 $color_text
+
+      &:before
+        content: ''
+        position: absolute
+        bottom: -4rem
+        right: -4rem
+        width: 90%
+        height: 10rem
+        border-radius: 50%
+        background: radial-gradient($color_main, $color_main_dark)
+        filter: blur(.1rem)
+        opacity: .1
+        z-index: -1
+
+      &:after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background: $color_main_dark
+        background: linear-gradient($color_main_dark_ultra, $color_main_dark)
+        opacity: .97
+        z-index: -2
+
+      .nav_btn
+        flex-grow: 1
+        position: relative
+        display: flex
+        color: $color_text
+        width: $block_nav_mobile_width
+        padding: 1rem
+        box-sizing: border-box
+        overflow: hidden
+        cursor: pointer
+        background: none
+        border: none
+        z-index: 1
+
+        &:before,
+        &:after
+          content: ''
+          position: absolute
+
+        &:before
+          top: -100%
+          left: 0
+          right: 0
+          width: 90%
+          height: 90%
+          margin-bottom: auto
+          margin-right: auto
+          z-index: -1
+          background: $color_main_dark_ultra
+          border-radius: 0 0 $border_radius $border_radius
+          @include transition_default
+          opacity: .95
+
+        &:after
+          top: 0
+          right: 0
+          bottom: 0
+          right: 0
+          width: 2rem
+          height: 2rem
+          margin: auto
+          border: .15rem solid transparent
+          border-right-color: $color_main
+          opacity: .1
+          z-index: -2
+
+        &:last-child
+          justify-content: flex-end ! important
+
+          &:after
+            display: none
+
+        &._active_
+          &:before
+            top: 0%
+
+        &._main,
+        &._subs
+          ._icon,
+          ._name
+            position: relative
+            display: flex
+            flex-direction: column
+            height: 2rem
+            white-space: nowrap
+
+            ._old,
+            ._new
+              position: absolute
+              white-space: nowrap
+              @include transition_default
+
+            ._old
+              bottom: 0%
+              left: 0
+
+            ._new
+              bottom: -100%
+              left: 0
+              opacity: 0
+
+            &.__new
+              ._old
+                bottom: 100%
+                opacity: 0
+
+              ._new
+                opacity: 1
+                bottom: 0%
+
+          ._icon
+            width: 2.2rem
+
+          ._name
+            width: 100%
+            overflow: hidden
+
+            ._old,
+            ._new
+              transition-delay: .1s
+
+        &._logo
+          align-items: center
+          justify-content: center
+          color: $color_main
+          width: $block_nav_mobile_logo_width
+
+        &._user
+          align-items: center
+          justify-content: center
+          width: $block_nav_mobile_user_width
+
+          ._href
+            color: $color_main
+            text-decoration: none
+
+        &._main
+          opacity: 0
+          cursor: inherit
+
+          &._showed_
+            cursor: pointer
+            opacity: 1
+
+        &._subs
+          opacity: 0
+          cursor: inherit
+
+          &._showed_
+            cursor: pointer
+            opacity: 1
+
+          ._icon
+            ._old
+              transition-delay: .4s
+            ._new
+              transition-delay: .5s
+
+          ._name
+            ._old
+              transition-delay: .5s
+            ._new
+              transition-delay: .6s
+
+    .block_nav_mobile_body_blocker
+      position: fixed
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      display: flex
+      width: 100%
+      height: 100%
+      opacity: 0
+      cursor: pointer
+      z-index: -9997
+
+@media screen and (min-width:1200px)
+  body
+    .block_nav
+      ._subs,
+      ._main
+        flex-direction: column
+
+        .nav-item
+          .nav-link
+
+            ._icon
+              margin-right: .5rem
+
+            ._name
+
+    .block_nav_mobile
+      display: none
+
+    .body_blocker
+      display: none
+// block_nav x

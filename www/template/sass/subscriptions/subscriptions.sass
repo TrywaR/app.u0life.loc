@@ -1,0 +1,121 @@
+// .subscription
+.subscription
+  &._paid_show_true
+    ._paid
+      display: flex
+
+  &._paid_need_show_true
+    ._need
+      display: flex
+
+  &._card_show_true
+    ._card
+      display: flex
+
+  ._paid
+    display: none
+
+  ._need
+    display: none
+
+  ._card
+    display: none
+
+  ._head
+    display: flex
+    align-items: center
+    padding-bottom: .5rem
+
+    ._title
+      display: flex
+      padding-left: .5rem
+      font-weight: 300
+      opacity: .6
+
+    ._price
+      padding: .2rem .5rem
+      background: $color_main_dark
+      border-radius: $border_radius
+      font-weight: 400
+
+  ._subs
+    ._item
+      align-items: flex-end
+      padding: .2rem .5rem
+      font-size: 1em
+      line-height: 1em
+
+      &._card
+      &._paid
+        ._sum
+        ._need
+          padding: .2rem .5rem
+          margin-left: .2rem
+          border-radius: $border_radius
+          background: $color_error
+          color: white
+
+      ._icon
+        margin-right: .5rem
+
+      ._text
+        display: flex
+        align-items: center
+
+      &._card
+        opacity: .4
+
+.subscription_min
+  position: relative
+  z-index: 1
+  color: $color_text
+
+  ._edit
+    position: absolute
+    top: 1rem
+    right: 1rem
+    color: $color_main_dark_ultra
+
+  ._title
+    margin-bottom: .5rem
+
+  ._sub
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    ._buttons
+      display: flex
+
+      ._button
+        &:not(:last-child)
+          margin-right: .5rem
+
+    ._value
+      font-size: 1.2em
+      font-weight: 400
+      text-align: right
+
+      &._check
+
+  ._background
+    position: absolute
+    top: .5rem
+    left: .5rem
+    right: .5rem
+    bottom: .5rem
+    z-index: -1
+    border-radius: $border_radius
+    background: linear-gradient(135deg, $color_main_dark, $color_main)
+    overflow: hidden
+
+    ._color
+      position: absolute
+      bottom: -25%
+      right: -25%
+      width: 5rem
+      height: 5rem
+      border-radius: 50%
+      opacity: .6
+      z-index: -2
+// .subscription x

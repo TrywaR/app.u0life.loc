@@ -1,0 +1,248 @@
+// block_category
+.block_category
+  display: flex
+  flex-wrap: wrap
+  padding: .5rem
+  box-sizing: border-box
+
+  ._analytics
+    flex-grow: 1
+
+    ._linear
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      box-sizing: border-box
+      border-radius: $border_radius
+      overflow: hidden
+
+      ._line,
+      ._vals
+        display: flex
+
+        ._1,
+        ._2,
+        ._3
+          position: relative
+          display: flex
+          padding: .5rem
+          box-sizing: border-box
+          width: 5rem
+          color: white
+          z-index: 1
+
+          &:after
+            content: ''
+            position: absolute
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+            background: $color_main
+            z-index: -1
+
+        ._1
+          &:after
+            opacity: .2
+        ._2
+          &:after
+            opacity: .5
+        ._3
+          &:after
+            opacity: 1
+
+      ._line
+        border-radius: $border_radius $border_radius 0 0
+        overflow: hidden
+
+      ._vals
+        border-radius: 0 0 $border_radius $border_radius
+        overflow: hidden
+        font-size: .8em
+        opacity: .8
+        line-height: 1
+
+    ._params
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      padding: 1rem 0
+      box-sizing: border-box
+
+      ._param
+        display: flex
+        box-sizing: border-box
+
+        ._name
+          display: flex
+          width: 6rem
+          overflow: hidden
+          opacity: .5
+
+        ._val
+          display: flex
+          justify-content: flex-end
+          width: 6rem
+          font-weight: 500
+
+  ._calendars
+    flex-grow: 1
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    padding: .5rem
+    box-sizing: border-box
+
+    &.__year
+      min-width: 100%
+      font-size: .8em
+      line-height: 1
+
+      .calendar-wrp
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+        align-items: stretch
+
+      .block_calendar
+        padding: 0
+
+      .calendar-item
+        margin: 0
+
+@media screen and (max-width:1200px)
+  body
+    main
+      .block_category
+        flex-direction: column
+
+
+// .category
+.category
+  position: relative
+  z-index: 1
+
+  &._active_show_false
+    filter: brightness(60%) contrast(.9)
+
+  &._active_show_true
+    // opacity: 1
+
+  &._custom_edit_show_true
+    ._edit_config
+      display: flex
+
+  &._edit_show_true
+    ._select
+      display: flex
+
+    ._edit
+      display: flex
+
+    ._del
+      display: flex
+
+  ._select
+    display: none
+
+  ._edit
+    display: none
+
+  ._del
+    display: none
+
+  ._edit_config
+    display: none
+
+  ._category_background
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: -1
+    border-radius: $border_radius
+    background: linear-gradient(135deg, rgba(0,0,0,0), $color_main)
+    overflow: hidden
+
+    ._color
+      position: absolute
+      bottom: -100%
+      right: -10%
+      width: 20rem
+      height: 20rem
+      border-radius: 50%
+      opacity: .6
+      z-index: -2
+// .category x
+
+// block_categories_links
+.block_categories_links
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  padding: 1rem
+  box-sizing: border-box
+  border-radius: $border_radius
+  @include shadow_default
+
+  ._item
+    display: flex
+    width: 100%
+    overflow: hidden
+    margin-bottom: 1rem
+
+    ._link
+      position: relative
+      display: flex
+      align-items: center
+      justify-content: space-between
+      text-decoration: none
+      padding: .5rem 1rem
+      border-radius: $border_radius
+      overflow: hidden
+      width: 100%
+      z-index: 1
+
+      ._title
+        color: white
+
+      ._sum
+        color: white
+        font-weight: 500
+
+      ._bg
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        z-index: -3
+        opacity: .6
+
+      ._circle
+        position: absolute
+        top: 0
+        left: 0
+        bottom: 0
+        width: 10rem
+        height: 10rem
+        margin: auto
+        border-radius: 50%
+        z-index: -2
+        filter: blur(4rem)
+
+      ._shadow
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        z-index: -1
+        border-radius: $border_radius
+
+// block_categories_links x

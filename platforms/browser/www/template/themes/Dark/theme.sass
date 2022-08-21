@@ -1,0 +1,16 @@
+// Настройки
+@import "config"
+@import "mixins"
+// Основные файлы стилей
+@import "../../sass/includes"
+
+body
+  &:before
+    background: linear-gradient(0deg,rgba(15,15,15,.8) 0,rgba(21, 25, 36, 0.8) 100%)
+    opacity: .8
+    z-index: -1
+
+  &:after
+    filter: blur(.1rem)
+    background: radial-gradient(circle,#262222 7%,#1c1a1a 100%)
+    z-index: -2

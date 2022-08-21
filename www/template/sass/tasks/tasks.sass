@@ -1,0 +1,150 @@
+// .tasks
+.block_tasks
+  .sub_title
+    color: $color_main_task
+
+    &:after
+      background: linear-gradient(to right, $color_main_task 35%, rgba(255,255,255,0) 100%)
+
+.task
+  display: flex
+  align-items: center
+  justify-content: center
+
+  &._status_show_true
+    ._status
+      display: inline-block
+
+  &._project_show_true
+    ._project
+      display: flex
+      opacity: .5
+
+  &._time_show_true
+    ._time
+      display: flex
+
+  &._money_show_true
+    ._money
+      display: flex
+
+  &._description_show_true
+    ._description_show
+      display: flex
+
+  ._status
+    display: none
+
+  ._time
+    display: none
+    align-items: center
+
+    i,
+    svg
+      margin-right: .5rem
+
+    span
+      padding: 0 .2rem
+
+  ._money
+    display: none
+    align-items: center
+
+    i,
+    svg
+      margin-right: .5rem
+
+    span
+      padding: 0 .2rem
+
+  ._project
+    display: none
+
+  ._description_show
+    display: none
+
+  ._description_prev
+    display: none
+    font-size: .85em
+    line-height: 1.2em
+    padding: .5rem
+    border-radius: $border_radius
+    background: $color_main_dark
+    @include transition_default
+
+    &._show_
+      display: flex
+      flex-direction: column
+
+  ._sub
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: flex-end
+
+    ._status
+      color: white
+
+    & > *
+      padding: .4rem
+      border-radius: $border_radius
+      background: $color_main_dark
+      margin-left: .5rem
+      margin-bottom: .5rem
+
+      &:first-child
+        margin-left: 0
+        margin-right: auto
+
+  &._show_
+
+.task_min
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+  ._edit
+    position: absolute
+    top: 1rem
+    right: 1rem
+    color: $color_main_dark_ultra
+
+  ._title
+    font-size: 1.2em
+    font-weight: 400
+    margin-bottom: .5rem
+
+    small
+
+  ._sub
+    display: flex
+    justify-content: space-between
+    align-items: center
+    font-size: .9em
+    font-weight: 300
+
+    ._status
+      padding: .2rem .5rem
+      color: white
+      font-size: .8em
+      border-radius: $border_radius
+
+    ._buttons
+      display: flex
+
+      ._button
+        &:not(:last-child)
+          margin-right: .5rem
+
+    ._project
+// .tasks x
+
+@media screen and (max-width:1200px)
+  body
+    .task_min
+      ._sub
+        flex-direction: column
+
+        ._buttons
+          ._button
+            padding: 1rem .5rem
