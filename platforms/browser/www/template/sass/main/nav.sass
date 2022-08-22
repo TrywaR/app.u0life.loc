@@ -4,6 +4,9 @@ body
     main
       filter: blur(.1rem)
 
+    .block_nav_mobile_body_blocker
+      display: flex ! important
+
   // block_nav
   .block_nav_header
     display: flex
@@ -92,6 +95,7 @@ body
     ._main
       display: flex
       height: 100%
+      @include transition_default
 
       .nav-item
         .nav-link
@@ -140,10 +144,20 @@ body
 
     ._subs
       position: relative
-      display: none ! important
+      display: flex
+      // display: none ! important
+      overflow: hidden
+      width: 0% ! important
       z-index: 1
+      @include transition_default
 
       .nav-item
+        @include transition_default
+        opacity: 0
+
+        &._show_
+          opacity: 1
+
         .nav-link
           box-shadow: 0 .08rem 0 0 rgba(10,10,10,.1)
 
@@ -182,15 +196,16 @@ body
         z-index: -1
 
       &._active_
-        display: flex ! important
+        // display: flex ! important
+        width: 100% ! important
 
   .block_nav_mobile_body_blocker
-    display: none
+    display: none ! important
 
 @media screen and (max-width:1200px)
   body
     .block_nav_mobile_body_blocker
-      z-index: 9997
+      z-index: 9995 ! important
 
     .block_nav_fuller
       display: none
@@ -286,6 +301,7 @@ body
         background: none
         border: none
         z-index: 1
+        @include transition_default
 
         &:before,
         &:after
@@ -338,6 +354,7 @@ body
             flex-direction: column
             height: 2rem
             white-space: nowrap
+            overflow: hidden
 
             ._old,
             ._new
@@ -428,9 +445,9 @@ body
       height: 100%
       opacity: 0
       cursor: pointer
-      z-index: -9997
+      z-index: -9995
 
-@media screen and (min-width:1200px)
+@media screen and (min-width:1199px)
   body
     .block_nav
       ._subs,
@@ -439,7 +456,6 @@ body
 
         .nav-item
           .nav-link
-
             ._icon
               margin-right: .5rem
 

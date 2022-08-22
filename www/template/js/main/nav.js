@@ -1,8 +1,4 @@
-function block_nav() {
-  $(document).find('#block_nav ._main').html('')
-  $(document).find('#block_nav ._subs').html('')
-  $(document).find('#block_nav_mobile_subs').removeClass('_showed_')
-
+function block_nav_init(){
   // Style showers
   if ( typeof u0life.block_nav_fuller != 'undefined' ) {
     if ( u0life.block_nav_fuller ) {
@@ -22,132 +18,171 @@ function block_nav() {
     $(document).find('header').addClass('_full_')
   }
 
-  // load menu
-  $.when(
-    content_download( {
-      'app':'app',
-      'action':'navs',
-      'form':'show',
-    }, 'json', false )
-  ).then( function( oData ){
-    $.get('templates/nav.htm')
-    .fail(function(data){
-      status({'error': 'Шаблон не найден: templates/nav.htm'})
-    })
-    .done(function(data){
-      var
-        oTemplate = $('<div/>').html(data),
-        arrThisPath = u0life.pathname.split('/')
+  block_nav_show()
+}
 
-      $(document).find('#block_nav ._subs').removeClass('_active_')
+function block_nav_show(){
+  $.get('templates/nav.htm')
+  .fail(function(data){
+    status({'error': 'Шаблон не найден: templates/nav.htm'})
+  })
+  .done(function(data){
+    var
+      oTemplate = $('<div/>').html(data),
+      arrThisPath = u0life.pathname.split('/')
 
-      if ( $(document).find('#block_nav_mobile_main ._icon').hasClass('__new') ) {
-        $(document).find('#block_nav_mobile_main ._icon').removeClass('__new')
-        $(document).find('#block_nav_mobile_main ._icon ._old').html( '<i class="fa-solid fa-bars"></i>' )
-        $(document).find('#block_nav_mobile_main ._name').removeClass('__new')
-        $(document).find('#block_nav_mobile_main ._name ._old').html( $(document).find('#block_nav_mobile_main ._name ._new').data().deftext )
-      }
+    // Показываем корневые элементы
+    // ________
+    $.each(u0life.oNav, function( iPath, oElem ){
+      if ( oElem.menu_hide ) return
 
-      $.each(oData, function( iPath, oElem ){
-        // Подсвет
-        if ( oElem.url == '/' + arrThisPath[1] + '/'  ) oElem.active = '_active_'
-        if ( oElem.url == u0life.pathname  ) oElem.active = '_active_'
+      // Подсвет
+      if ( oElem.url == '/' + arrThisPath[1] + '/'  ) oElem.active = '_active_'
+      if ( oElem.url == u0life.pathname  ) oElem.active = '_active_'
 
-        // Подстановка в меню на мобиле
-        if ( oElem.active ) block_nav_mobile_main( oElem )
+      // Добавление
+      $(document).find('#block_nav ._main').append( content_loader_elem_html( oElem, oTemplate ) )
 
-        // Шаблон
-        var oElemHtml = content_loader_elem_html( oElem, oTemplate )
-        // Добавление
-        if ( ! oElem.menu_hide ) $(document).find('#block_nav ._main').append( oElemHtml )
+      // Подстановка в меню на мобиле
+      if ( oElem.active ) block_nav_mobile_main( oElem )
 
-        // Вложенность
-        if ( oElem.subs && parseInt( oElem.subs.length ) != 0 && oElem.active ) {
-          $(document).find('#block_nav_mobile_subs').addClass('_showed_')
-          $(document).find('#block_nav ._subs').addClass('_active_')
+      // Если есть вложенность
+      // Вложенность
+      if ( oElem.subs && parseInt( oElem.subs.length ) != 0 && oElem.active ) {
+        var iPathSubIndex = 0
+        $.each(oElem.subs, function( iPathSub, oElemSub ){
+          if ( oElemSub.menu_hide ) return
 
-          $.each(oElem.subs, function( iPathSub, oElemSub ){
-            // Подсвет
-            if ( oElemSub.url == '/' + arrThisPath[2] + '/'  ) oElemSub.active = '_active_'
-            if ( oElemSub.url == u0life.pathname  ) oElemSub.active = '_active_'
+          // Подсвет
+          oElemSub.active = ''
+          if ( oElemSub.url == '/' + arrThisPath[2] + '/'  ) oElemSub.active = '_active_'
+          if ( oElemSub.url == u0life.pathname  ) oElemSub.active = '_active_'
+
+          // Добавляем
+          $(document).find('#block_nav ._subs').append( content_loader_elem_html( oElemSub, oTemplate ) )
+          iPathSubIndex++
+          setTimeout(function () {
+            $(document).find('#block_nav ._subs a[href="' + oElemSub.url + '"]').parents('.nav-item').addClass('_show_')
 
             // Подстановка в меню на мобиле
             if ( oElemSub.active ) block_nav_mobile_subs( oElemSub )
+          }, 300 * iPathSubIndex / 2)
+        })
+      }
 
-            // Шаблон
-            var oElemSubHtml = content_loader_elem_html( oElemSub, oTemplate )
+      // Показываем меню если есть пункты
+      if ( u0life.oNav.length >= iPath - 1 ) {
+        if ( $(document).find('#block_nav ._main a').length ) $(document).find('#block_nav_mobile_main').addClass('_showed_')
+        else if ( $(document).find('#block_nav_mobile_main').hasClass('_showed_') ) $(document).find('#block_nav_mobile_main').removeClass('_showed_')
 
-            // Добавление
-            if ( ! oElem.menu_hide ) $(document).find('#block_nav ._subs').append( oElemSubHtml )
-          })
+        if ( $(document).find('#block_nav ._subs a').length ) {
+          $(document).find('#block_nav_mobile_subs').addClass('_showed_')
+          $(document).find('#block_nav ._subs').addClass('_active_')
         }
-
-        if ( ! $(document).find('#block_nav_mobile_subs').hasClass('_showed_') ) {
-          $(document).find('#block_nav_mobile_subs ._icon').removeClass('__new')
-          $(document).find('#block_nav_mobile_subs ._icon ._old').html( '<i class="fa-solid fa-ellipsis"></i>' )
-          $(document).find('#block_nav_mobile_subs ._name').removeClass('__new')
-          $(document).find('#block_nav_mobile_subs ._name ._old').html( $(document).find('#block_nav_mobile_subs ._name ._new').data().deftext )
-        }
-      })
-
-      if ( $(document).find('#block_nav ._main a').length ) $(document).find('#block_nav_mobile_main').addClass('_showed_')
-      else $(document).find('#block_nav_mobile_main').removeClass('_showed_')
+      }
     })
   })
 }
 
+// Показ активного пункта основного меню
 function block_nav_mobile_main( oElem ){
   setTimeout(function () {
-    if ( typeof oElem != 'undefined' && oElem.active ) {
-      $(document).find('#block_nav_mobile_main ._icon').addClass('__new')
-      $(document).find('#block_nav_mobile_main ._icon ._new').html( oElem.icon )
-      $(document).find('#block_nav_mobile_main ._name').addClass('__new')
-      $(document).find('#block_nav_mobile_main ._name ._new').html( oElem.name )
+    if ( ! $(document).find('#block_nav ._main a[href="' + oElem.url + '"]').hasClass('_active_') ) {
+      $(document).find('#block_nav ._main .nav-item._active_').removeClass('_active_')
+      $(document).find('#block_nav ._main .nav-link._active_').removeClass('_active_')
+
+      $(document).find('#block_nav ._main a[href="' + oElem.url + '"]').addClass('_active_')
+      $(document).find('#block_nav ._main a[href="' + oElem.url + '"]').parents('.nav-item').addClass('_active_')
     }
-    else {
-      if ( $(document).find('#block_nav ._main a').length )
-        $(document).find('#block_nav ._main a').each(function( iIndex, oElem ){
-          if ( oElem.attr('href') == u0life.pathname ) {
-            $(document).find('#block_nav_mobile_main ._icon').addClass('__new')
-            $(document).find('#block_nav_mobile_main ._icon ._new').html( oElem.find('._icon').html() )
-            $(document).find('#block_nav_mobile_main ._name').addClass('__new')
-            $(document).find('#block_nav_mobile_main ._name ._new').html( oElem.find('._name').html() )
-          }
-        })
-    }
+
+    $(document).find('#block_nav_mobile_main ._icon ._new').html( oElem.icon )
+    $(document).find('#block_nav_mobile_main ._name ._new').html( oElem.name )
+    $(document).find('#block_nav_mobile_main ._icon').addClass('__new')
+    $(document).find('#block_nav_mobile_main ._name').addClass('__new')
   }, 500)
 }
+
+// Показ активного пункта вложенного меню
 function block_nav_mobile_subs( oElem ){
-
   setTimeout(function (){
-    $(document).find('#block_nav_mobile_subs').removeClass('_showed_')
-
-    if ( typeof oElem != 'undefined' && oElem.active ) {
-      $(document).find('#block_nav_mobile_subs ._icon').addClass('__new')
-      $(document).find('#block_nav_mobile_subs ._icon ._new').html( oElem.icon )
-      $(document).find('#block_nav_mobile_subs ._name').addClass('__new')
-      $(document).find('#block_nav_mobile_subs ._name ._new').html( oElem.name )
-      $(document).find('#block_nav_mobile_subs').addClass('_showed_')
-    }
-    else {
-      if ( $(document).find('#block_nav ._subs a').length )
-        $(document).find('#block_nav ._subs a').each(function( iIndex, oElem ){
-          if ( oElem.attr('href') == u0life.pathname ) {
-            $(document).find('#block_nav_mobile_subs ._icon').addClass('__new')
-            $(document).find('#block_nav_mobile_subs ._icon ._new').html( oElem.find('._icon').html() )
-            $(document).find('#block_nav_mobile_subs ._name').addClass('__new')
-            $(document).find('#block_nav_mobile_subs ._name ._new').html( oElem.find('._name').html() )
-            $(document).find('#block_nav_mobile_subs').addClass('_showed_')
-          }
-        })
-    }
-
-    // if ( $(document).find('#block_nav ._subs a').length ) $(document).find('#block_nav_mobile_subs').addClass('_showed_')
-    // else $(document).find('#block_nav_mobile_subs').removeClass('_showed_')
+    $(document).find('#block_nav_mobile_subs ._icon ._new').html( oElem.icon )
+    $(document).find('#block_nav_mobile_subs ._name ._new').html( oElem.name )
+    $(document).find('#block_nav_mobile_subs ._icon').addClass('__new')
+    $(document).find('#block_nav_mobile_subs ._name').addClass('__new')
   }, 500)
 }
 
 function block_nav_update(){
-  block_nav_mobile_main()
-  block_nav_mobile_subs()
+  // Сброс корневой иконки
+  if ( $(document).find('#block_nav_mobile_main ._icon').hasClass('__new') ) {
+    $(document).find('#block_nav_mobile_main ._icon').removeClass('__new')
+    $(document).find('#block_nav_mobile_main ._icon ._old').html( '<i class="fa-solid fa-bars"></i>' )
+    $(document).find('#block_nav_mobile_main ._name').removeClass('__new')
+    $(document).find('#block_nav_mobile_main ._name ._old').html( $(document).find('#block_nav_mobile_main ._name ._new').data().deftext )
+  }
+
+  // Сброс вложенной иконки и вложенного меню
+  // if ( ! $(document).find('#block_nav_mobile_subs').hasClass('_showed_') ) {
+    $(document).find('#block_nav_mobile_subs ._icon').removeClass('__new')
+    $(document).find('#block_nav_mobile_subs ._icon ._old').html( '<i class="fa-solid fa-ellipsis"></i>' )
+    $(document).find('#block_nav_mobile_subs ._name').removeClass('__new')
+    $(document).find('#block_nav_mobile_subs ._name ._old').html( $(document).find('#block_nav_mobile_subs ._name ._new').data().deftext )
+  // }
+
+  $(document).find('#block_nav ._subs').html('')
+  $(document).find('#block_nav ._subs').removeClass('_active_')
+  $(document).find('#block_nav_mobile_subs').removeClass('_showed_')
+
+  $.get('templates/nav.htm')
+  .fail(function(data){
+    status({'error': 'Шаблон не найден: templates/nav.htm'})
+  })
+  .done(function(data){
+    var
+      oTemplate = $('<div/>').html(data),
+      arrThisPath = u0life.pathname.split('/')
+
+    // Показ по корневому
+    $.each(u0life.oNav, function( iPath, oElem ){
+      if ( oElem.menu_hide ) return
+
+      // Подсвет
+      oElem.active = ''
+      if ( oElem.url == '/' + arrThisPath[1] + '/'  ) oElem.active = '_active_'
+      if ( oElem.url == u0life.pathname  ) oElem.active = '_active_'
+
+      // Подстановка в меню на мобиле
+      if ( oElem.active ) block_nav_mobile_main( oElem )
+
+      // Вложенность
+      if ( oElem.subs && parseInt( oElem.subs.length ) != 0 && oElem.active ) {
+        var iPathSubIndex = 0
+        $.each(oElem.subs, function( iPathSub, oElemSub ){
+          if ( oElemSub.menu_hide ) return
+
+          // Подсвет
+          oElemSub.active = ''
+          if ( oElemSub.url == '/' + arrThisPath[2] + '/'  ) oElemSub.active = '_active_'
+          if ( oElemSub.url == u0life.pathname  ) oElemSub.active = '_active_'
+
+          // добавляем
+          $(document).find('#block_nav ._subs').append( content_loader_elem_html( oElemSub, oTemplate ) )
+          iPathSubIndex++
+          setTimeout(function () {
+            $(document).find('#block_nav ._subs a[href="' + oElemSub.url + '"]').parents('.nav-item').addClass('_show_')
+
+            // Подстановка в меню на мобиле
+            if ( oElemSub.active ) block_nav_mobile_subs( oElemSub )
+          }, 300 * iPathSubIndex / 2)
+        })
+      }
+
+      if ( u0life.oNav.length >= iPath - 1 ) {
+        if ( $(document).find('#block_nav ._subs a').length ) {
+          $(document).find('#block_nav_mobile_subs').addClass('_showed_')
+          $(document).find('#block_nav ._subs').addClass('_active_')
+        }
+      }
+    })
+  })
 }

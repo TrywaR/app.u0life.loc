@@ -19,6 +19,7 @@ function session_init() {
         if ( oData.success.session ) u0life.ajax_salt.session = oData.success.session
 
         u0life.save()
+        u0life.init()
       }
 
       if ( oData.error ) {
@@ -26,8 +27,6 @@ function session_init() {
         localStorage.clear()
         location.reload()
       }
-
-      u0life.init()
     })
   }
 
@@ -43,13 +42,12 @@ function session_init() {
       if ( oData.success && oData.success.session ) {
         u0life.ajax_salt.session = oData.success.session
         u0life.save()
+        u0life.init()
       }
       if ( oData.error ) {
         localStorage.clear()
         location.reload()
       }
-
-      u0life.init()
     })
   }
 }

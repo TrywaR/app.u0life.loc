@@ -35,14 +35,14 @@ function page( sUrl, oData ){
       // Подставляем адрес в url
       // history.pushState(null, null, sUrl)
       u0life.pathname = sUrl
+      u0life.save()
 
       // Вставляем контент
       var oMainHtml = $('<div/>').html(oData.success)
       $(document).find('main').html( oMainHtml )
 
-      // Обновляем меню
-      block_nav()
-      // block_nav_update()
+      // Обновляем меню, чтобы выделить активный пункт
+      block_nav_update()
 
       // чистим url
       history.pushState(null, null, '/')

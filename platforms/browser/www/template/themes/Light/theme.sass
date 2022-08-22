@@ -5,15 +5,16 @@
 @import "../../sass/includes"
 
 body
-  &:before
-    background: linear-gradient(0deg,rgba(255, 255, 255, 0.8) 0,rgba(233, 239, 255, 0.8) 100%)
-    opacity: .8
-    z-index: -1
+  .body_bg
+    &:before
+      background: linear-gradient(0deg,rgba(255, 255, 255, 0.8) 0,rgba(233, 239, 255, 0.8) 100%)
+      opacity: .8
+      z-index: -1
 
-  &:after
-    filter: blur(.1rem)
-    background: radial-gradient(circle,white 7%,#1c1a1a white)
-    z-index: -2
+    &:after
+      filter: blur(.1rem)
+      background: radial-gradient(circle,white 7%,#1c1a1a white)
+      z-index: -2
 
   main
     font-weight: 400

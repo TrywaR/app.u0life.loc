@@ -45,8 +45,14 @@ u0life.init = function(){
 			'action': 'templates',
 			'form': 'show',
 			'template': 'pages/footer',
-		}, 'json', false )
-	).then( function( oDataTheme, oDataHeader, oDataFooter ){
+		}, 'json', false ),
+
+		content_download( {
+      'app':'app',
+      'action':'navs',
+      'form':'show',
+    }, 'json', false )
+	).then( function( oDataTheme, oDataHeader, oDataFooter, oDataNav ){
 		if ( oDataTheme[0].success ) {
 			$(document).find('head').append( oDataTheme[0].success )
 		}
@@ -58,10 +64,19 @@ u0life.init = function(){
 			var oFooterHtml = $('<div/>').html(oDataFooter[0].success)
 			$(document).find('footer').html( $(oFooterHtml).find('footer').html() )
 		}
+		if ( oDataNav[0] ) {
+			u0life.oNav = oDataNav[0]
+			u0life.pathname = '/'
+	    u0life.save()
+
+			// navs loads and show
+			block_nav_init()
+		}
 
 		// content worderk
-		page( '/' )
+		// page( '/' )
 
+		// content load
 		$(document).on ('click', 'header .home_link, main a, footer a', function(){
 			if ( $(this).hasClass('content_loader_show') ) return true
 			if ( $(this).attr('href').indexOf('#') === 0 ) return true
@@ -106,7 +121,6 @@ u0life.init = function(){
 				if ( oData.success ) location.reload()
 			})
 		})
-		// theme_switch x
 
 		// lang_switch
 		$(document).find('#lang_switch ._vals').on ('change', function(){
@@ -125,15 +139,8 @@ u0life.init = function(){
 				if ( oData.success ) location.reload()
 			})
 		})
-		// lang_switch x
 
-		// forms fork
-		// Params
-		var
-			oForm = false,
-			oElem = false
-
-		// Froms
+		// Forms
 		$(document).on ('submit', 'form.__form_event_default', function(){
 			content_download( $(this).serializeArray(), 'json', true )
 			return false
@@ -144,7 +151,6 @@ u0life.init = function(){
 			$(this).parents('form').find('[class*=switch_' + $(this).attr('name') + ']').removeClass('_show_')
 			$(this).parents('form').find('.switch_' + $(this).attr('name') + '-' + $(this).val()).addClass('_show_')
 		})
-
 
 		// buttons
 		// button logout
@@ -162,7 +168,7 @@ u0life.init = function(){
 					// Выходим
 					if ( oData.success ) {
 						localStorage.clear()
-						window.location.replace("/")
+						location.reload()
 					}
 				})
 			}
@@ -184,15 +190,12 @@ u0life.init = function(){
 					// Выходим
 					if ( oData.success ) {
 						localStorage.clear()
-						window.location.replace("/")
+						location.reload()
 					}
 				})
 			}
 			return false
 		})
-
-		// navs
-		block_nav()
 
 		// Логотип на мобиле
 		$(document).find('.block_nav_mobile .nav_btn._logo').on('click', function(){
@@ -256,7 +259,7 @@ u0life.init = function(){
 			else $('body').removeClass('_mobile_nav_active_')
 		})
 		$(document). on('click', '#block_nav ._main a, #block_nav ._subs a, #block_nav_mobile_body_blocker, #block_nav_mobile_logo_content a, .nav_btn ._href', function(){
-			page( $(this).attr('href') )
+			if ( $(this).attr('href') ) page( $(this).attr('href') )
 
 			$(document).find('#block_nav ._main').removeClass('_mobile_active_')
 			$(document).find('#block_nav_mobile_main').removeClass('_active_')
