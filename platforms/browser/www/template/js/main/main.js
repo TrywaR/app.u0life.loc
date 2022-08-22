@@ -1,12 +1,14 @@
 // Работа приложения
 sVersion = '1'
-sSiteUrl = 'https://fttm.trywar.ru'
+// sSiteUrl = 'https://fttm.trywar.ru'
+sSiteUrl = 'https://u0life.com'
 // Параметры
 u0life = {
 	'user': '',
 	'version': sVersion,
 	'theme': '',
 	'lang': '',
+	'pathname': '/',
 	'site_url': sSiteUrl,
 	'ajax_salt': {
 		'app': 'app',
