@@ -62,7 +62,7 @@ u0life.init = function(){
 		// content worderk
 		page( '/' )
 
-		$(document).on ('click', 'main a, footer a', function(){
+		$(document).on ('click', 'header .home_link, main a, footer a', function(){
 			if ( $(this).hasClass('content_loader_show') ) return true
 			if ( $(this).attr('href').indexOf('#') === 0 ) return true
 

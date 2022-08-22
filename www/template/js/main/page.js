@@ -43,6 +43,9 @@ function page( sUrl, oData ){
       // Обновляем меню
       block_nav()
       // block_nav_update()
+
+      // чистим url
+      history.pushState(null, null, '/')
     }
   })
 }
