@@ -126,7 +126,8 @@
   z-index: 1
 
   &._active_show_false
-    filter: brightness(60%) contrast(.9)
+    @include active_show
+
 
   &._active_show_true
     // opacity: 1

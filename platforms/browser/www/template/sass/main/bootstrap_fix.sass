@@ -212,7 +212,12 @@ body
 
   .list-group-numbered
     .list-group-item
+      position: relative
+
       &:before
+        position: absolute
+        top: .3rem
+        left: .3rem
         opacity: .3
         font-weight: 300
         padding: 0 .2rem 0 0
@@ -268,6 +273,9 @@ body
       background: radial-gradient($color_main, rgba(0,0,0,0))
       opacity: .1
       z-index: -2
+
+    &.input-group-select2
+      flex-wrap: nowrap
 
   .input-group-text
     color: $color_text

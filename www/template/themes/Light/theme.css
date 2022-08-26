@@ -717,6 +717,117 @@ body #fttm_modal {
   body.modal-open main,
   body.modal-open footer {
     filter: blur(0.1rem); } }
+.select2-container {
+  z-index: 99999; }
+  .select2-container .selection {
+    display: flex;
+    height: 100%; }
+    .select2-container .selection .select2-selection {
+      color: black;
+      background: transparent;
+      height: auto;
+      border-radius: 8px;
+      min-width: 220px;
+      width: 100%;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      font-size: 1.1em;
+      line-height: 1.2;
+      padding: 5px; }
+      .select2-container .selection .select2-selection .select2-selection__rendered {
+        display: flex;
+        align-items: center;
+        color: black;
+        line-height: 1.1; }
+        .select2-container .selection .select2-selection .select2-selection__rendered ._color {
+          display: flex;
+          border-radius: 50%;
+          width: 0.8rem;
+          height: 0.8rem;
+          margin-right: 0.8rem; }
+      .select2-container .selection .select2-selection .select2-selection__arrow {
+        height: 100%; }
+  .select2-container .select2-dropdown {
+    position: relative;
+    color: black;
+    background: #ecf2fd;
+    overflow: hidden;
+    border: none;
+    z-index: 1;
+    border: 0.15rem solid #dae8fb; }
+    .select2-container .select2-dropdown:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 0.5rem;
+      background: linear-gradient(to right, #dae8fb, rgba(0, 0, 0, 0));
+      box-shadow: inset 0 0 0.2rem 0 rgba(255, 255, 255, 0.1), 0.1rem 0.1rem 0 0 rgba(0, 0, 0, 0.2);
+      opacity: 0.5;
+      z-index: -1; }
+    .select2-container .select2-dropdown.select2-dropdown--above {
+      border-radius: 0.5rem;
+      border-bottom-width: 0; }
+    .select2-container .select2-dropdown.select2-dropdown--below {
+      border-radius: 0.5rem;
+      border-top-width: 0; }
+    .select2-container .select2-dropdown .select2-search {
+      padding: 8px 5px; }
+      .select2-container .select2-dropdown .select2-search .select2-search__field {
+        color: black;
+        background: #dae8fb;
+        border-radius: 0.5rem;
+        padding: 0.2rem 0.5rem;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important; }
+    .select2-container .select2-dropdown .select2-results {
+      /* width */
+      scrollbar-color: #edf3fe #dae8fb;
+      scrollbar-width: thin;
+      /* Track */
+      /* Handle */
+      /* Handle on hover */ }
+      .select2-container .select2-dropdown .select2-results::-webkit-scrollbar {
+        width: 0.5rem;
+        height: 0.5rem; }
+      .select2-container .select2-dropdown .select2-results::-webkit-scrollbar-track {
+        background: #dae8fb;
+        border-radius: 0.5rem; }
+      .select2-container .select2-dropdown .select2-results::-webkit-scrollbar-thumb {
+        background: #edf3fe;
+        border-radius: 0.5rem;
+        cursor: pointer; }
+      .select2-container .select2-dropdown .select2-results::-webkit-scrollbar-thumb:hover {
+        background: #edf3fe; }
+      .select2-container .select2-dropdown .select2-results .select2-results__options .select2-results__option {
+        position: relative;
+        display: flex;
+        align-items: center;
+        z-index: 1; }
+        .select2-container .select2-dropdown .select2-results .select2-results__options .select2-results__option ._color {
+          display: flex;
+          border-radius: 50%;
+          width: 0.8rem;
+          height: 0.8rem;
+          margin-right: 0.8rem; }
+        .select2-container .select2-dropdown .select2-results .select2-results__options .select2-results__option:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 0.15rem;
+          background: #dae8fb;
+          opacity: 0.3; }
+        .select2-container .select2-dropdown .select2-results .select2-results__options .select2-results__option.select2-results__option--selected {
+          background: #7661db !important; }
+        .select2-container .select2-dropdown .select2-results .select2-results__options .select2-results__option.select2-results__option--highlighted {
+          background: #ecf2fd; }
+
 select {
   background: #ecf2fd;
   color: black; }
@@ -925,10 +1036,15 @@ body .card {
 body .list-group {
   padding: 0;
   border-radius: 0.5rem; }
-body .list-group-numbered .list-group-item:before {
-  opacity: 0.3;
-  font-weight: 300;
-  padding: 0 0.2rem 0 0; }
+body .list-group-numbered .list-group-item {
+  position: relative; }
+  body .list-group-numbered .list-group-item:before {
+    position: absolute;
+    top: 0.3rem;
+    left: 0.3rem;
+    opacity: 0.3;
+    font-weight: 300;
+    padding: 0 0.2rem 0 0; }
 body .list-group-item {
   color: black;
   background: #edf3fe;
@@ -971,6 +1087,8 @@ body .input-group {
     background: radial-gradient(#7661db, rgba(0, 0, 0, 0));
     opacity: 0.1;
     z-index: -2; }
+  body .input-group.input-group-select2 {
+    flex-wrap: nowrap; }
 body .input-group-text {
   color: black;
   font-size: 1em;
@@ -1856,6 +1974,7 @@ main {
     flex-direction: column;
     padding: 1rem;
     box-sizing: border-box;
+    width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center; }
@@ -2118,6 +2237,8 @@ body .content_manager_buttons {
   box-sizing: border-box;
   border: none !important;
   box-shadow: inset 0 0 0.1rem 0 #4F9497, inset -0.08rem -0.08rem 0 0 black; }
+  .block_card._active_show_false {
+    filter: brightness(60%) contrast(0.9); }
   .block_card ._card_head {
     display: flex;
     flex-direction: column;
@@ -2126,13 +2247,15 @@ body .content_manager_buttons {
     .block_card ._card_head ._title {
       display: flex;
       flex-direction: column;
-      font-size: 1.1em;
+      font-size: 1.4em;
       line-height: 1.1em;
       font-weight: 400; }
     .block_card ._card_head ._update {
       display: flex;
-      font-size: 1em;
+      font-size: 0.8em;
       line-height: 1.4em;
+      justify-content: flex-end;
+      padding: 0.2rem;
       opacity: 0.5;
       font-weight: 300; }
       .block_card ._card_head ._update ._icon {
