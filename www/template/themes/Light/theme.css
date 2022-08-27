@@ -2087,7 +2087,10 @@ main {
       body .content_filter ._filter_block ._filter_input {
         width: 100%;
         margin-bottom: 0.5rem;
-        margin-right: 0; } }
+        margin-right: 0 !important; }
+      body .content_filter ._filter_block .btn {
+        font-size: 1.2em;
+        padding: 0.5rem 1rem; } }
 body .content_manager_buttons {
   position: relative;
   display: flex;
