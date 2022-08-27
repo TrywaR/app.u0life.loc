@@ -29,6 +29,40 @@ function content_filter_init( oFilter ) {
     }
   })
 
+  // select2
+  oFilter.find('select').each(function( iIndex, oElem ){
+    $(oElem).select2({
+      selectionCssClass: ':all:',
+      templateSelection: function( data ){
+        if (!data.id) {
+          return data.text;
+        }
+
+        if (data.element) {
+          if ( $(data.element).data().color ) {
+            var $state = $(
+              '<span class="_color" style="background:' + $(data.element).data().color + ';"></span><span class="_text">' + data.text + '</span>'
+            )
+            return $state
+          }
+        }
+
+        return data.text;
+      },
+      templateResult: function (data, container) {
+        if (data.element) {
+          if ( $(data.element).data().color ) {
+            var $state = $(
+              '<span class="_color" style="background:' + $(data.element).data().color + ';"></span><span class="_text">' + data.text + '</span>'
+            )
+            return $state
+          }
+        }
+        return data.text
+      }
+    })
+  })
+
   // Нажатие на фильр
   oFilter.on('submit', function(){
     // Вставляем значение в лоадер

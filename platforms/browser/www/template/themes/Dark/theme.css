@@ -211,7 +211,7 @@ body {
   .main_jumbotron ._block_content {
     z-index: 2;
     position: absolute;
-    top: -100%;
+    top: -100vh;
     left: 1rem;
     right: 1rem;
     display: flex;
@@ -721,6 +721,7 @@ body #fttm_modal {
   z-index: 99999; }
   .select2-container .selection {
     display: flex;
+    align-items: center;
     height: 100%; }
     .select2-container .selection .select2-selection {
       color: white;
@@ -780,7 +781,7 @@ body #fttm_modal {
         color: white;
         background: #101010;
         border-radius: 0.5rem;
-        padding: 8px 5px;
+        padding: 0.2rem 0.5rem;
         border: none !important;
         outline: none !important;
         box-shadow: none !important; }
@@ -853,6 +854,12 @@ select {
   justify-content: space-between; }
   .block_buttons .button:not(:last-child) {
     margin-right: 0.5rem; }
+  .block_buttons.__end {
+    justify-content: flex-end; }
+  .block_buttons.__start {
+    justify-content: flex-start; }
+  .block_buttons.__center {
+    justify-content: center; }
 
 .switch_values {
   display: none;
@@ -2018,6 +2025,50 @@ main {
   .content_filter select._active_,
   .content_filter input._active_ {
     background: rgba(196, 53, 53, 0.1); }
+  .content_filter ._filter_block {
+    display: flex;
+    margin-bottom: 0.5rem;
+    background: none;
+    flex-wrap: nowrap; }
+    .content_filter ._filter_block:before, .content_filter ._filter_block:after {
+      display: none; }
+    .content_filter ._filter_block .btn {
+      font-size: 1em;
+      line-height: 1;
+      padding: 0.2rem 1rem; }
+    .content_filter ._filter_block ._filter_input {
+      position: relative;
+      display: flex;
+      flex-grow: 1;
+      z-index: 1;
+      background: #101010;
+      border-radius: 0.5rem !important;
+      overflow: hidden; }
+      .content_filter ._filter_block ._filter_input:not(:last-child) {
+        margin-right: 0.5rem; }
+      .content_filter ._filter_block ._filter_input:before, .content_filter ._filter_block ._filter_input:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 0.5rem; }
+      .content_filter ._filter_block ._filter_input:before {
+        box-shadow: 0 0 0.2rem 0 rgba(200, 200, 200, 0.1), inset 0.1rem 0.1rem 0 0 rgba(0, 0, 0, 0.2);
+        opacity: 0.5;
+        z-index: -1; }
+      .content_filter ._filter_block ._filter_input:after {
+        background: radial-gradient(#7661db, rgba(0, 0, 0, 0));
+        opacity: 0.1;
+        z-index: -2; }
+      .content_filter ._filter_block ._filter_input .form-select,
+      .content_filter ._filter_block ._filter_input .select2,
+      .content_filter ._filter_block ._filter_input .form-control {
+        font-size: 1em;
+        line-height: 1;
+        padding: 0.2rem;
+        width: 100% !important; }
 
 .content_filter_status {
   position: relative;
@@ -2025,6 +2076,18 @@ main {
   .content_filter_status._active_ {
     background: rgba(196, 53, 53, 0.1); }
 
+@media screen and (max-width: 1199px) {
+  body .content_filter {
+    max-height: 60vh;
+    overflow: auto; }
+    body .content_filter ._filter_block {
+      flex-direction: column;
+      margin-bottom: 0;
+      flex-wrap: wrap; }
+      body .content_filter ._filter_block ._filter_input {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        margin-right: 0; } }
 body .content_manager_buttons {
   position: relative;
   display: flex;

@@ -5,6 +5,7 @@
 
   .selection
     display: flex
+    align-items: center
     height: 100%
 
     .select2-selection
@@ -82,7 +83,7 @@
         color: $color_text
         background: $color_main_dark_ultra
         border-radius: $border_radius
-        padding: 8px 5px
+        padding: .2rem .5rem
 
         border: none ! important
         outline: none ! important
@@ -165,6 +166,15 @@ select
   .button
     &:not(:last-child)
       margin-right: .5rem
+
+  &.__end
+    justify-content: flex-end
+
+  &.__start
+    justify-content: flex-start
+
+  &.__center
+    justify-content: center
 
 // switch
 .switch

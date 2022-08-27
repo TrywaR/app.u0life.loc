@@ -25,6 +25,7 @@ function content_actions_init( oBlockActions, oParams ) {
 
     sResultHtml = oData
 
+    oBlockActions.html( sResultHtml ).removeClass('animate__bounceOutDown')
     oBlockActions.html( sResultHtml ).addClass('_active_ animate__bounceInUp')
   })
 }
@@ -32,4 +33,5 @@ function content_actions_init( oBlockActions, oParams ) {
 function content_actions_clear( oBlockActions ) {
   if ( ! oBlockActions.length ) oBlockActions = $(document).find('#footer_actions')
   oBlockActions.removeClass('_active_ animate__bounceInUp')
+  oBlockActions.addClass('animate__bounceOutDown')
 }

@@ -9,6 +9,61 @@
     &._active_
       background: rgba(196, 53, 53, .1)
 
+  ._filter_block
+    display: flex
+    margin-bottom: .5rem
+    background: none
+    flex-wrap: nowrap
+
+    &:before,
+    &:after
+      display: none
+
+    .btn
+      font-size: 1em
+      line-height: 1
+      padding: .2rem 1rem
+
+    ._filter_input
+      position: relative
+      display: flex
+      flex-grow: 1
+      z-index: 1
+      background: $color_main_dark_ultra
+      border-radius: $border_radius ! important
+      overflow: hidden
+
+      &:not(:last-child)
+        margin-right: .5rem
+
+      &:before,
+      &:after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        border-radius: $border_radius
+
+      &:before
+        box-shadow: 0 0 .2rem 0 rgba(200,200,200,.1), inset .1rem .1rem 0 0 rgba(0,0,0,.2)
+        opacity: .5
+        z-index: -1
+
+      &:after
+        background: radial-gradient($color_main, rgba(0,0,0,0))
+        opacity: .1
+        z-index: -2
+
+      .form-select,
+      .select2,
+      .form-control
+        font-size: 1em
+        line-height: 1
+        padding: .2rem
+        width: 100% ! important
+
 .content_filter_status
   position: relative
   z-index: 1
@@ -16,3 +71,19 @@
   &._active_
     background: rgba(196, 53, 53, .1)
 // .content_filter x
+
+@media screen and (max-width:1199px)
+  body
+    .content_filter
+      max-height: 60vh
+      overflow: auto
+
+      ._filter_block
+        flex-direction: column
+        margin-bottom: 0
+        flex-wrap: wrap
+
+        ._filter_input
+          width: 100%
+          margin-bottom: .5rem
+          margin-right: 0
