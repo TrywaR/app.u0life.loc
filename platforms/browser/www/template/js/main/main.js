@@ -1,5 +1,5 @@
 // Работа приложения
-sVersion = '5.4.3'
+sVersion = '5.4.31'
 // sSiteUrl = 'https://fttm.trywar.ru'
 sSiteUrl = 'https://u0life.com'
 // Параметры
@@ -154,7 +154,7 @@ u0life.init = function(){
 
 		// buttons
 		// button logout
-		$(document).find('#user_logout').on ('click', function(){
+		$(document).on ('click', '#user_logout', function(){
 			if ( confirm('Confirm logout') ) {
 				$.when(
 					content_download( {
@@ -176,7 +176,7 @@ u0life.init = function(){
 		})
 
 		// button delete
-		$(document).find('#user_delete').on ('click', function(){
+		$(document).on ('click', '#user_delete', function(){
 			if ( confirm('Confirm delete profile') ) {
 				$.when(
 					content_download( {

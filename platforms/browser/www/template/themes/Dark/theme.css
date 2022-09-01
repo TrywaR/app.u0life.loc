@@ -256,7 +256,7 @@ body {
 
 @media screen and (max-width: 1199px) {
   body main .main_content {
-    padding: 5rem 1rem 8rem; } }
+    padding: 5rem 1rem 10rem; } }
 .block_footer {
   display: flex;
   width: 100%;
@@ -1093,9 +1093,6 @@ body .list-group {
 body .list-group-numbered .list-group-item {
   position: relative; }
   body .list-group-numbered .list-group-item:before {
-    position: absolute;
-    top: 0.3rem;
-    left: 0.3rem;
     opacity: 0.3;
     font-weight: 300;
     padding: 0 0.2rem 0 0; }
@@ -2111,11 +2108,14 @@ main {
         z-index: -2; }
       .content_filter ._filter_block ._filter_input .form-select,
       .content_filter ._filter_block ._filter_input .select2,
-      .content_filter ._filter_block ._filter_input .form-control {
+      .content_filter ._filter_block ._filter_input .form-control,
+      .content_filter ._filter_block ._filter_input .input_checkbox {
         font-size: 1em;
         line-height: 1;
         padding: 0.2rem;
         width: 100% !important; }
+      .content_filter ._filter_block ._filter_input .form-check-label {
+        width: 100%; }
 
 .content_filter_status {
   position: relative;
@@ -2213,6 +2213,12 @@ body .content_manager_buttons {
       line-height: 0.8em;
       opacity: 0.6;
       font-weight: 300; }
+
+.block_clients .client._active_show_false {
+  filter: brightness(60%) contrast(0.9); }
+
+.block_projects .project._active_show_false {
+  filter: brightness(60%) contrast(0.9); }
 
 .block_moneys .block_chart {
   background: #20292b; }
@@ -2549,6 +2555,8 @@ body .content_manager_buttons {
   display: flex;
   align-items: center;
   justify-content: center; }
+  .task._active_show_false {
+    filter: brightness(60%) contrast(0.9); }
   .task._status_show_true ._status {
     display: inline-block; }
   .task._project_show_true ._project {
@@ -2854,6 +2862,8 @@ body .content_manager_buttons {
         z-index: -1;
         border-radius: 0.5rem; }
 
+.subscription._active_show_false {
+  filter: brightness(60%) contrast(0.9); }
 .subscription._paid_show_true ._paid {
   display: flex; }
 .subscription._paid_need_show_true ._need {

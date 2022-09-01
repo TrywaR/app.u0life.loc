@@ -115,6 +115,7 @@ function block_nav_mobile_subs( oElem ){
 function block_nav_update(){
   // Сброс корневой иконки
   if ( $(document).find('#block_nav_mobile_main ._icon').hasClass('__new') ) {
+    $(document).find('#block_nav ._main .nav-link._active_').removeClass('_active_')
     $(document).find('#block_nav_mobile_main ._icon').removeClass('__new')
     $(document).find('#block_nav_mobile_main ._icon ._old').html( '<i class="fa-solid fa-bars"></i>' )
     $(document).find('#block_nav_mobile_main ._name').removeClass('__new')

@@ -97,13 +97,26 @@ function content_filter_active( oFilter ) {
 
   // Перебираем фильтр
   oFilter.find('input,select').each(function( iIndex, oElem ){
-    // Подцветка активных
-    if ( parseInt( $(this).val() ) || $(this).val().length > 1 ) {
-      $(this).addClass('_active_')
-      iVals++
-    }
-    else {
-      $(this).removeClass('_active_')
+    switch ( $(this).attr('type') ) {
+      case 'checkbox':
+        if ( $(this).prop("checked") ) {
+          $(this).addClass('_active_')
+          iVals++
+        }
+        else {
+          $(this).removeClass('_active_')
+        }
+        break
+      default:
+        // Подцветка активных
+        if ( parseInt( $(this).val() ) || $(this).val().length > 1 ) {
+          $(this).addClass('_active_')
+          iVals++
+        }
+        else {
+          $(this).removeClass('_active_')
+        }
+        break
     }
 
     // Вконце подсвечивам сам фильтр и применяем

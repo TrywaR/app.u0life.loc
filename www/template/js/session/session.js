@@ -27,6 +27,8 @@ function session_init() {
         localStorage.clear()
         location.reload()
       }
+
+      if ( ! oData.location ) page('/')
     })
   }
 
@@ -48,6 +50,8 @@ function session_init() {
         localStorage.clear()
         location.reload()
       }
+
+      if ( ! oData.location ) page('/')
     })
   }
 }
