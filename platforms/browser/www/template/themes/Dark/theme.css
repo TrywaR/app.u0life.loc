@@ -3180,19 +3180,7 @@ body .content_manager_buttons {
     flex-direction: column;
     padding: 0.5rem;
     margin-bottom: 1rem;
-    box-sizing: border-box;
-    z-index: 1; }
-    .block_dashboard ._sections:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: 0.5rem;
-      box-shadow: inset 0 0 0 0.1rem #7661db;
-      opacity: 0.1;
-      z-index: -1; }
+    box-sizing: border-box; }
     .block_dashboard ._sections ._sections_title {
       display: flex;
       justify-content: center;
