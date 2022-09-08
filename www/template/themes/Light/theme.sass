@@ -5,6 +5,11 @@
 @import "../../sass/includes"
 
 body
+  .loader
+    ._min
+      background: $color_main_dark
+      color: $color_text
+
   .body_bg
     &:before
       background: linear-gradient(0deg,rgba(255, 255, 255, 0.8) 0,rgba(233, 239, 255, 0.8) 100%)
@@ -27,6 +32,27 @@ body
       ._bottom
         ._copy
           font-weight: 400
+
+  .block_content_loader
+    .list-group-item
+      border: none
+
+    & > *
+      &:after
+        display: none
+
+  .time
+    ._category,
+    ._project,
+    ._task
+      font-weight: 400
+
+  .input_checkbox
+    input
+      &:checked
+        & + .form-check-label
+          &:after
+            background: white
 
   .block_nav
     ._subs,

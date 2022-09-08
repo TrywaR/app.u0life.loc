@@ -29,4 +29,9 @@ body
       background: $color_main
       border-radius: $border_radius
       color: white
+      opacity: 0
+      @include transition_default
+
+      &._show_
+        opacity: 1
   // .content_manager_buttons x

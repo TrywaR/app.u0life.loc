@@ -4,79 +4,109 @@
   line-height: 1
   overflow: hidden
 
-  ._section
-    padding-top: 1rem
-    padding-bottom: 4rem
+  ._sections
+    position: relative
+    display: flex
+    flex-direction: column
+    padding: .5rem
+    margin-bottom: 1rem
+    box-sizing: border-box
+    z-index: 1
 
-    &._main
-      padding: 0 0 .5rem
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      border-radius: $border_radius
+      box-shadow: inset 0 0 0 .1rem $color_main
+      opacity: .1
+      z-index: -1
 
-      ._blocks
-        display: flex
-        flex-wrap: wrap
-
-        ._block
-          position: relative
-          flex-grow: 1
-          z-index: 1
-          display: flex
-          flex-direction: column
-          padding: 1.5rem
-
-          &:after
-            content: ''
-            position: absolute
-            top: .5rem
-            left: .5rem
-            right: .5rem
-            bottom: .5rem
-            background: $color_main_dark
-            border-radius: $border_radius
-            z-index: -1
-
-          ._title
-            opacity: .5
-            font-weight: 400
-            display: flex
-            padding-bottom: .5rem
-
-          ._elems
-            ._elem
-              display: flex
-              padding-bottom: .3rem
-
-              ._name
-                display: flex
-                padding-right: .3rem
-                font-style: italic
-                opacity: .5
-
-              ._val
-                font-size: 1.2em
-                font-weight: 400
-
-    ._section_title
+    ._sections_title
       display: flex
-      text-decoration: none
+      justify-content: center
       align-items: center
-      padding: 0 0 1rem
+      font-size: 1em
+      color: $color_main
+      opacity: .5
 
-      .sub_title
-        flex-grow: 1
-        margin: 0
+    ._section
+      padding-bottom: 1.5rem
+      box-sizing: border-box
 
-      .badge
-        margin-left: .5rem
-        font-size: 1.5em
+      &._main
+        padding: 0 0 .5rem
 
-      ._button
+        ._blocks
+          display: flex
+          flex-wrap: wrap
+
+          ._block
+            position: relative
+            flex-grow: 1
+            z-index: 1
+            display: flex
+            flex-direction: column
+            padding: 1.5rem
+
+            &:after
+              content: ''
+              position: absolute
+              top: .5rem
+              left: .5rem
+              right: .5rem
+              bottom: .5rem
+              background: $color_main_dark
+              border-radius: $border_radius
+              z-index: -1
+
+            ._title
+              opacity: .5
+              font-weight: 400
+              display: flex
+              padding-bottom: .5rem
+
+            ._elems
+              ._elem
+                display: flex
+                padding-bottom: .3rem
+
+                ._name
+                  display: flex
+                  padding-right: .3rem
+                  font-style: italic
+                  opacity: .5
+
+                ._val
+                  font-size: 1.2em
+                  font-weight: 400
+
+      ._section_title
+        display: flex
         text-decoration: none
+        align-items: center
+        padding: 0 0 1rem
 
-    &._filter
-      padding: 0
+        .sub_title
+          flex-grow: 1
+          margin: 0
 
-    &._day
-      padding-top: 0
+        .badge
+          margin-left: .5rem
+          font-size: 1.5em
 
-    &._subscriptions
+        ._button
+          text-decoration: none
+
+      &._filter
+        .block_date
+          ._group
+            justify-content: center
+
+      &._day
+
+      &._subscriptions
 // .block_dasheboard x

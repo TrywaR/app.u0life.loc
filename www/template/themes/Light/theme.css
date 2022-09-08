@@ -808,7 +808,8 @@ body #fttm_modal {
         position: relative;
         display: flex;
         align-items: center;
-        z-index: 1; }
+        z-index: 1;
+        color: black; }
         .select2-container .select2-dropdown .select2-results .select2-results__options .select2-results__option ._color {
           display: flex;
           border-radius: 50%;
@@ -825,6 +826,7 @@ body #fttm_modal {
           background: #dae8fb;
           opacity: 0.3; }
         .select2-container .select2-dropdown .select2-results .select2-results__options .select2-results__option.select2-results__option--selected {
+          color: white !important;
           background: #7661db !important; }
         .select2-container .select2-dropdown .select2-results .select2-results__options .select2-results__option.select2-results__option--highlighted {
           background: #ecf2fd; }
@@ -2162,7 +2164,11 @@ body .content_manager_buttons {
     font-weight: 500;
     background: #7661db;
     border-radius: 0.5rem;
-    color: white; }
+    color: white;
+    opacity: 0;
+    transition: all 0.3s ease-in-out 0s; }
+    body .content_manager_buttons .content_manager_sum._show_ {
+      opacity: 1; }
 
 .moneyforhour_block {
   display: flex;
@@ -2374,6 +2380,7 @@ body .content_manager_buttons {
       font-size: 0.8em;
       line-height: 1.4em;
       justify-content: flex-end;
+      align-items: center;
       padding: 0.2rem;
       opacity: 0.5;
       font-weight: 300; }
@@ -3167,64 +3174,76 @@ body .content_manager_buttons {
   font-size: 1em;
   line-height: 1;
   overflow: hidden; }
-  .block_dashboard ._section {
-    padding-top: 1rem;
-    padding-bottom: 4rem; }
-    .block_dashboard ._section._main {
-      padding: 0 0 0.5rem; }
-      .block_dashboard ._section._main ._blocks {
-        display: flex;
-        flex-wrap: wrap; }
-        .block_dashboard ._section._main ._blocks ._block {
-          position: relative;
-          flex-grow: 1;
-          z-index: 1;
-          display: flex;
-          flex-direction: column;
-          padding: 1.5rem; }
-          .block_dashboard ._section._main ._blocks ._block:after {
-            content: "";
-            position: absolute;
-            top: 0.5rem;
-            left: 0.5rem;
-            right: 0.5rem;
-            bottom: 0.5rem;
-            background: #ecf2fd;
-            border-radius: 0.5rem;
-            z-index: -1; }
-          .block_dashboard ._section._main ._blocks ._block ._title {
-            opacity: 0.5;
-            font-weight: 400;
-            display: flex;
-            padding-bottom: 0.5rem; }
-          .block_dashboard ._section._main ._blocks ._block ._elems ._elem {
-            display: flex;
-            padding-bottom: 0.3rem; }
-            .block_dashboard ._section._main ._blocks ._block ._elems ._elem ._name {
-              display: flex;
-              padding-right: 0.3rem;
-              font-style: italic;
-              opacity: 0.5; }
-            .block_dashboard ._section._main ._blocks ._block ._elems ._elem ._val {
-              font-size: 1.2em;
-              font-weight: 400; }
-    .block_dashboard ._section ._section_title {
+  .block_dashboard ._sections {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box; }
+    .block_dashboard ._sections ._sections_title {
       display: flex;
-      text-decoration: none;
+      justify-content: center;
       align-items: center;
-      padding: 0 0 1rem; }
-      .block_dashboard ._section ._section_title .sub_title {
-        flex-grow: 1;
-        margin: 0; }
-      .block_dashboard ._section ._section_title .badge {
-        margin-left: 0.5rem;
-        font-size: 1.5em; }
-      .block_dashboard ._section ._section_title ._button {
-        text-decoration: none; }
-    .block_dashboard ._section._filter {
-      padding: 0; }
-    .block_dashboard ._section._day {
-      padding-top: 0; }
+      font-size: 1em;
+      color: #7661db;
+      opacity: 0.5; }
+    .block_dashboard ._sections ._section {
+      padding-bottom: 1.5rem;
+      box-sizing: border-box; }
+      .block_dashboard ._sections ._section._main {
+        padding: 0 0 0.5rem; }
+        .block_dashboard ._sections ._section._main ._blocks {
+          display: flex;
+          flex-wrap: wrap; }
+          .block_dashboard ._sections ._section._main ._blocks ._block {
+            position: relative;
+            flex-grow: 1;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem; }
+            .block_dashboard ._sections ._section._main ._blocks ._block:after {
+              content: "";
+              position: absolute;
+              top: 0.5rem;
+              left: 0.5rem;
+              right: 0.5rem;
+              bottom: 0.5rem;
+              background: #ecf2fd;
+              border-radius: 0.5rem;
+              z-index: -1; }
+            .block_dashboard ._sections ._section._main ._blocks ._block ._title {
+              opacity: 0.5;
+              font-weight: 400;
+              display: flex;
+              padding-bottom: 0.5rem; }
+            .block_dashboard ._sections ._section._main ._blocks ._block ._elems ._elem {
+              display: flex;
+              padding-bottom: 0.3rem; }
+              .block_dashboard ._sections ._section._main ._blocks ._block ._elems ._elem ._name {
+                display: flex;
+                padding-right: 0.3rem;
+                font-style: italic;
+                opacity: 0.5; }
+              .block_dashboard ._sections ._section._main ._blocks ._block ._elems ._elem ._val {
+                font-size: 1.2em;
+                font-weight: 400; }
+      .block_dashboard ._sections ._section ._section_title {
+        display: flex;
+        text-decoration: none;
+        align-items: center;
+        padding: 0 0 1rem; }
+        .block_dashboard ._sections ._section ._section_title .sub_title {
+          flex-grow: 1;
+          margin: 0; }
+        .block_dashboard ._sections ._section ._section_title .badge {
+          margin-left: 0.5rem;
+          font-size: 1.5em; }
+        .block_dashboard ._sections ._section ._section_title ._button {
+          text-decoration: none; }
+      .block_dashboard ._sections ._section._filter .block_date ._group {
+        justify-content: center; }
 
 .block_liveliner ._liveliner_day {
   position: relative;
@@ -3405,6 +3424,9 @@ body .content_manager_buttons {
 .info_container > ._block {
   padding: 2rem 0 3rem; }
 
+body .loader ._min {
+  background: #ecf2fd;
+  color: black; }
 body .body_bg:before {
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.8) 0, rgba(233, 239, 255, 0.8) 100%);
   opacity: 0.8;
@@ -3419,6 +3441,16 @@ body main {
     font-weight: 400; }
 body footer .block_footer ._bottom ._copy {
   font-weight: 400; }
+body .block_content_loader .list-group-item {
+  border: none; }
+body .block_content_loader > *:after {
+  display: none; }
+body .time ._category,
+body .time ._project,
+body .time ._task {
+  font-weight: 400; }
+body .input_checkbox input:checked + .form-check-label:after {
+  background: white; }
 body .block_nav ._subs .nav-item .nav-link:before,
 body .block_nav ._main .nav-item .nav-link:before {
   background: white; }

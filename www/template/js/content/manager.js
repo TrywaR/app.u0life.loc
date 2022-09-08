@@ -1,95 +1,85 @@
-$.fn.content_manager = function() {
-  arrPageParams.content_manager_action = this.data().content_manager_action
-  arrPageParams.content_manager_block = this.data().content_manager_block
-  arrPageParams.content_manager_item = this.data().content_manager_item
-  arrPageParams.content_manager_button = this.data().content_manager_button
-  arrPageParams.content_manager_sum = this.data().content_manager_sum
-  content_manager_init( this.attr('id') )
-}
+$(function(){
+  // Нажатие на кнопку выбрать
+  $(document).on('click', '.content_manager_switch', function(){
+    // ПАРАМЕТРЫ
+    // Показываем активность
+    $(this).toggleClass('_active_')
+    $(this).parents('._elem').toggleClass('content_manager_select')
 
-function content_manager_init( oContentManagerButtonsId ) {
-  // content_manager | Работа с несколькими элементами
-	$(document).on('click', arrPageParams.content_manager_block + ' ' + arrPageParams.content_manager_button, function(){
-  		var oContentManagerButtons = $(document).find('#' + oContentManagerButtonsId)
-  		$(this).toggleClass('_active_')
-  		// $(this).parents('.list-group-item').toggleClass('content_manager_select')
-  		$(this).parents('._elem').toggleClass('content_manager_select')
+    // Цепляем блок отвечающий за управление
+    var
+      oContentManager = $(this).parents('.block_content_loader, .block_elems'),
+      oContentManagerButtons = $(document).find('.content_manager_buttons[data-content_manager_action="' + oContentManager.data().content_loader_table + '"]')
 
-      // Подсчёт суммы если надо
-      if ( arrPageParams.content_manager_sum ) {
-        if ( $(document).find(arrPageParams.content_manager_block).find('.content_manager_select').length ) {
-          var iContentManagerSum = 0
-          $(document).find(arrPageParams.content_manager_block).find('.content_manager_select').each(function(){
-            iContentManagerSum = iContentManagerSum + parseInt($(this).find(arrPageParams.content_manager_sum).html())
-          })
-          animation_number_to(oContentManagerButtons.find('.content_manager_sum'),parseInt(oContentManagerButtons.find('.content_manager_sum').html()),iContentManagerSum,500)
-        }
-        else {
-          animation_number_to(oContentManagerButtons.find('.content_manager_sum'),parseInt(oContentManagerButtons.find('.content_manager_sum').html()),0,500)
-        }
-      }
+    // ПОКАЗ НУЖНЫХ БЛОКОВ
+    // Ищем есть ли выбранные элементы
+    if ( oContentManager.find('.content_manager_select').length ) {
+      // Показываем блок управления
+      oContentManagerButtons.removeClass('_hide_')
+      oContentManagerButtons.removeClassWild("animate_*").addClass('animate__animated animate__backInRight')
+    }
+    // Нету, скрываем блок управления
+    else {
+      oContentManagerButtons.removeClassWild("animate_*").addClass('animate__animated animate__backOutRight')
+      // Играем анимацию
+      setTimeout(function(){
+        // oContentManagerButtons
+        oContentManagerButtons.addClass('_hide_')
+      }, 300)
+    }
 
-  		if ( $(document).find(arrPageParams.content_manager_block).find('.content_manager_select').length ) {
-  			// Анимация показа активных кнопок
-  			if ( oContentManagerButtons.hasClass('_hide_') ) {
-  				// Анимация
-  				oContentManagerButtons.removeClassWild("animate_*").addClass('animate__animated animate__backInRight')
-  				// Играем анимацию
-  				setTimeout(function(){
-  					oContentManagerButtons.removeClass('_hide_')
-  					// oContentManagerButtons
-  				}, 500)
-  			}
-  		}
-  		// Анимация скрытия
-  		else {
-  			// Анимация
-  			oContentManagerButtons.removeClassWild("animate_*").addClass('animate__animated animate__backOutRight')
-  			// Играем анимацию
-  			setTimeout(function(){
-  				// oContentManagerButtons
-  				oContentManagerButtons.addClass('_hide_')
-  			}, 500)
-  		}
-  		return false
-	})
+    // СУММА
+    if ( oContentManagerButtons.data().content_manager_sum != '' ) {
+      var iContentManagerSum = 0
+      oContentManager.find('.content_manager_select').each(function(){
+        iContentManagerSum = iContentManagerSum + parseInt($(this).find(oContentManagerButtons.data().content_manager_sum).html())
+      })
 
-	$(document).on('click', '#' + oContentManagerButtonsId + ' .del', function(){
-		if ( confirm('Вы действительно хотите удалить всё выбранное к херам?') ) {
-			var
-				oContentManagerButtons = $(this).parents('#' + oContentManagerButtonsId),
-				oContentManagerBlock = oContentManagerButtons.data().content_manager_block,
-				oContentManagerAction = oContentManagerButtons.data().content_manager_action,
-				oContentManagerItem = oContentManagerButtons.data().content_manager_item,
-				sAnimateClass = oContentManagerButtons.data().animate_class ? oContentManagerButtons.data().animate_class : 'animate__zoomOut',
-				oData = {
-					'action' : oContentManagerAction,
-					'form' : 'del'
-				}
+      if ( iContentManagerSum ) oContentManagerButtons.find('.content_manager_sum').addClass('_show_')
+      else oContentManagerButtons.find('.content_manager_sum').removeClass('_show_')
 
-			$(document).find(oContentManagerBlock + ' ' + oContentManagerItem + '.content_manager_select').each(function(){
-				var oElem = $(this)
-        if ( oElem.data().id ) oData.id = oElem.data().id
-				if ( oElem.data().content_manager_item_id ) oData.id = oElem.data().content_manager_item_id
+      animation_number_to(oContentManagerButtons.find('.content_manager_sum'),parseInt(oContentManagerButtons.find('.content_manager_sum').html()),iContentManagerSum,500)
+    }
+    else oContentManagerButtons.find('.content_manager_sum').removeClass('_show_')
+  })
 
-				$.when(
-				  content_download( oData, 'json' )
-				).then( function( oData ){
-					oElem.removeClassWild("animate_*").addClass('animate__animated ' + sAnimateClass)
+  // Кнопка удаления
+  $(document).on('click', '.content_manager_buttons .del', function(){
+		if ( ! confirm('Are you sure you want to delete all selections') ) return false
+
+		var
+			oContentManagerButtons = $(this).parents('.content_manager_buttons'),
+			oContentManagerBlock = oContentManagerButtons.data().content_manager_block,
+			oContentManagerAction = oContentManagerButtons.data().content_manager_action,
+			oContentManagerItem = oContentManagerButtons.data().content_manager_item,
+			sAnimateClass = oContentManagerButtons.data().animate_class ? oContentManagerButtons.data().animate_class : 'animate__zoomOut',
+			oData = {
+				'action' : oContentManagerAction,
+				'form' : 'del'
+			}
+
+		$(document).find(oContentManagerBlock + ' ' + oContentManagerItem + '.content_manager_select').each(function(){
+			var oElem = $(this)
+      if ( oElem.data().id ) oData.id = oElem.data().id
+			if ( oElem.data().content_manager_item_id ) oData.id = oElem.data().content_manager_item_id
+
+			$.when(
+			  content_download( oData, 'json' )
+			).then( function( oData ){
+				oElem.removeClassWild("animate_*").addClass('animate__animated ' + sAnimateClass)
+				// Играем анимацию
+				setTimeout(function(){
+					oElem.remove()
+
+					// Анимация скрытия кнопок управления
+					oContentManagerButtons.removeClassWild("animate_*").addClass('animate__animated animate__backOutRight')
 					// Играем анимацию
 					setTimeout(function(){
-						oElem.remove()
-
-						// Анимация скрытия кнопок управления
-						oContentManagerButtons.removeClassWild("animate_*").addClass('animate__animated animate__backOutRight')
-						// Играем анимацию
-						setTimeout(function(){
-							// oContentManagerButtons
-							oContentManagerButtons.addClass('_hide_')
-						}, 500)
+						// oContentManagerButtons
+						oContentManagerButtons.addClass('_hide_')
 					}, 500)
-				})
+				}, 500)
 			})
-		}
+		})
 	})
-}
+})
