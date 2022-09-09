@@ -50,6 +50,10 @@ function page( sUrl, oData ){
       history.pushState(null, null, '/')
 
       // Загружаем дополнительный интерфейс
+      if ( sUrlClearFilter.indexOf('/') ) {
+        arrUrlClearFilter = sUrlClearFilter.split('/')
+        sUrlClearFilter = arrUrlClearFilter[ arrUrlClearFilter.length - 1 ]
+      }
       content_actions_init( false, {'action': sUrlClearFilter } )
     }
   })
