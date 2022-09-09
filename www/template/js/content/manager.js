@@ -29,18 +29,21 @@ $(function(){
     }
 
     // СУММА
-    if ( oContentManagerButtons.data().content_manager_sum != '' ) {
-      var iContentManagerSum = 0
-      oContentManager.find('.content_manager_select').each(function(){
-        iContentManagerSum = iContentManagerSum + parseInt($(this).find(oContentManagerButtons.data().content_manager_sum).html())
-      })
+    var sAttrSum = oContentManagerButtons.attr('data-content_manager_sum')
+    if (typeof sAttrSum !== typeof undefined && sAttrSum !== false) {
+      if ( oContentManagerButtons.attr('data-content_manager_sum') != '' ) {
+        var iContentManagerSum = 0
+        oContentManager.find('.content_manager_select').each(function(){
+          iContentManagerSum = iContentManagerSum + parseInt($(this).find(oContentManagerButtons.attr('data-content_manager_sum')).html())
+        })
 
-      if ( iContentManagerSum ) oContentManagerButtons.find('.content_manager_sum').addClass('_show_')
+        if ( iContentManagerSum ) oContentManagerButtons.find('.content_manager_sum').addClass('_show_')
+        else oContentManagerButtons.find('.content_manager_sum').removeClass('_show_')
+
+        animation_number_to(oContentManagerButtons.find('.content_manager_sum'),parseInt(oContentManagerButtons.find('.content_manager_sum').html()),iContentManagerSum,500)
+      }
       else oContentManagerButtons.find('.content_manager_sum').removeClass('_show_')
-
-      animation_number_to(oContentManagerButtons.find('.content_manager_sum'),parseInt(oContentManagerButtons.find('.content_manager_sum').html()),iContentManagerSum,500)
     }
-    else oContentManagerButtons.find('.content_manager_sum').removeClass('_show_')
   })
 
   // Кнопка удаления
