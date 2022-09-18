@@ -31,7 +31,6 @@ $(function(){
     // СУММА
     var sAttrSum = oContentManagerButtons.attr('data-content_manager_sum')
     if (typeof sAttrSum !== typeof undefined && sAttrSum !== false) {
-      console.log(oContentManagerButtons.attr('data-content_manager_sum'))
       if ( oContentManagerButtons.attr('data-content_manager_sum') != '' ) {
         var iContentManagerSum = 0
         oContentManager.find('.content_manager_select').each(function(){
