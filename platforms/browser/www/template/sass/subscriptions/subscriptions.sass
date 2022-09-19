@@ -1,5 +1,5 @@
-// .subscription
 .subscription
+  // .subscription
   &._active_show_false
     @include active_show
 
@@ -69,6 +69,7 @@
         opacity: .4
 
 .subscription_min
+  // .subscription_min
   position: relative
   z-index: 1
   color: $color_text
@@ -122,3 +123,152 @@
       opacity: .6
       z-index: -2
 // .subscription x
+
+.subscription_analytics
+  display: flex
+  flex-direction: column
+
+  ._analytics
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    padding: 1rem 0
+    box-sizing: border-box
+
+  ._analytics_date
+    display: flex
+    justify-content: center
+    align-items: center
+
+    ._year,
+    ._month,
+    ._day
+      display: flex
+      padding: 1rem .2rem
+      box-sizing: border-box
+      font-size: 1.5em
+      line-height: 1
+      font-weight: 100
+      font-style: italic
+
+    ._sep
+      display: flex
+      padding: .5rem
+      box-sizing: border-box
+      color: $color_main
+      font-weight: 600
+
+    ._year
+    ._month
+    ._day
+
+  ._analytics_sums
+    display: flex
+
+    ._sum,
+    ._sum_paid,
+    ._sum_need
+      flex-grow: 1
+      display: flex
+      flex-direction: column
+      padding: .5rem
+      box-sizing: border-box
+      align-items: center
+
+      strong
+        font-size: 1.7em
+        line-height: 1
+        color: $color_main
+
+    ._sum
+    ._sum_paid
+    ._sum_need
+
+  ._analytics_sep
+    display: flex
+    padding: .5rem
+    box-sizing: border-box
+    justify-content: center
+
+    ._title
+      color: $color_main
+      opacity: .6
+
+  ._analytics_day
+    display: flex
+    flex-direction: column
+    margin: 1rem 0
+    padding: 1rem
+    box-sizing: border-box
+    border-radius: $border_radius
+    @include single_shadow
+
+    &.__passed
+      ._date
+        ._value
+          background: $color_main_dark
+
+    ._date
+      display: flex
+      font-size: 1.5em
+      line-height: 1
+      font-weight: 500
+      justify-content: center
+      align-items: center
+
+      ._value
+        display: flex
+        justify-content: center
+        align-items: center
+        margin-top: -2rem
+        background: $color_main
+        color: $color_text
+        width: 3rem
+        height: 3rem
+        border-radius: 50%
+
+    ._items
+      ._item
+        position: relative
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 1rem
+        box-sizing: border-box
+        z-index: 1
+
+        &:not(:last-child)
+          &:after
+            content: ''
+            position: absolute
+            bottom: 0
+            left: 0
+            right: 0
+            height: .12rem
+            background: $color_main
+            opacity: .2
+
+        &.__paid
+          opacity: .5
+
+        ._title
+          display: flex
+          font-size: 1.1em
+          line-height: 1
+
+          ._icon
+            display: flex
+            padding: 0 .5rem
+            color: $color_main
+
+        ._info
+          display: flex
+          flex-direction: column
+          align-items: flex-end
+          padding: .5rem
+          box-sizing: border-box
+
+          ._price
+          ._paid
+          ._need

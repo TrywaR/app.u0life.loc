@@ -2977,18 +2977,6 @@ body .content_manager_buttons {
 
 .subscription._active_show_false {
   filter: brightness(60%) contrast(0.9); }
-.subscription._paid_show_true ._paid {
-  display: flex; }
-.subscription._paid_need_show_true ._need {
-  display: flex; }
-.subscription._card_show_true ._card {
-  display: flex; }
-.subscription ._paid {
-  display: none; }
-.subscription ._need {
-  display: none; }
-.subscription ._card {
-  display: none; }
 .subscription ._head {
   display: flex;
   align-items: center;
@@ -3003,24 +2991,6 @@ body .content_manager_buttons {
     background: #ecf2fd;
     border-radius: 0.5rem;
     font-weight: 400; }
-.subscription ._subs ._item {
-  align-items: flex-end;
-  padding: 0.2rem 0.5rem;
-  font-size: 1em;
-  line-height: 1em; }
-  .subscription ._subs ._item._paid ._need {
-    padding: 0.2rem 0.5rem;
-    margin-left: 0.2rem;
-    border-radius: 0.5rem;
-    background: #ff7b7b;
-    color: white; }
-  .subscription ._subs ._item ._icon {
-    margin-right: 0.5rem; }
-  .subscription ._subs ._item ._text {
-    display: flex;
-    align-items: center; }
-  .subscription ._subs ._item._card {
-    opacity: 0.4; }
 
 .subscription_min {
   position: relative;
@@ -3064,6 +3034,122 @@ body .content_manager_buttons {
       border-radius: 50%;
       opacity: 0.6;
       z-index: -2; }
+
+.subscription_analytics {
+  display: flex;
+  flex-direction: column; }
+  .subscription_analytics ._analytics {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    box-sizing: border-box; }
+  .subscription_analytics ._analytics_date {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .subscription_analytics ._analytics_date ._year,
+    .subscription_analytics ._analytics_date ._month,
+    .subscription_analytics ._analytics_date ._day {
+      display: flex;
+      padding: 1rem 0.2rem;
+      box-sizing: border-box;
+      font-size: 1.5em;
+      line-height: 1;
+      font-weight: 100;
+      font-style: italic; }
+    .subscription_analytics ._analytics_date ._sep {
+      display: flex;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      color: #7661db;
+      font-weight: 600; }
+  .subscription_analytics ._analytics_sums {
+    display: flex; }
+    .subscription_analytics ._analytics_sums ._sum,
+    .subscription_analytics ._analytics_sums ._sum_paid,
+    .subscription_analytics ._analytics_sums ._sum_need {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      align-items: center; }
+      .subscription_analytics ._analytics_sums ._sum strong,
+      .subscription_analytics ._analytics_sums ._sum_paid strong,
+      .subscription_analytics ._analytics_sums ._sum_need strong {
+        font-size: 1.7em;
+        line-height: 1;
+        color: #7661db; }
+  .subscription_analytics ._analytics_sep {
+    display: flex;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    justify-content: center; }
+    .subscription_analytics ._analytics_sep ._title {
+      color: #7661db;
+      opacity: 0.6; }
+  .subscription_analytics ._analytics_day {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 0.15rem 0 #7661db; }
+    .subscription_analytics ._analytics_day.__passed ._date ._value {
+      background: #ecf2fd; }
+    .subscription_analytics ._analytics_day ._date {
+      display: flex;
+      font-size: 1.5em;
+      line-height: 1;
+      font-weight: 500;
+      justify-content: center;
+      align-items: center; }
+      .subscription_analytics ._analytics_day ._date ._value {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -2rem;
+        background: #7661db;
+        color: black;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%; }
+    .subscription_analytics ._analytics_day ._items ._item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      box-sizing: border-box;
+      z-index: 1; }
+      .subscription_analytics ._analytics_day ._items ._item:not(:last-child):after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0.12rem;
+        background: #7661db;
+        opacity: 0.2; }
+      .subscription_analytics ._analytics_day ._items ._item.__paid {
+        opacity: 0.5; }
+      .subscription_analytics ._analytics_day ._items ._item ._title {
+        display: flex;
+        font-size: 1.1em;
+        line-height: 1; }
+        .subscription_analytics ._analytics_day ._items ._item ._title ._icon {
+          display: flex;
+          padding: 0 0.5rem;
+          color: #7661db; }
+      .subscription_analytics ._analytics_day ._items ._item ._info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 0.5rem;
+        box-sizing: border-box; }
 
 .block_chart {
   display: flex;
