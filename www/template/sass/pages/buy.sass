@@ -1,17 +1,92 @@
 // block_donate
 .block_donate
   display: flex
-  flex-direction: column
+  flex-wrap: wrap
+  margin: 1rem 0
 
   ._item
+    position: relative
     display: flex
     align-items: center
+    justify-content: center
     padding: 1rem
-    font-size: 2em
-    line-height: 2em
+    margin: .2rem
+    box-sizing: border-box
+    flex-grow: 1
+    background: $color_main_dark_light
+    border-radius: $border_radius
+    overflow: hidden
+    z-index: 1
+
+    &:after
+      content: ''
+      position: absolute
+      top: -4rem
+      right: -1rem
+      width: 10rem
+      height: 10rem
+      border-radius: 50%
+      background: radial-gradient($color_main, $color_main_dark)
+      filter: blur(1.9rem)
+      opacity: .1
+      z-index: -1
 
     ._icon
+      font-size: 2em
+      line-height: 2em
       padding-right: .5rem
 
     ._val
+      font-size: 1.1em
+      line-height: 1
 // block_donate x
+
+.block_buytarifs
+  position: relative
+  display: flex
+  flex-direction: column
+  padding: 1.5rem
+  box-sizing: border-box
+  z-index: 1
+
+  &:after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    border-radius: $border_radius
+    background: radial-gradient($color_main, $color_main_dark)
+    opacity: .1
+    z-index: -1
+
+.block_buyinfo
+  ._title
+    font-size: $color_main
+    font-size: 1.7em
+    line-height: 1
+    font-weight: 600
+
+  ol
+    counter-reset: section
+
+    li
+      position: relative
+      padding: .2rem 1rem .2rem 2rem
+      box-sizing: border-box
+      z-index: 1
+      counter-increment: section
+
+      &:before
+        content: counter(section)
+        position: absolute
+        top: 0
+        left: 0
+        bottom: 0
+        display: flex
+        justify-content: center
+        align-items: center
+        color: $color_main
+        opacity: .5
+        z-index: -1

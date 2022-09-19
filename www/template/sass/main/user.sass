@@ -1,0 +1,115 @@
+.block_user
+  ._header
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    padding-bottom: 2rem
+    box-sizing: border-box
+    z-index: 1
+
+    ._img
+      position: relative
+      display: flex
+      padding: 2rem
+      font-size: 1.5rem
+      line-height: 1
+      box-sizing: border-box
+      border-radius: 50%
+      overflow: hidden
+      z-index: 1
+
+      &:after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        z-index: -1
+        border-radius: 50%
+        box-shadow: inset 0 0 .15rem 0 $color_main
+        // background: linear-gradient(30deg, $color_main 10%, rgba(255,255,255,0) 50%)
+        opacity: .2
+
+    ._name
+      padding: .5rem
+      box-sizing: border-box
+
+      h1
+        margin: 0
+
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      height: 80%
+      background: linear-gradient(0deg, $color_main 0%, rgba(255,255,255,0) 80%)
+      opacity: .1
+      border-radius: 1rem
+      z-index: -1
+
+  ._card
+    .card
+      border: none
+
+  ._actions
+
+
+// block_user_prev
+.block_user_prev
+  display: flex
+
+  .user_prev
+    position: relative
+    display: flex
+    width: 100%
+    font-size: 1.3em
+    line-height: 1em
+    padding: 1rem
+    text-decoration: none
+    color: $color_main
+    z-index: 1
+
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      border-radius: $border_radius
+      // background: $color_main_dark
+      background: $color_body_bg
+      z-index: -1
+      @include shadow_default
+
+    ._img
+      padding: 0 .5rem 0 0
+
+    ._login
+      display: flex
+      padding-right: .2rem
+
+    ._role
+      opacity: .5
+      font-size: 1em
+      line-height: .1em
+
+      ._icon
+        font-size: .5em
+        line-height: .5em
+
+      ._value
+        font-size: .5em
+        line-height: .5em
+// block_user_prev x
+
+@media screen and (max-width:1199px)
+  .block_user
+    ._header
+      &:after
+        height: 100%

@@ -1,0 +1,72 @@
+.block_starts
+  counter-reset: section
+
+  .block_start
+    counter-increment: section
+    position: relative
+    display: flex
+    flex-direction: column
+    padding: 5rem 1.5rem 4rem
+    box-sizing: border-box
+    overflow: hidden
+    margin: 2rem 0
+    z-index: 1
+    text-align: center
+
+
+    &:before
+      content: counter(section)
+      position: absolute
+      top: 3rem
+      display: flex
+      justify-content: center
+      align-items: center
+      color: $color_main
+      font-size: 5rem
+      opacity: .3
+      z-index: -1
+
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      border-radius: $border_radius
+      background: radial-gradient($color_main, $color_main_dark)
+      opacity: .1
+      z-index: -1
+
+    & > h2,
+    & > ._title
+      position: relative
+      font-size: $color_main
+      font-size: 1.7em
+      text-align: center
+      line-height: 1
+      font-weight: 600
+      z-index: 1
+
+      &:after
+        content: ''
+        position: absolute
+        bottom: -1rem
+        left: 0
+        right: 0
+        width: 5rem
+        height: .15rem
+        margin: auto
+        background: $color_main
+        border-radius: $border_radius
+
+    & > ._icon
+      font-size: 2rem
+      position: absolute
+      top: 2rem
+      left: 0
+      right: 0
+      display: flex
+      justify-content: center
+      align-items: center
+      color: $color_main
