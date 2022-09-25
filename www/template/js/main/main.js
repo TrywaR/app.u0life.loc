@@ -1,5 +1,5 @@
 // Работа приложения
-sVersion = '5.4.8'
+sVersion = '5.4.81'
 // sSiteUrl = 'https://fttm.trywar.ru'
 sSiteUrl = 'https://u0life.com'
 // Параметры
@@ -83,8 +83,7 @@ u0life.init = function(){
 
 			$('body').addClass('_load_min_')
 
-			if ( $(this).attr('href').indexOf('://') > 0 ) window.open($(this).attr('href'))
-			else page( $(this).attr('href') )
+			if ( $(this).attr('href').indexOf('://') <= 0 ) page( $(this).attr('href') )
 
 			$('body').removeClass('_load_min_')
 
@@ -259,7 +258,8 @@ u0life.init = function(){
 			else $('body').removeClass('_mobile_nav_active_')
 		})
 		$(document). on('click', '#block_nav ._main a, #block_nav ._subs a, #block_nav_mobile_body_blocker, #block_nav_mobile_logo_content a, .nav_btn ._href', function(){
-			if ( $(this).attr('href') ) page( $(this).attr('href') )
+			if ( $(this).attr('href').indexOf('://') > 0 ) window.open($(this).attr('href'))
+			else page( $(this).attr('href') )
 
 			$(document).find('#block_nav ._main').removeClass('_mobile_active_')
 			$(document).find('#block_nav_mobile_main').removeClass('_active_')

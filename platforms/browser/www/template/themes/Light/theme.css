@@ -2875,7 +2875,12 @@ body .content_manager_buttons {
 
 @media screen and (max-width: 1200px) {
   body main .block_category {
-    flex-direction: column; } }
+    flex-direction: column; }
+  body main .calendar-wrp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; } }
 .category {
   position: relative;
   z-index: 1; }
@@ -2977,18 +2982,6 @@ body .content_manager_buttons {
 
 .subscription._active_show_false {
   filter: brightness(60%) contrast(0.9); }
-.subscription._paid_show_true ._paid {
-  display: flex; }
-.subscription._paid_need_show_true ._need {
-  display: flex; }
-.subscription._card_show_true ._card {
-  display: flex; }
-.subscription ._paid {
-  display: none; }
-.subscription ._need {
-  display: none; }
-.subscription ._card {
-  display: none; }
 .subscription ._head {
   display: flex;
   align-items: center;
@@ -3003,24 +2996,6 @@ body .content_manager_buttons {
     background: #ecf2fd;
     border-radius: 0.5rem;
     font-weight: 400; }
-.subscription ._subs ._item {
-  align-items: flex-end;
-  padding: 0.2rem 0.5rem;
-  font-size: 1em;
-  line-height: 1em; }
-  .subscription ._subs ._item._paid ._need {
-    padding: 0.2rem 0.5rem;
-    margin-left: 0.2rem;
-    border-radius: 0.5rem;
-    background: #ff7b7b;
-    color: white; }
-  .subscription ._subs ._item ._icon {
-    margin-right: 0.5rem; }
-  .subscription ._subs ._item ._text {
-    display: flex;
-    align-items: center; }
-  .subscription ._subs ._item._card {
-    opacity: 0.4; }
 
 .subscription_min {
   position: relative;

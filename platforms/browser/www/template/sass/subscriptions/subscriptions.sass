@@ -3,27 +3,6 @@
   &._active_show_false
     @include active_show
 
-  &._paid_show_true
-    ._paid
-      display: flex
-
-  &._paid_need_show_true
-    ._need
-      display: flex
-
-  &._card_show_true
-    ._card
-      display: flex
-
-  ._paid
-    display: none
-
-  ._need
-    display: none
-
-  ._card
-    display: none
-
   ._head
     display: flex
     align-items: center
@@ -40,33 +19,6 @@
       background: $color_main_dark
       border-radius: $border_radius
       font-weight: 400
-
-  ._subs
-    ._item
-      align-items: flex-end
-      padding: .2rem .5rem
-      font-size: 1em
-      line-height: 1em
-
-      &._card
-      &._paid
-        ._sum
-        ._need
-          padding: .2rem .5rem
-          margin-left: .2rem
-          border-radius: $border_radius
-          background: $color_error
-          color: white
-
-      ._icon
-        margin-right: .5rem
-
-      ._text
-        display: flex
-        align-items: center
-
-      &._card
-        opacity: .4
 
 .subscription_min
   // .subscription_min

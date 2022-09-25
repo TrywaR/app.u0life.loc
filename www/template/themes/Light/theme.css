@@ -2875,7 +2875,12 @@ body .content_manager_buttons {
 
 @media screen and (max-width: 1200px) {
   body main .block_category {
-    flex-direction: column; } }
+    flex-direction: column; }
+  body main .calendar-wrp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; } }
 .category {
   position: relative;
   z-index: 1; }
