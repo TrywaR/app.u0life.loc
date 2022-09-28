@@ -1,5 +1,5 @@
 // Работа приложения
-sVersion = '5.4.81'
+sVersion = '5.4.9'
 // sSiteUrl = 'https://fttm.trywar.ru'
 sSiteUrl = 'https://u0life.com'
 // Параметры

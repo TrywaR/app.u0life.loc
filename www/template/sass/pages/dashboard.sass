@@ -96,4 +96,120 @@
       &._day
 
       &._subscriptions
+
 // .block_dasheboard x
+
+.dashboard_blocks
+  display: flex
+  flex-wrap: wrap
+
+  ._item
+    position: relative
+    flex-grow: 1
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    padding: 1rem
+    margin: .5rem
+    z-index: 1
+
+    &.__big
+      min-width: 15rem
+
+    &.__href
+      border-radius: $border_radius
+      background: $color_main_dark
+
+      &:after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        width: 0%
+        height: 0%
+        margin: auto
+        border-radius: $border_radius
+        background: radial-gradient($color_main, $color_main_dark)
+        opacity: .1
+        z-index: -1
+        @include transition_default
+
+    ._title
+      font-size: 1.3em
+      line-height: 1
+      color: $color_main
+      text-align: center
+      padding-bottom: .5rem
+
+    ._value
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      font-size: 1.5em
+      line-height: 1
+      color: $color_text
+      width: 100%
+
+    ._row
+      display: flex
+      justify-content: space-between
+      align-items: center
+      width: 100%
+      padding: 0 0 .2rem
+
+    ._group
+      display: flex
+      flex-direction: column
+      justify-content: center
+      width: 100%
+      align-items: center
+      padding: .4rem .8rem
+      margin-bottom: .8rem
+      border-radius: $border_radius
+      box-shadow: inset 0 0 .15rem 0 $color_main
+
+      ._sub
+        color: $color_main
+
+    ._sub
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: .2rem
+      font-size: .5em
+      line-height: 1
+      color: $color_text
+      opacity: .5
+
+    ._icon
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: .5rem
+      color: $color_main
+      font-size: 1em
+      line-height: 1
+
+    ._href
+      a
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        z-index: 2
+        opacity: 0
+        cursor: pointer
+
+    ._hover
+
+
+    &:hover
+      &:after
+        opacity: .2
+        width: 100%
+        height: 100%
