@@ -47,7 +47,8 @@ function page( sUrl, oData ){
       block_nav_update()
 
       // чистим url
-      history.pushState(null, null, '/')
+      if ( ! u0life.pathname.indexOf('?') ) history.pushState(null, null, '/')
+      else history.pushState(null, null, u0life.pathname)
 
       // Загружаем дополнительный интерфейс
       if ( sUrlClearFilter.indexOf('/') ) {

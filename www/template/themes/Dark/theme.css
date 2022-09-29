@@ -1567,7 +1567,8 @@ body .nav-pills .nav-link.active, body .nav-pills .nav-link.show {
   .clock_revers ._progress {
     width: 100%;
     max-width: 20rem;
-    margin: auto; }
+    margin: auto;
+    background: #1f1f26; }
     .clock_revers ._progress ._bar {
       background: #7661db;
       transition: all 0.3s ease-in-out 0s; }
@@ -2850,7 +2851,7 @@ body .content_manager_buttons {
         .block_category ._analytics ._params ._param ._val {
           display: flex;
           justify-content: flex-end;
-          width: 6rem;
+          width: 8rem;
           font-weight: 500; }
   .block_category ._calendars {
     flex-grow: 1;
