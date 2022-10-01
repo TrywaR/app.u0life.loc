@@ -22,7 +22,7 @@
       	<meta name="apple-mobile-web-app-status-bar-style" content="#7661db">
       	<!-- color theme x-->
 
-        <base href="https://web.u0life.com/">
+        <!-- <base href="https://web.u0life.com/"> -->
 
         <!-- icons -->
       	<link rel="apple-touch-icon" sizes="180x180" href="/template/imgs/icons/apple-touch-icon.png">
@@ -74,24 +74,24 @@
       	<script defer src="lib/select2-develop/dist/js/select2.min.js"></script>
 
         <!-- srcs -->
-        <script defer src="template/js/authorizations/authorizations.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/content/content.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/content/loader.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/content/manager.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/content/filter.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/content/actions.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/progress_bar/progress_bar.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/alerts/alerts.min.js?v=5.4.8"></script>
+        <script defer src="template/js/authorizations/authorizations.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/content/content.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/content/loader.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/content/manager.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/content/filter.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/content/actions.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/progress_bar/progress_bar.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/alerts/alerts.min.js?v=5.5.1"></script>
 
-        <script defer src="template/js/session/session.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/main/dashboard.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/main/main.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/main/page.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/main/nav.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/main/form.min.js?v=5.4.8"></script>
-      	<script defer src="template/js/main/modal.min.js?v=5.4.8"></script>
+        <script defer src="template/js/session/session.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/main/dashboard.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/main/main.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/main/page.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/main/nav.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/main/form.min.js?v=5.5.1"></script>
+      	<script defer src="template/js/main/modal.min.js?v=5.5.1"></script>
 
-      	<script defer src="template/js/index.min.js?v=5.4.8"></script>
+      	<script defer src="template/js/index.min.js?v=5.5.1"></script>
 
         <style media="screen">
           body header,
@@ -161,6 +161,11 @@
             bottom: 10px;
             z-index: 9998;
             opacity: 1;
+          }
+          @media screen and (max-width:1000px) {
+            body._load_min_ > .loader ._min {
+              bottom: 80px;
+            }
           }
         </style>
     </head>

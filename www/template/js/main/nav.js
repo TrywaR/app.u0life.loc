@@ -22,9 +22,9 @@ function block_nav_init(){
 }
 
 function block_nav_show(){
-  $.get('templates/nav.htm')
+  $.get('/templates/nav.htm')
   .fail(function(data){
-    status({'error': 'Шаблон не найден: templates/nav.htm'})
+    status({'error': 'Шаблон не найден: /templates/nav.htm'})
   })
   .done(function(data){
     var
@@ -134,9 +134,9 @@ function block_nav_update(){
   $(document).find('#block_nav ._subs').removeClass('_active_')
   $(document).find('#block_nav_mobile_subs').removeClass('_showed_')
 
-  $.get('templates/nav.htm')
+  $.get('/templates/nav.htm')
   .fail(function(data){
-    status({'error': 'Шаблон не найден: templates/nav.htm'})
+    status({'error': 'Шаблон не найден: /templates/nav.htm'})
   })
   .done(function(data){
     var
