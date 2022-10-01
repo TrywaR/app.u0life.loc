@@ -258,11 +258,16 @@ u0life.init = function(){
 			else $('body').removeClass('_mobile_nav_active_')
 		})
 		$(document). on('click', '#block_nav ._main a, #block_nav ._subs a, #block_nav_mobile_body_blocker, #block_nav_mobile_logo_content a, .nav_btn ._href', function(){
+<<<<<<< HEAD
 			var sAttr = $(this).attr('href')
 			if ( typeof sAttr !== typeof undefined && sAttr !== false ) {
 				if ( $(this).attr('href').indexOf('://') > 0 ) window.open( $(this).attr('href') )
 				else page( $(this).attr('href') )
 			}
+=======
+			if ( $(this).attr('href').indexOf('://') > 0 ) window.open($(this).attr('href'))
+			else page( $(this).attr('href') )
+>>>>>>> 922dc40320b2905a9040cc14f636e91d8e92e1ae
 
 			$(document).find('#block_nav ._main').removeClass('_mobile_active_')
 			$(document).find('#block_nav_mobile_main').removeClass('_active_')
