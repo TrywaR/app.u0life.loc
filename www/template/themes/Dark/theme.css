@@ -1667,7 +1667,7 @@ body .block_date {
       margin-right: 0 !important; }
   body .block_date ._year {
     padding: 0.5rem 1rem !important;
-    margin-right: 0.5rem !important;
+    margin-right: 1.5rem !important;
     background: #7661db !important;
     color: white !important; }
   body .block_date ._month {
@@ -3796,7 +3796,12 @@ body .content_manager_buttons {
         top: 0;
         right: 0;
         bottom: 0;
+        padding: 0;
         z-index: 3; }
+        .block_liveliner ._liveliner_day ._vals ._category ._buttons ._button {
+          font-size: 1.5em;
+          line-height: 1;
+          margin-left: 1rem; }
       .block_liveliner ._liveliner_day ._vals ._category ._content {
         position: relative;
         display: flex;
