@@ -105,7 +105,6 @@ $(function(){
 // Функции
 // content_download
 function content_download( oData, oReturnType, sAppStatus ) {
-  console.log('content_download')
   $('body').addClass( '_load_min_' )
 
   // oData - Какие данные запросить

@@ -157,24 +157,48 @@
       display: flex
       align-items: center
       justify-content: center
-      padding: 0 .5rem
+      padding: 1.5rem .5rem 0
       box-sizing: border-box
 
-      ._button
+      ._group
+        position: relative
+        z-index: 1
         display: flex
-        text-decoration: none
-        color: $color_text
-        opacity: .3
-        padding: .5rem
+        align-items: center
+        justify-content: center
+        padding: .5rem 1rem
         box-sizing: border-box
-        font-size: 1.3em
-        @include transition_default
+        border-radius: $border_radius
+        margin-right: .5rem
 
-        &:hover
-          opacity: 1
-          color: $color_main
+        &:after
+          content: ''
+          position: absolute
+          top: 0
+          left: 0
+          right: 0
+          bottom: 0
+          z-index: -1
+          opacity: .3
+          border-radius: $border_radius
+          @include single_shadow_color
 
-        svg
-          margin: 0
-          padding: 0
+        ._icon
+          display: flex
+          align-items: center
+          justify-content: center
+          color: $color_sub_1
+          opacity: .3
+
+        .btn
+          margin-left: 1rem
+
+          &.__main
+            background: $color_main
+
+            &:hover
+              color: $color_text
+
+        &:last-child
+          margin-right: 0
 // .block_liveliner x

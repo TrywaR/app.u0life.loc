@@ -397,16 +397,30 @@ body
     ._year,
     ._month,
     ._day
-      font-size: 2em
+      font-size: 1.8em
+      line-height: 1
       font-weight: 400
-      padding: .5rem
       width: auto
-      background: none
       border: none
 
+      &:last-child
+        margin-right: 0 ! important
+
     ._year
+      padding: .5rem 1rem ! important
+      margin-right: .5rem ! important
+      background: $color_main ! important
+      color: $color_text_on_main ! important
+
     ._month
+      padding: .5rem 1rem ! important
+      margin-right: .5rem ! important
+      background: $color_main ! important
+      color: $color_text_on_main ! important
+
     ._day
+      margin-left: -.4rem
+      background: $color_main
 // .block_date x
 
 // .block_swich
@@ -489,6 +503,41 @@ body
     font-size: 2rem
     line-height: 1
     padding-right: 1rem
+
+.block_hello
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  padding: 1rem
+  box-sizing: border-box
+  z-index: 1
+  max-width: 25rem
+  border-radius: $border_radius
+  overflow: hidden
+  margin: auto
+
+  &:after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: -1
+    @include color_gradient
+    opacity: .2
+
+  ._text
+    box-sizing: border-box
+    padding: .5rem
+    font-size: 1em
+    line-height: 1em
+
+  ._action
+    box-sizing: border-box
+    padding: .5rem
 
 @media screen and (max-width:1200px)
   .block_logo

@@ -16,8 +16,6 @@ function dashboard_init(){
 
   iMonth = iMonth + 1
 
-  tasks_active()
-  cards_active()
   date_switch( iDay, iMonth, iYear )
 }
 
@@ -43,24 +41,8 @@ $(document).on ('click', '#liveliner_reload_day', function(){
   liveliner_day( 'get_day', $(this).data().day, $(this).data().month, $(this).data().year )
 })
 
-$(document).on ('click', '#dashboard_reload_subscriptions', function(){
-  subscriptions_month( iMonth, iYear )
-})
-
-
-$(document).on ('click', '#dashboard_reload_tasks', function(){
-  tasks_active()
-})
-
-
-$(document).on ('click', '#dashboard_reload_cards', function(){
-  cards_active()
-})
-
 // Загрузка актуальных данных
 function date_switch( iDay, iMonth, iYear ) {
-  dashboard_month( iMonth, iYear )
-  subscriptions_month( iMonth, iYear )
   liveliner_day( 'get_day', iDay, iMonth, iYear )
 }
 
@@ -95,107 +77,6 @@ function date_update( iDayNew, iMonthNew, iYearNew ){
   }
 }
 
-
-
-function subscriptions_month ( iMonth, iYear ) {
-  $(document).find('#dashboard_subscriptions').html('')
-
-  $.when(
-    content_download( {
-      'action':'subscriptions',
-      'form':'month',
-      'month':iMonth,
-      'year':iYear,
-    }, 'json', false )
-  ).then( function( oData ) {
-    $.each(oData.subscriptions, function( iIndex, oElem ){
-      if ( oElem.paid && ! oElem.paid_need ) return true
-
-      sSubscriptionsHtml = ''
-      sSubscriptionsHtml += '<div class="_slider_item">'
-        sSubscriptionsHtml += '<div class="subscription_min _slider_item_content">'
-          sSubscriptionsHtml += '<a href="javascript:;" class="_edit content_loader_show" data-action="subscriptions" data-animate_class="animate__flipInY" data-form="form" data-full="true" data-id="' + oElem.id + '" data-success_click="#dashboard_reload_subscriptions">'
-            sSubscriptionsHtml += '<i class="fa-solid fa-gear"></i>'
-          sSubscriptionsHtml += '</a>'
-          sSubscriptionsHtml += '<div class="_title">'
-            sSubscriptionsHtml += oElem.title
-          sSubscriptionsHtml += '</div>'
-          sSubscriptionsHtml += '<div class="_sub">'
-            sSubscriptionsHtml += '<a href="javascript:;" class="_button content_loader_show" data-action="moneys" data-animate_class="animate__flipInY" data-form="form" data-full="true" data-subscription="' + oElem.id + '" data-price="' + oElem.price + '" data-category="' + oElem.category + '" data-date="' + iYear + '-' + iMonth + '-' + iDay + '" data-filter="true" data-success_click="#dashboard_reload_subscriptions">'
-              sSubscriptionsHtml += '<span class="_icon"><i class="fa-solid fa-wallet"></i></span>'
-            sSubscriptionsHtml += '</a>'
-              if ( oElem.paid || oElem.paid_sum > 0 ) {
-                sSubscriptionsHtml += '<div class="_value _check">'
-                  sSubscriptionsHtml += '<strike>' + oElem.price + '</strike>'
-                  if ( oElem.paid_need > 0 ) sSubscriptionsHtml += '<strong>' + oElem.paid_need + '</strong>'
-                  else sSubscriptionsHtml += '<i class="fas fa-check"></i>'
-                sSubscriptionsHtml += '</div>'
-              }
-              else {
-                sSubscriptionsHtml += '<div class="_value">'
-                  sSubscriptionsHtml += oElem.price
-                sSubscriptionsHtml += '</div>'
-              }
-          sSubscriptionsHtml += '</div>'
-          sSubscriptionsHtml += '<div class="_background">'
-            if ( oElem.category_val )
-              sSubscriptionsHtml += '<div class="_color" style="background: radial-gradient(' + oElem.category_val.color + ',rgba(0,0,0,0))"></div>'
-          sSubscriptionsHtml += '</div>'
-        sSubscriptionsHtml += '</div>'
-      sSubscriptionsHtml += '</div>'
-
-      $(document).find('#dashboard_subscriptions').append(sSubscriptionsHtml)
-    })
-
-    animation_number_to($("#dashboard_subscriptions_sum"),0,oData.subscriptions_sum)
-  })
-}
-
-
-
-function cards_active ( iMonth, iYear ) {
-  $(document).find('#dashboard_cards').html('')
-
-  $.when(
-    content_download( {
-      'action':'dashboards',
-      'form':'cards',
-    }, 'json', false )
-  ).then( function( oData ) {
-    $.each(oData.cards, function( iIndex, oElem ){
-      sCardHtml = ''
-
-      sCardHtml += '<div class="_slider_item">'
-        sCardHtml += '<div class="block_card_min _slider_item_content">'
-          sCardHtml += '<div class="_title">'
-            sCardHtml += '' + oElem.title + ''
-            sCardHtml += '<small>'
-              sCardHtml += '#' + oElem.id + ''
-            sCardHtml += '</small>'
-          sCardHtml += '</div>'
-          sCardHtml += '<div class="_sub">'
-            sCardHtml += '<div class="_update">'
-              sCardHtml += oElem.date_update
-            sCardHtml += '</div>'
-            sCardHtml += '<div class="_balance">'
-              sCardHtml += oElem.balance
-            sCardHtml += '</div>'
-          sCardHtml += '</div>'
-          sCardHtml += '<div class="_background">'
-            sCardHtml += '<div class="_color" style="background: radial-gradient(' + oElem.color + ',rgba(0,0,0,0))"></div>'
-          sCardHtml += '</div>'
-        sCardHtml += '</div>'
-      sCardHtml += '</div>'
-
-      $(document).find('#dashboard_cards').append(sCardHtml)
-    })
-
-    animation_number_to($("#dashboard_cards_balance"),0,oData.balance)
-  })
-}
-
-
-
 function liveliner_day ( sForm, iDay, iMonth, iYear ) {
   $(document).find('#dashboard_days').addClass('_loading_')
   $.when(
@@ -229,7 +110,7 @@ function liveliner_day ( sForm, iDay, iMonth, iYear ) {
     sResultHtml += '<div class="_line_hours"><div class="_val">' + oData.times_sum + '</div><div class="_seporator">/</div><div class="_def">24</div></div>'
     if ( oData.moneys_sum ) sResultHtml += '<div class="_line_moneys"><div class="_val">' + oData.moneys_sum + '</div></div>'
     sResultHtml += '<div class="block_date _date">'
-      sResultHtml += '<select name="day" class="_day form-select" id="dashboard_day">'
+      sResultHtml += '<select name="day" class="_day form-select btn" id="dashboard_day">'
         var iDays = new Date(oData.year, oData.month, 0).getDate()
         // if ( parseInt(iMonthCurrent) == oData.month && parseInt(iYearCurrent) == oData.year ) iDays = oData.day
         for (var i = 1; i <= iDays; i++) {
@@ -315,12 +196,28 @@ function liveliner_day ( sForm, iDay, iMonth, iYear ) {
     sResultHtml += '</div>'
 
     sResultHtml += '<div class="_buttons">'
-      sResultHtml += '<a href="javascript:;" class="_button content_loader_show" data-action="times" data-animate_class="animate__flipInY" data-elem=".time" data-form="form" data-full="true" data-date="' + iYear + '-' + iMonth + '-' + iDay + '" data-filter="true" data-success_click="#liveliner_reload_day">'
-        sResultHtml += '<span class="_icon"><i class="fa-solid fa-clock"></i></span>'
-      sResultHtml += '</a>'
-      sResultHtml += '<a href="javascript:;" class="_button content_loader_show" data-action="moneys" data-animate_class="animate__flipInY" data-elem=".time" data-form="form" data-full="true" data-date="' + iYear + '-' + iMonth + '-' + iDay + '" data-filter="true" data-success_click="#liveliner_reload_day">'
-        sResultHtml += '<span class="_icon"><i class="fa-solid fa-wallet"></i></span>'
-      sResultHtml += '</a>'
+      sResultHtml += '<div class="_group">'
+        sResultHtml += '<div class="_icon">'
+          sResultHtml += '<i class="fa-solid fa-clock"></i>'
+        sResultHtml += '</div>'
+        sResultHtml += '<a href="javascript:;" class="btn btn-lg __main content_loader_show" data-action="times" data-animate_class="animate__flipInY" data-elem=".time" data-form="form" data-full="true" data-date="' + iYear + '-' + iMonth + '-' + iDay + '" data-filter="true" data-success_click="#liveliner_reload_day">'
+          sResultHtml += '<i class="fa-solid fa-plus"></i>'
+        sResultHtml += '</a>'
+        sResultHtml += '<a href="/times/?date=' + iYear + '-' + iMonth + '-' + iDay + '" class="btn btn-lg">'
+          sResultHtml += '<i class="fa-solid fa-bars"></i>'
+        sResultHtml += '</a>'
+      sResultHtml += '</div>'
+      sResultHtml += '<div class="_group">'
+        sResultHtml += '<div class="_icon">'
+          sResultHtml += '<i class="fa-solid fa-wallet"></i>'
+        sResultHtml += '</div>'
+        sResultHtml += '<a href="javascript:;" class="btn btn-lg __main content_loader_show" data-action="moneys" data-animate_class="animate__flipInY" data-elem=".time" data-form="form" data-full="true" data-date="' + iYear + '-' + iMonth + '-' + iDay + '" data-filter="true" data-success_click="#liveliner_reload_day">'
+          sResultHtml += '<i class="fa-solid fa-plus"></i>'
+        sResultHtml += '</a>'
+        sResultHtml += '<a href="/moneys/?date=' + iYear + '-' + iMonth + '-' + iDay + '" class="btn btn-lg">'
+          sResultHtml += '<i class="fa-solid fa-bars"></i>'
+        sResultHtml += '</a>'
+      sResultHtml += '</div>'
     sResultHtml += '</div>'
 
     sResultHtml += '</div>'
@@ -329,82 +226,3 @@ function liveliner_day ( sForm, iDay, iMonth, iYear ) {
     $(document).find('#dashboard_days').removeClass('_loading_')
     })
   }
-
-
-
-function dashboard_month ( iMonth, iYear ) {
-  $.when(
-    content_download( {
-      'action':'dashboards',
-      'form':'main',
-      'month':iMonth,
-      'year':iYear,
-    }, 'json', false )
-  ).then( function( oData ) {
-    // var sResultHtml = ''
-
-    animation_number_to($("#dashboard_main_money_costs"),0,oData.success.moneys.costs)
-    animation_number_to($("#dashboard_main_money_wages"),0,oData.success.moneys.wages)
-
-    animation_number_to($("#dashboard_main_time_work"),0,oData.success.times.works)
-    animation_number_to($("#dashboard_main_time_sum"),0,oData.success.times.sum)
-
-    animation_number_to($("#dashboard_main_res"),0,oData.success.moneyforhour)
-
-    // $(document).find('#dashboard_main').html( sResultHtml )
-  })
-}
-
-
-
-function tasks_active ( iMonth, iYear ) {
-  $(document).find('#dashboard_tasks').html('')
-
-  $.when(
-    content_download( {
-      'action':'tasks',
-      'form':'active',
-    }, 'json', false )
-  ).then( function( oData ) {
-    $.each(oData.tasks, function( iIndex, oElem ){
-      sTasksHtml = ''
-
-      sTasksHtml += '<div class="_slider_item">'
-        sTasksHtml += '<div class="task_min _slider_item_content">'
-          sTasksHtml += '<a href="javascript:;" class="_edit content_loader_show" data-action="tasks" data-animate_class="animate__flipInY" data-form="form" data-full="true" data-id="' + oElem.id + '" data-success_click="#dashboard_reload_tasks">'
-            sTasksHtml += '<i class="fa-solid fa-gear"></i>'
-          sTasksHtml += '</a>'
-
-          sTasksHtml += '<div class="_title">'
-            sTasksHtml += '' + oElem.title + ''
-            sTasksHtml += '<small>'
-              sTasksHtml += '#' + oElem.id + ''
-            sTasksHtml += '</small>'
-          sTasksHtml += '</div>'
-
-          sTasksHtml += '<div class="_sub">'
-            sTasksHtml += '<div class="_status" style="background: ' + oElem.status_color + '">'
-              sTasksHtml += '' + oElem.status_val + ''
-            sTasksHtml += '</div>'
-
-            sTasksHtml += '<div class="_buttons">'
-              sTasksHtml += '<a href="javascript:;" class="_button content_loader_show" data-action="times" data-animate_class="animate__flipInY" data-form="form" data-full="true" data-project_id="' + oElem.project.id + '" data-category_id="4" data-task_id="' + oElem.id + '" data-time="' + oElem.time + '" data-category="' + oElem.category + '" data-date="' + iYear + '-' + iMonth + '-' + iDay + '" data-filter="true" data-success_click="#dashboard_reload_times">'
-                sTasksHtml += '<span class="_icon"><i class="fa-solid fa-clock"></i></span>'
-              sTasksHtml += '</a>'
-
-              sTasksHtml += '<a href="javascript:;" class="_button content_loader_show" data-action="moneys" data-animate_class="animate__flipInY" data-form="form" data-full="true" data-project_id="' + oElem.project.id + '" data-category_id="4" data-task_id="' + oElem.id + '" data-price="' + oElem.price + '" data-category="' + oElem.category + '" data-date="' + iYear + '-' + iMonth + '-' + iDay + '" data-filter="true" data-success_click="#dashboard_reload_times">'
-                sTasksHtml += '<span class="_icon"><i class="fa-solid fa-wallet"></i></span>'
-              sTasksHtml += '</a>'
-            sTasksHtml += '</div>'
-
-            sTasksHtml += '<div class="_project">'
-              sTasksHtml += '' + oElem.project.title + ''
-            sTasksHtml += '</div>'
-          sTasksHtml += '</div>'
-        sTasksHtml += '</div>'
-      sTasksHtml += '</div>'
-
-      $(document).find('#dashboard_tasks').append(sTasksHtml)
-    })
-  })
-}
