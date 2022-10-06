@@ -287,7 +287,7 @@
     background: $color_main_light
 
     ._bar
-      background: $color_main
+      background-color: $color_main
       @include transition_default
 
 .sub_title
@@ -373,42 +373,6 @@
     height: auto
 // .shower_content x
 
-// .block_date
-body
-  .block_date
-    display: flex
-    justify-content: space-between
-    align-items: center
-
-    .input-group
-      background: none
-
-      &:before,
-      &:after
-        display: none
-
-      .form-select
-        background: none
-        flex-grow: inherit
-        padding: 0
-
-    ._group
-
-    ._year,
-    ._month,
-    ._day
-      font-size: 2em
-      font-weight: 400
-      padding: .5rem
-      width: auto
-      background: none
-      border: none
-
-    ._year
-    ._month
-    ._day
-// .block_date x
-
 // .block_swich
 .block_swich
   display: flex
@@ -489,6 +453,41 @@ body
     font-size: 2rem
     line-height: 1
     padding-right: 1rem
+
+.block_hello
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  padding: 1rem
+  box-sizing: border-box
+  z-index: 1
+  max-width: 25rem
+  border-radius: $border_radius
+  overflow: hidden
+  margin: auto
+
+  &:after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: -1
+    @include color_gradient
+    opacity: .2
+
+  ._text
+    box-sizing: border-box
+    padding: .5rem
+    font-size: 1em
+    line-height: 1em
+
+  ._action
+    box-sizing: border-box
+    padding: .5rem
 
 @media screen and (max-width:1200px)
   .block_logo

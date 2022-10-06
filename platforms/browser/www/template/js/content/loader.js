@@ -344,6 +344,60 @@ $(function(){
     return false
   })
 
+  // Дейсвтия без показа формы
+  $(document).on('click', '.content_loader_save', function(){
+    console.log('content_loader_save click')
+    var oData = {
+      'action': $(this).data().action,
+      'form': $(this).data().form,
+      'parents': $(this).data().parents,
+      'id': $(this).data().id,
+    }
+
+    // Подставляем данные в форму из ссылки
+    oData.data = {}
+    oElemSuccessClick = {}
+    if ( $(this).data().success_click ) oElemSuccessClick = $(document).find($(this).data().success_click)
+    if ( $(this).data().full ) oData.data = $(this).data()
+    // Подставляем данные из фильтра (url)
+    if ( $(this).data().filter ) {
+      var url = window.location
+      new URL(url).searchParams.forEach(function (val, key) {
+        if (oData.data[key] !== undefined) { // Проверяем параметр на undefined
+          /* Проверяем, имеется ли в объекте аналогичный urlParams[key]
+          *  Если его нет, то добавляем его в объект
+          */
+          if ( ! Array.isArray(params[key]) ) {
+              oData.data[key] = [params[key]]
+          }
+          oData.data[key].push(val)
+        }
+        else {
+          oData.data[key] = val
+        }
+      })
+    }
+
+    $.when(
+      content_download( oData, 'json', false )
+    ).then( function( oData ) {
+      if ( oElemSuccessClick.length ) oElemSuccessClick.click()
+      if ( oData.success )
+      if ( oData.success.event )
+        switch ( oData.success.event ) {
+          case 'add':
+            content_loader_add( oData.success.data )
+            break;
+          case 'reload':
+          case 'save':
+            content_loader_update( oData.success.data )
+            break;
+        }
+    })
+
+    return false
+  })
+
   // Кнопка редактирования
   $(document).on( 'submit', 'form#content_loader_save', function() {
     var
