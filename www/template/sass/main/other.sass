@@ -287,7 +287,7 @@
     background: $color_main_light
 
     ._bar
-      background: $color_main
+      background-color: $color_main
       @include transition_default
 
 .sub_title
@@ -372,56 +372,6 @@
     opacity: 1
     height: auto
 // .shower_content x
-
-// .block_date
-body
-  .block_date
-    display: flex
-    justify-content: space-between
-    align-items: center
-
-    .input-group
-      background: none
-
-      &:before,
-      &:after
-        display: none
-
-      .form-select
-        background: none
-        flex-grow: inherit
-        padding: 0
-
-    ._group
-
-    ._year,
-    ._month,
-    ._day
-      font-size: 1.8em
-      line-height: 1
-      font-weight: 400
-      width: auto
-      border: none
-
-      &:last-child
-        margin-right: 0 ! important
-
-    ._year
-      padding: .5rem 1rem ! important
-      margin-right: 1.5rem ! important
-      background: $color_main ! important
-      color: $color_text_on_main ! important
-
-    ._month
-      padding: .5rem 1rem ! important
-      margin-right: .5rem ! important
-      background: $color_main ! important
-      color: $color_text_on_main ! important
-
-    ._day
-      margin-left: -.4rem
-      background: $color_main
-// .block_date x
 
 // .block_swich
 .block_swich

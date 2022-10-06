@@ -2,3 +2,24 @@
   .project
     &._active_show_false
       @include active_show
+
+.project_info
+  ._block
+    ._values
+      display: flex
+      flex-direction: column
+      padding: 1rem
+      box-sizing: border-box
+      border-radius: $border_radius
+      background: $color_main_dark
+      margin: .5rem
+
+      ._title
+        display: flex
+        padding: .5rem 0
+        box-sizing: border-box
+        font-size: 1.4em
+        line-height: 1
+        color: $color_sub_1
+
+      ._item

@@ -1,3 +1,59 @@
+// .block_date
+.block_date
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  .input-group
+    background: none
+
+    &:before,
+    &:after
+      display: none
+
+    .form-select
+      background: none
+      flex-grow: inherit
+      padding: 0
+
+  ._group
+    .select2
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: .5rem 1rem ! important
+      background: $color_main_dark ! important
+      border-radius: $border_radius ! important
+      margin-right: 1rem
+      width: auto ! important
+
+  ._year,
+  ._month,
+  ._day
+    line-height: 1 ! important
+    min-width: auto ! important
+    width: auto ! important
+
+    .select2-selection__rendered
+      color: $color_main ! important
+
+    &:after
+      display: none
+
+  ._year
+    font-size: 1.8em ! important
+    font-weight: 400
+
+  ._month
+    font-size: 1.8em ! important
+    font-weight: 400
+
+  ._day
+    font-size: 2.5rem ! important
+    padding: 0 ! important
+    font-weight: 600
+// .block_date x
+
 // .block_liveliner
 .block_liveliner
   ._liveliner_day
@@ -56,18 +112,9 @@
 
     ._date
       display: flex
-      padding-bottom: .5rem
+      padding: .5rem 0
 
       ._day
-        display: flex
-        align-items: center
-        justify-content: space-between
-        text-align: center
-        font-size: 2em
-        line-height: 1.4em
-        font-weight: 400
-        padding: 0
-
         ._number
         ._button
 
@@ -96,9 +143,15 @@
           top: 0
           right: 0
           bottom: 0
+          padding: 0
           z-index: 3
 
           ._button
+            font-size: 1.5em
+            line-height: 1
+            margin-left: 1rem
+            color: $color_main
+            opacity: .2
 
         ._content
           position: relative
@@ -194,11 +247,13 @@
           margin-left: 1rem
 
           &.__main
-            background: $color_main
+            color: $color_main
+            font-weight: 600
 
             &:hover
-              color: $color_text
+              color: $color_main
 
         &:last-child
           margin-right: 0
+
 // .block_liveliner x

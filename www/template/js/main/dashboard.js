@@ -223,6 +223,7 @@ function liveliner_day ( sForm, iDay, iMonth, iYear ) {
     sResultHtml += '</div>'
 
     $(document).find('#dashboard_days').html( sResultHtml )
+    $(document).find('#dashboard_day').select2({selectionCssClass: ':all:'})
     $(document).find('#dashboard_days').removeClass('_loading_')
     })
   }
