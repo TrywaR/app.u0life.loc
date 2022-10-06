@@ -110,7 +110,7 @@ function liveliner_day ( sForm, iDay, iMonth, iYear ) {
     sResultHtml += '<div class="_line_hours"><div class="_val">' + oData.times_sum + '</div><div class="_seporator">/</div><div class="_def">24</div></div>'
     if ( oData.moneys_sum ) sResultHtml += '<div class="_line_moneys"><div class="_val">' + oData.moneys_sum + '</div></div>'
     sResultHtml += '<div class="block_date _date">'
-      sResultHtml += '<select name="day" class="_day form-select btn" id="dashboard_day">'
+      sResultHtml += '<select name="day" class="_day form-select" id="dashboard_day">'
         var iDays = new Date(oData.year, oData.month, 0).getDate()
         // if ( parseInt(iMonthCurrent) == oData.month && parseInt(iYearCurrent) == oData.year ) iDays = oData.day
         for (var i = 1; i <= iDays; i++) {

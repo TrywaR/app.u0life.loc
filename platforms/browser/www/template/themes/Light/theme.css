@@ -1229,7 +1229,7 @@ body .nav-pills .nav-link.active, body .nav-pills .nav-link.show {
 body .progress {
   background: #eaebfc; }
   body .progress .progress-bar {
-    background: #7661db;
+    background-color: #7661db;
     transition: all 0.3s ease-in-out 0s; }
 
 @keyframes circle {
@@ -1576,7 +1576,7 @@ body .progress {
     margin: auto;
     background: #eaebfc; }
     .clock_revers ._progress ._bar {
-      background: #7661db;
+      background-color: #7661db;
       transition: all 0.3s ease-in-out 0s; }
 
 .sub_title {
