@@ -18,6 +18,11 @@
     ._status
       display: inline-block
 
+  &._client_show_true
+    ._client
+      display: flex
+      opacity: .5
+
   &._project_show_true
     ._project
       display: flex
@@ -60,6 +65,9 @@
     span
       padding: 0 .2rem
 
+  ._client
+    display: none
+
   ._project
     display: none
 
@@ -70,7 +78,7 @@
     display: none
     font-size: .85em
     line-height: 1.2em
-    padding: .5rem
+    padding: .8rem 1rem
     border-radius: $border_radius
     background: $color_main_dark
     @include transition_default
@@ -78,6 +86,8 @@
     &._show_
       display: flex
       flex-direction: column
+
+  ._path
 
   ._sub
     display: flex

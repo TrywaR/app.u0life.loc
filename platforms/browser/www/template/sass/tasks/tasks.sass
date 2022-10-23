@@ -18,6 +18,11 @@
     ._status
       display: inline-block
 
+  &._client_show_true
+    ._client
+      display: flex
+      opacity: .5
+
   &._project_show_true
     ._project
       display: flex
@@ -60,6 +65,9 @@
     span
       padding: 0 .2rem
 
+  ._client
+    display: none
+
   ._project
     display: none
 
@@ -79,6 +87,8 @@
       display: flex
       flex-direction: column
 
+  ._path
+    
   ._sub
     display: flex
     flex-wrap: wrap

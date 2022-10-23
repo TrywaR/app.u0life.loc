@@ -177,7 +177,7 @@ function liveliner_day ( sForm, iDay, iMonth, iYear ) {
               sResultHtml += '<a href="javascript:;" class="_button content_loader_show" data-action="times" data-animate_class="animate__flipInY" data-elem=".time" data-form="form" data-full="true" data-category_id="' + iCategoryId + '" data-date="' + iYear + '-' + iMonth + '-' + iDay + '" data-filter="true" data-success_click="#liveliner_reload_day">'
                 sResultHtml += '<span class="_icon"><i class="fa-solid fa-clock"></i></span>'
               sResultHtml += '</a>'
-              sResultHtml += '<a href="javascript:;" class="_button content_loader_show" data-action="moneys" data-animate_class="animate__flipInY" data-elem=".time" data-form="form" data-full="true" data-category_id="' + iCategoryId + '" data-date="' + iYear + '-' + iMonth + '-' + iDay + '" data-filter="true" data-success_click="#liveliner_reload_day">'
+              sResultHtml += '<a href="javascript:;" class="_button content_loader_show" data-action="moneys" data-animate_class="animate__flipInY" data-elem=".time" data-form="form" data-full="true" data-category="' + iCategoryId + '" data-date="' + iYear + '-' + iMonth + '-' + iDay + '" data-filter="true" data-success_click="#liveliner_reload_day">'
                 sResultHtml += '<span class="_icon"><i class="fa-solid fa-wallet"></i></span>'
               sResultHtml += '</a>'
             sResultHtml += '</div>'

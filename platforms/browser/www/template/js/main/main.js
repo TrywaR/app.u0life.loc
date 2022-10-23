@@ -1,9 +1,5 @@
 // Работа приложения
-<<<<<<< HEAD
 sVersion = '5.5.1'
-=======
-sVersion = '5.4.9'
->>>>>>> 922dc40320b2905a9040cc14f636e91d8e92e1ae
 // sSiteUrl = 'https://fttm.trywar.ru'
 sSiteUrl = 'https://u0life.com'
 // Параметры
@@ -83,11 +79,13 @@ u0life.init = function(){
 		// content load
 		$(document).on ('click', 'header .home_link, main a, footer a', function(){
 			if ( $(this).hasClass('content_loader_show') ) return true
+			if ( $(this).hasClass('content_ignore') ) return true
 			if ( $(this).attr('href').indexOf('#') === 0 ) return false
 
 			$('body').addClass('_load_min_')
 
 			if ( $(this).attr('href').indexOf('://') <= 0 ) page( $(this).attr('href') )
+			else window.open( $(this).attr('href') )
 
 			$('body').removeClass('_load_min_')
 
@@ -262,16 +260,11 @@ u0life.init = function(){
 			else $('body').removeClass('_mobile_nav_active_')
 		})
 		$(document). on('click', '#block_nav ._main a, #block_nav ._subs a, #block_nav_mobile_body_blocker, #block_nav_mobile_logo_content a, .nav_btn ._href', function(){
-<<<<<<< HEAD
 			var sAttr = $(this).attr('href')
 			if ( typeof sAttr !== typeof undefined && sAttr !== false ) {
 				if ( $(this).attr('href').indexOf('://') > 0 ) window.open( $(this).attr('href') )
 				else page( $(this).attr('href') )
 			}
-=======
-			if ( $(this).attr('href').indexOf('://') > 0 ) window.open($(this).attr('href'))
-			else page( $(this).attr('href') )
->>>>>>> 922dc40320b2905a9040cc14f636e91d8e92e1ae
 
 			$(document).find('#block_nav ._main').removeClass('_mobile_active_')
 			$(document).find('#block_nav_mobile_main').removeClass('_active_')

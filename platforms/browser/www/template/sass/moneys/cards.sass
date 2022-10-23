@@ -12,17 +12,19 @@
 
 .block_card
   position: relative
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
   z-index: 1
   border-radius: $border_radius
   overflow: hidden
-  height: 12rem
-  width: 20rem
-  max-width: 100%
-  min-width: 20rem
+  width: 100%
+  height: 100%
   padding: 1rem
   box-sizing: border-box
   border: none ! important
-  box-shadow: inset 0 0 .1rem 0 $color_main_money, inset -.08rem -.08rem 0 0 $color_text
+  // box-shadow: inset 0 0 .1rem 0 $color_main_money, inset -.08rem -.08rem 0 0 $color_text
 
   &._active_show_false
     @include active_show
@@ -32,6 +34,7 @@
     flex-direction: column
     padding: 0 0 .5rem 0
     box-sizing: border-box
+    width: 100%
 
     ._title
       display: flex
@@ -72,9 +75,9 @@
     display: flex
     justify-content: flex-end
     border-radius: $border_radius
-    padding: .5rem 0
+    padding: 1rem .5rem 1rem 1rem
     overflow: hidden
-    background: $color_main_dark_ultra
+    // background: $color_main_dark_ultra
 
     .btn-group
       .btn

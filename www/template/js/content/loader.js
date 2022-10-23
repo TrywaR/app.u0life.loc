@@ -193,6 +193,10 @@ function content_loader_add ( oContentLoadElem ){
   var sResultHtml = content_loader_elem_html(oContentLoadElem)
   if ( arrPageParams.scroll_nav ) $(document).find( arrPageContent.content_selector ).append( sResultHtml )
   else $(document).find( arrPageContent.content_selector ).prepend( sResultHtml )
+
+  if ( $(document).find( arrPageContent.content_selector ).find('._not_result').length )
+    $(document).find( arrPageContent.content_selector ).find('._not_result').remove()
+
   setTimeout(function(){
     if ( arrPageContent.elem_show_class ) $(document).find( arrPageContent.content_selector ).find('._elem[data-id="' + oContentLoadElem.id + '"]').addClass(arrPageContent.elem_show_class)
     else $(document).find( arrPageContent.content_selector ).find('._elem[data-id="' + oContentLoadElem.id + '"]').addClass('_show_')
@@ -213,8 +217,16 @@ function content_loader_update ( oContentLoadElem ){
 // Удаление
 function content_loader_del ( oContentLoadElem ){
   $(document).find( arrPageContent.content_selector ).find('._elem[data-id="' + oContentLoadElem.id + '"]').hide('slow')
+
   setTimeout(function(){
     $(document).find( arrPageContent.content_selector ).find('._elem[data-id="' + oContentLoadElem.id + '"]').remove()
+
+    if ( ! $(document).find( arrPageContent.content_selector ).find('._elem').length ) {
+      var sClearText = ''
+      if ( localStorage.getItem('lang') == 'ru' ) sClearText = 'Тут пока что пусто'
+      else sClearText = 'It`s empty for now'
+      $(document).find( arrPageContent.content_selector ).html( '<small class="_not_result"><span>' + sClearText + '</span><i class="fa-solid fa-face-smile"></i></small>' )
+    }
   }, 150 )
 }
 
@@ -468,7 +480,10 @@ $(function(){
         'id': $(this).data().id,
       }, 'json' )
     ).then( function( oData ){
-      if ( oData.success ) oElem.remove()
+      if ( oData.success ) {
+        if ( oData.success.data ) content_loader_del( oData.success.data )
+        else oElem.remove()
+      }
       else $.fancybox.open( '<p class="error">' + oData.error + '</p>' )
     })
 
