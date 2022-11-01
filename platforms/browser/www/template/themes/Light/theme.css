@@ -2355,6 +2355,22 @@ body .content_manager_buttons {
 .block_clients .client._active_show_false {
   filter: brightness(60%) contrast(0.9); }
 
+.client_info ._block ._values {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  background: #ecf2fd;
+  margin: 0.5rem; }
+  .client_info ._block ._values ._title {
+    display: flex;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    font-size: 1.4em;
+    line-height: 1;
+    color: #dd9ab7; }
+
 .block_projects .project._active_show_false {
   filter: brightness(60%) contrast(0.9); }
 
@@ -2755,7 +2771,7 @@ body .content_manager_buttons {
     display: none;
     font-size: 0.85em;
     line-height: 1.2em;
-    padding: 0.5rem;
+    padding: 0.8rem 1rem;
     border-radius: 0.5rem;
     background: #ecf2fd;
     transition: all 0.3s ease-in-out 0s; }

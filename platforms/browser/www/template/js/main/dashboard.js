@@ -98,8 +98,6 @@ function liveliner_day ( sForm, iDay, iMonth, iYear ) {
 
     if ( iDay == 1 && sForm == 'prev_day' ) {
       date_update( oData.day, oData.month, oData.year )
-      dashboard_month( oData.month, oData.year )
-      subscriptions_month( oData.month, oData.year )
     }
 
     iDay = oData.day
@@ -112,6 +110,7 @@ function liveliner_day ( sForm, iDay, iMonth, iYear ) {
     sResultHtml += '<div class="block_date _date">'
       sResultHtml += '<select name="day" class="_day form-select" id="dashboard_day">'
         var iDays = new Date(oData.year, oData.month, 0).getDate()
+        console.log(iDays)
         // if ( parseInt(iMonthCurrent) == oData.month && parseInt(iYearCurrent) == oData.year ) iDays = oData.day
         for (var i = 1; i <= iDays; i++) {
           if ( oData.day == i ) sResultHtml += '<option selected="selected" value="' + i + '">' + i + '</option>'

@@ -98,8 +98,6 @@ function liveliner_day ( sForm, iDay, iMonth, iYear ) {
 
     if ( iDay == 1 && sForm == 'prev_day' ) {
       date_update( oData.day, oData.month, oData.year )
-      dashboard_month( oData.month, oData.year )
-      subscriptions_month( oData.month, oData.year )
     }
 
     iDay = oData.day

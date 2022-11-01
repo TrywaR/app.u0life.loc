@@ -2355,6 +2355,22 @@ body .content_manager_buttons {
 .block_clients .client._active_show_false {
   filter: brightness(60%) contrast(0.9); }
 
+.client_info ._block ._values {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  background: #222228;
+  margin: 0.5rem; }
+  .client_info ._block ._values ._title {
+    display: flex;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    font-size: 1.4em;
+    line-height: 1;
+    color: #eeaeca; }
+
 .block_projects .project._active_show_false {
   filter: brightness(60%) contrast(0.9); }
 
