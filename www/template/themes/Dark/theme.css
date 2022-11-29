@@ -2060,6 +2060,12 @@ body .progress {
 @media screen and (max-width: 1199px) {
   .block_user ._header:after {
     height: 100%; } }
+.jGrowl .ui-corner-all {
+  border-radius: 0.5rem;
+  background: #7661db;
+  color: white;
+  opacity: 1; }
+
 main {
   font-weight: 300; }
   main h1 {
