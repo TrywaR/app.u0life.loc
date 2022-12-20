@@ -56,18 +56,43 @@
 
 // .block_liveliner
 .block_liveliner
+  position: relative
+  z-index: 1
+
+  &:after
+    content: ''
+    position: absolute
+    top: -.15rem
+    left: -.15rem
+    right: -.15rem
+    bottom: -.15rem
+    z-index: -1
+    border-radius: $border_radius
+    background: linear-gradient(53deg, $color_sub_1 30%, $color_sub_2 60%)
+
   ._liveliner_day
     position: relative
     display: flex
     flex-direction: column
     min-height: 35rem
-    padding: 1rem 1rem 2rem 2rem
+    padding: 1rem 1rem 0rem 2rem
     margin-bottom: .5rem
     box-sizing: border-box
     border-radius: $border_radius
-    background: $color_main_dark
     filter: blur(0)
     @include transition_default
+
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      background: $color_main_dark
+      border-radius: $border_radius
+      opacity: .98
+      z-index: -1
 
     &._loading_
       filter: blur(.1rem)
@@ -114,6 +139,9 @@
       display: flex
       padding: .5rem 0
 
+      .select2-container
+        min-width: 5rem
+
       ._day
         ._number
         ._button
@@ -147,11 +175,16 @@
           z-index: 3
 
           ._button
+            position: relative
             font-size: 1.5em
             line-height: 1
             margin-left: 1rem
             color: $color_main
             opacity: .2
+            @include transition_default
+
+            &:hover
+              opacity: 1
 
         ._content
           position: relative
@@ -221,20 +254,49 @@
         justify-content: center
         padding: .5rem 1rem
         box-sizing: border-box
-        border-radius: $border_radius
-        margin-right: .5rem
+        border-radius: $border_radius $border_radius 0 0
+        margin-right: 1rem
 
+        &:before,
         &:after
           content: ''
           position: absolute
-          top: 0
-          left: 0
-          right: 0
-          bottom: 0
+          border-radius: $border_radius $border_radius 0 0
+
+        &:before
+          top: 0rem
+          left: 0rem
+          right: 0rem
+          bottom: 0rem
+          background: $color_main_dark
           z-index: -1
-          opacity: .3
-          border-radius: $border_radius
-          @include single_shadow_color
+
+        &:after
+          top: -.15rem
+          left: -.15rem
+          right: -.15rem
+          bottom: 0rem
+          z-index: -2
+
+        &.__times
+          & > ._icon
+            color: $color_text
+
+          .btn
+            background: $color_main_time
+
+          &:after
+            background: linear-gradient(33deg, $color_main_time 30%, $color_main_time_dark 50%)
+
+        &.__moneys
+          & > ._icon
+            color: $color_text
+
+          .btn
+            background: $color_main_money
+
+          &:after
+            background: linear-gradient(33deg, $color_main_money 30%, $color_main_money_dark 50%)
 
         ._icon
           display: flex
@@ -245,13 +307,13 @@
 
         .btn
           margin-left: 1rem
+          box-shadow: none
+
+          &:hover
+            color: $color_text
 
           &.__main
-            color: $color_main
             font-weight: 600
-
-            &:hover
-              color: $color_main
 
         &:last-child
           margin-right: 0

@@ -170,6 +170,18 @@ body
     &:hover
       color: $color_main
 
+    &.__big
+      font-size: 1.5em
+      line-height: 1
+      padding: 1rem
+
+    &.__gradient
+      color: $color_text
+
+      &:after
+        background: linear-gradient(53deg, $color_sub_1 30%, $color_sub_2 60%)
+        opacity: 1
+
   .btn-group,
   .btn-group-vertical
     .btn
