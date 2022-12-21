@@ -170,6 +170,13 @@ body
     &:hover
       color: $color_main
 
+    &.__clear
+      box-shadow: none
+      
+      &:after,
+      &:before
+        display: none
+
     &.__big
       font-size: 1.5em
       line-height: 1
@@ -180,7 +187,7 @@ body
 
       &:after
         background: linear-gradient(53deg, $color_sub_1 30%, $color_sub_2 60%)
-        opacity: 1
+        opacity: .5
 
   .btn-group,
   .btn-group-vertical

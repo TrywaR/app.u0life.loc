@@ -57,8 +57,14 @@
 // .block_liveliner
 .block_liveliner
   position: relative
+  display: flex
+  justify-content: center
+  align-items: center
   z-index: 1
+  min-height: 35rem
+  border-radius: $border_radius
 
+  &:before,
   &:after
     content: ''
     position: absolute
@@ -66,17 +72,35 @@
     left: -.15rem
     right: -.15rem
     bottom: -.15rem
-    z-index: -1
     border-radius: $border_radius
+    overflow: hidden
+
+  &:before
+    z-index: -1
+    background: $color_main_dark
+    opacity: 0
+    @include transition_default
+
+  &:after
+    z-index: -2
+    opacity: 1
     background: linear-gradient(53deg, $color_sub_1 30%, $color_sub_2 60%)
+    @include transition_default
+
+  &._loading_
+    &:before
+      opacity: 1
+
+    &:after
+      opacity: 0
 
   ._liveliner_day
     position: relative
     display: flex
     flex-direction: column
     min-height: 35rem
+    width: 100%
     padding: 1rem 1rem 0rem 2rem
-    margin-bottom: .5rem
     box-sizing: border-box
     border-radius: $border_radius
     filter: blur(0)
@@ -150,7 +174,7 @@
       position: relative
       display: flex
       flex-direction: column
-      height: 35rem
+      height: 30rem
       padding-left: .25rem
       z-index: 1
 
@@ -268,7 +292,8 @@
           left: 0rem
           right: 0rem
           bottom: 0rem
-          background: $color_main_dark
+          // background: $color_main_dark
+          background: linear-gradient(15deg, $color_main_dark 15%, rgba(255,255,255,0) 90%)
           z-index: -1
 
         &:after
@@ -313,9 +338,19 @@
             color: $color_text
 
           &.__main
+            font-size: 2em
             font-weight: 600
 
         &:last-child
           margin-right: 0
+
+
+@media screen and (max-width:1200px)
+  body
+    main
+      .block_liveliner
+        ._liveliner_day
+          ._line_moneys
+            bottom: 5rem
 
 // .block_liveliner x

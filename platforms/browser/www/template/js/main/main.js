@@ -1,5 +1,5 @@
 // Работа приложения
-sVersion = '5.6.1'
+sVersion = '5.6.2'
 // sSiteUrl = 'https://fttm.trywar.ru'
 sSiteUrl = 'https://u0life.com'
 // Параметры
@@ -16,7 +16,9 @@ u0life = {
 		'version': sVersion,
 		'session': '',
 	},
+	'oLoadingHtm': '', // Анимация загрузки (html)
 }
+// u0life.oLoadingHtm
 
 if ( localStorage.getItem('u0life') ) u0life = $.parseJSON( localStorage.getItem('u0life') )
 else localStorage.setItem('u0life', JSON.stringify(u0life))
@@ -90,6 +92,18 @@ u0life.init = function(){
 			$('body').removeClass('_load_min_')
 
 			return false
+		})
+
+		// Шаблон отображения загрузки
+		$.get('/templates/loading.htm')
+    .fail(function(data){
+      status({'error': 'Шаблон не найден: templates/loading.htm'})
+    })
+    .done(function( data ){
+      if ( ! data ) return false
+
+			this.oLoadingHtm = $('<div/>').html(data)
+			// u0life.oLoadingHtm
 		})
 
 		// bootstrap

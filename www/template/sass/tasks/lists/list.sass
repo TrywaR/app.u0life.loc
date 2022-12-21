@@ -1,0 +1,112 @@
+.block_list
+  position: relative
+  display: flex
+  flex-direction: column
+  padding: .5rem
+  box-sizing: border-box
+  border-radius: $border_radius
+  margin-bottom: .8rem
+  z-index: 1
+
+  &:before,
+  &:after
+    content: ''
+    position: absolute
+    border-radius: $border_radius
+    overflow: hidden
+
+  &:before
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: $color_main_dark
+    z-index: -1
+
+  &:after
+    top: -.15rem
+    left: -.15rem
+    right: -.15rem
+    bottom: -.15rem
+    background: linear-gradient(34deg, $color_sub_1 30%, $color_sub_2 60%)
+    z-index: -2
+
+  ._list_head
+    display: flex
+
+    ._list_head_title
+      display: flex
+      align-items: center
+      flex-grow: 1
+      white-space: nowrap
+      padding: .5rem
+      box-sizing: border-box
+      overflow: hidden
+      font-size: 1.3em
+      font-weight: 400
+      line-height: 1
+
+    ._list_head_actions
+      position: relative
+      flex-grow: 1
+      overflow: hidden
+
+      ._list_head_actions_show,
+      ._list_head_actions_edit
+        position: absolute
+        top: 0
+        right: 0
+        z-index: 1
+        @include transition_default
+
+      ._list_head_actions_show
+        transform: translateX(0%)
+        opacity: 1
+
+      ._list_head_actions_edit
+        padding: 0 .2rem
+        box-sizing: border-box
+        transform: translateX(200%)
+        opacity: 0
+
+        &:after
+          content: ''
+          position: absolute
+          z-index: -1
+          top: 0
+          left: 0
+          right: 0
+          bottom: 0
+          border-radius: $border_radius
+          background: linear-gradient(30deg, $color_sub_1 30%, $color_sub_2 60%)
+          z-index: -1
+          opacity: .5
+
+      &._active_
+        ._list_head_actions_show
+          transform: translateX(200%)
+          opacity: 0
+
+        ._list_head_actions_edit
+          transform: translateX(0%)
+          opacity: 1
+
+      .btn
+        transform: scale(1, 1)
+
+        &:hover
+          color: $color_text
+          transform: scale(1.1,1.1)
+          
+        &.__list_edit
+        &.__list_del
+
+  ._list_elems
+    display: flex
+    flex-direction: column
+    padding: .9rem
+    box-sizing: border-box
+
+  ._list_elems_actions
+    display: flex
+    justify-content: flex-end
