@@ -32,7 +32,9 @@
     z-index: -2
 
   ._list_head
+    position: relative
     display: flex
+    z-index: 1
 
     ._list_head_title
       display: flex
@@ -45,10 +47,14 @@
       font-size: 1.3em
       font-weight: 400
       line-height: 1
+      padding-right: 2rem
 
     ._list_head_actions
-      position: relative
-      flex-grow: 1
+      position: absolute
+      top: 0rem
+      bottom: 0rem
+      left: 0rem
+      right: 0rem
       overflow: hidden
 
       ._list_head_actions_show,
@@ -56,6 +62,7 @@
         position: absolute
         top: 0
         right: 0
+        left: 0
         z-index: 1
         @include transition_default
 
@@ -68,6 +75,7 @@
         box-sizing: border-box
         transform: translateX(200%)
         opacity: 0
+        flex-wrap: nowrap
 
         &:after
           content: ''
@@ -80,7 +88,6 @@
           border-radius: $border_radius
           background: linear-gradient(30deg, $color_sub_1 30%, $color_sub_2 60%)
           z-index: -1
-          opacity: .5
 
       &._active_
         ._list_head_actions_show
@@ -93,20 +100,27 @@
 
       .btn
         transform: scale(1, 1)
+        padding: .5rem
 
         &:hover
           color: $color_text
           transform: scale(1.1,1.1)
-          
+
         &.__list_edit
         &.__list_del
+
+      .input
+        &.__list_title
+          width: 100%
+          border-radius: $border_radius
+          background: $color_main_dark
+          border: none ! important
+          outline: none ! important
+          padding: .2rem 1rem
+          margin: .2rem .5rem .2rem 0
 
   ._list_elems
     display: flex
     flex-direction: column
     padding: .9rem
     box-sizing: border-box
-
-  ._list_elems_actions
-    display: flex
-    justify-content: flex-end

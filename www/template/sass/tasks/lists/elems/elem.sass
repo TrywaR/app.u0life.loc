@@ -1,0 +1,120 @@
+.block_list_elem
+  position: relative
+  display: flex
+  padding: 1rem
+  z-index: 1
+
+  ._elem_status
+    position: relative
+    z-index: 1
+    width: 2rem
+    height: 2rem
+    overflow: hidden
+    z-index: 3
+
+    .__ok,
+    .__no_ok
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      margin: auto
+      @include transition_default
+
+    .__ok
+      z-index: 1
+      opacity: 0
+
+    .__no_ok
+      z-index: -1
+
+    &._active_
+      .__ok
+        opacity: 1
+        z-index: -1
+
+      .__no_ok
+        z-index: 1
+        opacity: 0
+
+  ._elem_title
+    display: flex
+    align-items: center
+    padding-right: 2rem
+    z-index: 2
+
+  ._elem_actions
+    display: flex
+    position: absolute
+    top: 1rem
+    bottom: 1rem
+    left: 1rem
+    right: 1rem
+    overflow: hidden
+    padding: 1rem
+    z-index: 1
+
+    ._elem_actions_show,
+    ._elem_actions_edit
+      position: absolute
+      top: 0
+      right: 0
+      left: 0
+      z-index: 1
+      @include transition_default
+
+    ._elem_actions_show
+      transform: translateX(0%)
+      opacity: 1
+
+    ._elem_actions_edit
+      padding: 0 .2rem
+      box-sizing: border-box
+      transform: translateX(200%)
+      opacity: 0
+      flex-wrap: nowrap
+
+      &:after
+        content: ''
+        position: absolute
+        z-index: -1
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        border-radius: $border_radius
+        background: linear-gradient(30deg, $color_sub_1 30%, $color_sub_2 60%)
+        z-index: -1
+
+    &._active_
+      z-index: 4
+
+      ._elem_actions_show
+        transform: translateX(200%)
+        opacity: 0
+
+      ._elem_actions_edit
+        transform: translateX(0%)
+        opacity: 1
+
+    .btn
+      transform: scale(1, 1)
+      padding: .5rem
+
+      &:hover
+        color: $color_text
+        transform: scale(1.1,1.1)
+
+      &.__list_edit
+      &.__list_del
+
+    .input
+      &.__elem_title
+        width: 100%
+        border-radius: $border_radius
+        background: $color_main_dark
+        border: none ! important
+        outline: none ! important
+        padding: .2rem 1rem
+        margin: .2rem .5rem .2rem 0

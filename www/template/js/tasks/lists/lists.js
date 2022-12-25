@@ -58,21 +58,36 @@ function Lists( oListsData, oBlockElem, sTemplate, bInit )
           }
           , 'json', false )
         ).then( function( oData ){
-          $.each(oData,function( iIndex, oData ){
+          $.each(oData,function( iIndex, oElem ){
             // Добавляем список
-            u0ListsCurrent.oBlockWrap.find('._lists_data').list( oData )
+            u0ListsCurrent.oBlockWrap.find('._lists_data').list( oElem )
+
+            if ( iIndex == oData.length - 1 ) {
+              // Сортировка перетягиванием
+              u0ListsCurrent.oBlockWrap.find('._lists_data').sortable({
+                handle: '.__list_sort',
+                stop: function(){
+                  u0ListsCurrent.sort()
+                }
+              })
+            }
           })
         })
 
         // КНОПКИ
         // Добавления списка
         u0ListsCurrent.oBlockLists.find('.__list_add').on ('click', function(){
+          // Сортировка
+          var iSortLast = parseInt( u0ListsCurrent.oBlockWrap.find('._lists_data .block_list:last').attr('data-sort') )
+          if ( iSortLast > u0ListsCurrent.oBlockWrap.find('._lists_data .block_list').length ) iSortLast++
+          else iSortLast = u0ListsCurrent.oBlockWrap.find('._lists_data .block_list').length + 1
 
           // Добавляем список
           $.when(
     			  content_download( {
               'action': 'tasks_lists',
               'form': 'add',
+              'sort': iSortLast,
               'task_id': u0ListsCurrent.oListsData.task_id,
             }
             , 'json', false )
@@ -87,11 +102,22 @@ function Lists( oListsData, oBlockElem, sTemplate, bInit )
     })
   }
 
-  // Загрузка списки
-  this.load_lists = function () {
+  // Сортировка
+  this.sort = function () {
     var u0ListsCurrent = this
 
-    // this.oBlockList.find('._list_items').append()
+    u0ListsCurrent.oBlockWrap.find('._lists_data .block_list').each(function( iIndex, oElem ){
+      // Меняем индекс
+      $(oElem).attr('data-sort', iIndex)
+      // Сохраняем
+      content_download( {
+        'action': 'tasks_lists',
+        'form': 'sort',
+        'sort': iIndex,
+        'id': $(oElem).attr('data-id'),
+      }
+      , 'json', false )
+    })
   }
 
   // Запуск работы

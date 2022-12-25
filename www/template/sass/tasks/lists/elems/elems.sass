@@ -1,0 +1,37 @@
+.block_list_elems
+  position: relative
+  display: flex
+  flex-direction: column
+  z-index: 1
+
+  &:after
+    content: ''
+    position: absolute
+    top: -.15rem
+    left: -.15rem
+    right: -.15rem
+    bottom: -.15rem
+    background: linear-gradient(30deg, $color_sub_1 30%, $color_sub_2 60%)
+    opacity: .5
+    border-radius: $border_radius
+    z-index: -1
+
+  ._elems_data
+    @include transition_default
+
+    .block_list_elem
+      &:after
+        content: ''
+        position: absolute
+        bottom: -.15rem
+        left: 0
+        right: 0
+        border-radius: $border_radius
+        height: .2rem
+        background: linear-gradient(30deg, $color_sub_1 30%, $color_sub_2 60%)
+        opacity: .2
+        z-index: -1
+
+      &:last-child
+        &:after
+          display: none
