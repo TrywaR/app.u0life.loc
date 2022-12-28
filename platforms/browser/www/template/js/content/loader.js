@@ -237,6 +237,7 @@ function content_loader_scroll_to( sEvent ) {
   // arrPageContent.scroll_block_height - Столько было
   sScrollBlockHeightNew = $(document).find(arrPageContent.scroll_block).prop('scrollHeight'), // - Столько стало
   sScrollBlockHeightValue = sScrollBlockHeightNew - arrPageContent.scroll_block_height // - Новый контент занял столько места
+
   // Сохраняем новый размер
   arrPageContent.scroll_block_height = sScrollBlockHeightNew
   // Передвигаем скролл
@@ -244,13 +245,15 @@ function content_loader_scroll_to( sEvent ) {
   arrPageContent.scroll_block_disabled = false
   // Если первая загрузка, то в самый конец, чтобы увидеть все записи
   if ( sEvent == 'start' )
-    if ( arrPageContent.scroll_nav )
+    if ( arrPageContent.scroll_nav ) {
       $(document).find( arrPageContent.content_selector ).on('load', scroll_to(0, sScrollBlockHeightNew, 180, $(document).find(arrPageContent.scroll_block)))
-    else
+    }
+    else {
       $(document).find( arrPageContent.content_selector ).on('load', scroll_to(0, 0, 180, $(document).find(arrPageContent.scroll_block)))
+    }
   // Если подгрузка элементов, то скролим к последнему показанному перез догрузкой
   if ( sEvent == 'continue' ) {
-    scroll_to(0, sScrollBlockHeightValue, 0, $(document).find(arrPageContent.scroll_block))
+    scroll_to(0, sScrollBlockHeightNew - sScrollBlockHeightValue, 0, $(document).find(arrPageContent.scroll_block))
   }
 }
 
