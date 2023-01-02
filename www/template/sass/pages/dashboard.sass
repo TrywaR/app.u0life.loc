@@ -115,6 +115,80 @@
     overflow: hidden
     z-index: 1
 
+    &:before
+      content: ''
+      position: absolute
+      top: 0rem
+      bottom: 0rem
+      left: 0rem
+      right: 0rem
+      border-radius: $border_radius
+      opacity: .5
+      z-index: -2
+
+    &.__moneys
+      ._icon
+        color: $color_main_money
+
+      ._title
+        color: $color_main_money
+
+      &:before
+        @include money_gradient
+
+      &:after
+        width: 95% ! important
+        height: 95% ! important
+        opacity: 1 ! important
+        background: $color_main_dark ! important
+
+      &:hover
+        &:after
+          width: 90% ! important
+          height: 90% ! important
+
+    &.__times
+      ._icon
+        color: $color_main_time
+
+      ._title
+        color: $color_main_time
+
+      &:before
+        @include time_gradient
+
+      &:after
+        width: 95% ! important
+        height: 95% ! important
+        opacity: 1 ! important
+        background: $color_main_dark ! important
+
+      &:hover
+        &:after
+          width: 90% ! important
+          height: 90% ! important
+
+    &.__tasks
+      ._icon
+        color: $color_main_task
+
+      ._title
+        color: $color_main_task
+
+      &:before
+        @include task_gradient
+
+      &:after
+        width: 95% ! important
+        height: 95% ! important
+        opacity: 1 ! important
+        background: $color_main_dark ! important
+
+      &:hover
+        &:after
+          width: 90% ! important
+          height: 90% ! important
+
     &.__big
       min-width: 15rem
 

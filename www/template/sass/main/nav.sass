@@ -127,6 +127,47 @@ body
       @include transition_default
 
       .nav-item
+        position: relative
+        z-index: 1
+
+        &:after
+          content: ''
+          position: absolute
+          top: 0
+          left: 0
+          right: 0
+          bottom: 0
+          border-radius: $border_radius
+          opacity: .1
+          z-index: -2
+
+        &.__moneys
+          .nav-link
+            color: $color_main_money
+            font-weight: 600
+
+          &:after
+            border-radius: $border_radius $border_radius 0 0
+            box-shadow: inset 0 0 0 .15rem $color_main_money
+
+        &.__times
+          .nav-link
+            color: $color_main_time
+            font-weight: 600
+
+          &:after
+            border-radius: 0 0 0 0
+            box-shadow: inset 0 0 0 .15rem $color_main_time
+
+        &.__tasks
+          .nav-link
+            color: $color_main_task
+            font-weight: 600
+
+          &:after
+            border-radius: 0 0 $border_radius $border_radius
+            box-shadow: inset 0 0 0 .15rem $color_main_task
+
         .nav-link
           position: relative
           display: flex
