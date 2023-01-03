@@ -1,12 +1,8 @@
 // Показ списков
 function lists_show( oElem ){
-
-  if ( $(this).hasClass('__list_show') ) {
-    oElem.html( '' )
-    $(this).removeClass('__list_show')
-  }
-  else {
-    $(this).addClass('__list_show')
+  // Загрузка
+  if ( ! oElem.hasClass('__loaded') ) {
+    oElem.addClass('__loaded')
     oElem.html( u0life.oLoadingHtm )
     oElem.lists( oElem.data() )
   }
@@ -96,6 +92,14 @@ function Lists( oListsData, oBlockElem, sTemplate, bInit )
 
             // Добавляем список
             u0ListsCurrent.oBlockWrap.find('._lists_data').list( oData.data )
+
+            // Фокусируемся и редактируем
+            setTimeout(function () {
+              u0ListsCurrent.oBlockWrap.find('._lists_data').find('.block_list[data-id="' + oData.data.id + '"]').find('._list_actions').addClass('_active_')
+              setTimeout(function () {
+                u0ListsCurrent.oBlockWrap.find('._lists_data').find('.block_list[data-id="' + oData.data.id + '"]').find('.input.__list_title').focus()
+              }, 1000)
+            }, 500)
           })
         })
       })

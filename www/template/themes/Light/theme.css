@@ -462,12 +462,12 @@ body .block_nav {
         box-shadow: inset 0 0 0 0.15rem #3594B9; }
       body .block_nav ._subs .nav-item.__tasks .nav-link,
       body .block_nav ._main .nav-item.__tasks .nav-link {
-        color: #BBC7CE;
+        color: #2b2e3e;
         font-weight: 600; }
       body .block_nav ._subs .nav-item.__tasks:after,
       body .block_nav ._main .nav-item.__tasks:after {
         border-radius: 0 0 0.5rem 0.5rem;
-        box-shadow: inset 0 0 0 0.15rem #BBC7CE; }
+        box-shadow: inset 0 0 0 0.15rem #2b2e3e; }
       body .block_nav ._subs .nav-item .nav-link,
       body .block_nav ._main .nav-item .nav-link {
         position: relative;
@@ -1247,7 +1247,7 @@ body .input-group-text {
   opacity: 0.8; }
   body .input-group-text ._icon {
     opacity: 0.5;
-    color: #dae8fb;
+    color: black;
     padding-right: 0.5rem; }
   body .input-group-text ._text {
     display: flex;
@@ -2414,6 +2414,13 @@ body .content_manager_buttons {
 
 .block_clients .client._active_show_false {
   filter: brightness(60%) contrast(0.9); }
+.block_clients .client ._client_links ._client_link {
+  display: flex;
+  max-width: 10rem;
+  overflow: hidden; }
+  .block_clients .client ._client_links ._client_link ._text {
+    display: flex;
+    white-space: nowrap; }
 
 .client_info ._block ._values {
   display: flex;
@@ -3584,14 +3591,14 @@ body .content_manager_buttons {
       width: 90% !important;
       height: 90% !important; }
     .dashboard_blocks ._item.__tasks ._icon {
-      color: #BBC7CE; }
+      color: #2b2e3e; }
     .dashboard_blocks ._item.__tasks ._title {
-      color: #BBC7CE; }
+      color: #2b2e3e; }
     .dashboard_blocks ._item.__tasks:before {
       background: #638cbd;
-      background: -moz-linear-gradient(31deg, #BBC7CE 33%, #638cbd 100%);
-      background: -webkit-linear-gradient(31deg, #BBC7CE 33%, #638cbd 100%);
-      background: linear-gradient(31deg, #BBC7CE 33%, #638cbd 100%);
+      background: -moz-linear-gradient(31deg, #2b2e3e 33%, #638cbd 100%);
+      background: -webkit-linear-gradient(31deg, #2b2e3e 33%, #638cbd 100%);
+      background: linear-gradient(31deg, #2b2e3e 33%, #638cbd 100%);
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$color_sub_1",endColorstr="$color_main_task",GradientType=1); }
     .dashboard_blocks ._item.__tasks:after {
       width: 95% !important;
@@ -4007,7 +4014,8 @@ body .content_manager_buttons {
           opacity: 0.3; }
         .block_liveliner ._liveliner_day ._buttons ._group .btn {
           margin-left: 1rem;
-          box-shadow: none; }
+          box-shadow: none;
+          color: white; }
           .block_liveliner ._liveliner_day ._buttons ._group .btn:hover {
             color: black; }
           .block_liveliner ._liveliner_day ._buttons ._group .btn.__main {
@@ -4194,9 +4202,9 @@ body .content_manager_buttons {
       color: #7661db; }
 
 .block_tasks .sub_title {
-  color: #BBC7CE; }
+  color: #2b2e3e; }
   .block_tasks .sub_title:after {
-    background: linear-gradient(to right, #BBC7CE 35%, rgba(255, 255, 255, 0) 100%); }
+    background: linear-gradient(to right, #2b2e3e 35%, rgba(255, 255, 255, 0) 100%); }
 
 .task {
   display: flex;
@@ -4354,6 +4362,7 @@ body .content_manager_buttons {
     z-index: -2; }
   .block_list ._list_head {
     position: relative;
+    min-height: 2rem;
     display: flex;
     z-index: 1; }
     .block_list ._list_head ._list_head_title {

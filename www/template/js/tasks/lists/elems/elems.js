@@ -83,6 +83,14 @@ function List_elems( oListData, oBlockElem, sTemplate, bInit )
 
             // Добавляем элемент
             u0ListsElemsCurrent.oBlockWrap.find('._elems_data').list_elem( oData.data )
+
+            // Фокусируемся и редактируем
+            setTimeout(function () {
+              u0ListsElemsCurrent.oBlockWrap.find('._elems_data').find('.block_list_elem[data-id="' + oData.data.id + '"]').find('._elem_actions').addClass('_active_')
+              setTimeout(function () {
+                u0ListsElemsCurrent.oBlockWrap.find('._elems_data').find('.block_list_elem[data-id="' + oData.data.id + '"]').find('.input.__elem_title').focus()
+              }, 1000)
+            }, 500)
           })
         })
       })
