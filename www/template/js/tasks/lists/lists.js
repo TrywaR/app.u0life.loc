@@ -14,7 +14,7 @@ $.fn.lists = function( oListsData ) {
 }
 
 // Параметры теста
-function Lists( oListsData, oBlockElem, sTemplate, bInit )
+function Lists( oListsData, oBlockElem, sTemplate, sEvent )
 {
   this.sTemplate = sTemplate // Путь к шаблону списка
   this.oBlockWrap = oBlockElem // Блок с элементом (Родитель)
@@ -91,17 +91,11 @@ function Lists( oListsData, oBlockElem, sTemplate, bInit )
             if ( ! oData.data ) return false
 
             // Добавляем список
-            u0ListsCurrent.oBlockWrap.find('._lists_data').list( oData.data )
-
-            // Фокусируемся и редактируем
-            setTimeout(function () {
-              u0ListsCurrent.oBlockWrap.find('._lists_data').find('.block_list[data-id="' + oData.data.id + '"]').find('._list_actions').addClass('_active_')
-              setTimeout(function () {
-                u0ListsCurrent.oBlockWrap.find('._lists_data').find('.block_list[data-id="' + oData.data.id + '"]').find('.input.__list_title').focus()
-              }, 1000)
-            }, 500)
+            u0ListsCurrent.oBlockWrap.find('._lists_data').list( oData.data, 'add' )
           })
         })
+
+        // СОБЫТИЕ
       })
     })
   }

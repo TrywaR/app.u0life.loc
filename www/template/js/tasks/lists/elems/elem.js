@@ -1,14 +1,15 @@
-$.fn.list_elem = function( oListElemData ) {
-  var u0ListElem = new List_elem( oListElemData, this, '/templates/tasks/lists/elems/elem.htm' )
+$.fn.list_elem = function( oListElemData, sEvent ) {
+  var u0ListElem = new List_elem( oListElemData, this, '/templates/tasks/lists/elems/elem.htm', sEvent )
 }
 
 // Параметры теста
-function List_elem( oListElemData, oBlockListElem, sTemplate, bInit )
+function List_elem( oListElemData, oBlockListElem, sTemplate, sEvent )
 {
   this.sTemplate = sTemplate // Путь к шаблону списка
   this.oBlockWrap = oBlockListElem // Блок с элементом (Родитель)
   this.oBlockListElem = {} // Блок со списком
   this.oListElemData = oListElemData // Данные
+  this.sEvent = sEvent // Событие, добавление обновление
 
   // Инициализация нажатия кнопок
   this.init = function () {
@@ -35,7 +36,11 @@ function List_elem( oListElemData, oBlockListElem, sTemplate, bInit )
         // КНОПКИ
         // Редактирование
         u0ListElemCurrent.oBlockListElem.find('.__elem_edit').on ('click', function(){
-          $(this).parents('._elem_actions').addClass('_active_')
+          u0ListElemCurrent.oBlockListElem.find('._elem_actions').addClass('_active_')
+          setTimeout(function () {
+            u0ListElemCurrent.oBlockListElem.find('._elem_actions').find('.__elem_title').focus()
+            u0ListElemCurrent.oBlockListElem.find('._elem_actions').find('.__elem_title').val(u0ListElemCurrent.oBlockListElem.find('._elem_actions').find('.__elem_title').val())
+          }, 500)
         })
 
         // Применение изменений
@@ -121,6 +126,20 @@ function List_elem( oListElemData, oBlockListElem, sTemplate, bInit )
               u0ListElemCurrent.oBlockListElem.remove()
   					}, 500)
           })
+        })
+
+        // СОБЫТИЕ
+        // Запуск редактирования при создании
+        switch ( u0ListElemCurrent.sEvent ) {
+          case 'add': // добавление
+            u0ListElemCurrent.oBlockListElem.find('.__elem_edit').click()
+            break;
+          default:
+        }
+        // Применение изменений по интеру
+        u0ListElemCurrent.oBlockListElem.find('.__elem_title').keyup(function(event) {
+          if ( event.key === "Enter" || event.which === 13 )
+            u0ListElemCurrent.oBlockListElem.find('.__elem_editing').click()
         })
       })
     })

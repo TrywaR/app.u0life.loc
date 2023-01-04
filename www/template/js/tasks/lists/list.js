@@ -1,14 +1,15 @@
-$.fn.list = function( oListData ) {
-  var u0List = new List( oListData, this, '/templates/tasks/lists/list.htm' )
+$.fn.list = function( oListData, sEvent ) {
+  var u0List = new List( oListData, this, '/templates/tasks/lists/list.htm', sEvent )
 }
 
 // Параметры теста
-function List( oListData, oBlockElem, sTemplate, bInit )
+function List( oListData, oBlockElem, sTemplate, sEvent )
 {
   this.sTemplate = sTemplate // Путь к шаблону списка
   this.oBlockWrap = oBlockElem // Блок с элементом (Родитель)
   this.oBlockList = {} // Блок со списком
   this.oListData = oListData // Данные
+  this.sEvent = sEvent // Событие
 
   // Инициализация нажатия кнопок
   this.init = function () {
@@ -45,7 +46,11 @@ function List( oListData, oBlockElem, sTemplate, bInit )
         // КНОПКИ
         // Редактирование
         u0ListCurrent.oBlockList.find('.__list_edit').on ('click', function(){
-          $(this).parents('._list_head_actions').addClass('_active_')
+          u0ListCurrent.oBlockList.find('._list_head_actions').addClass('_active_')
+          setTimeout(function () {
+            u0ListCurrent.oBlockList.find('._list_head_actions').find('.__list_title').focus()
+            u0ListCurrent.oBlockList.find('._list_head_actions').find('.__list_title').val(u0ListCurrent.oBlockList.find('._list_head_actions').find('.__list_title').val())
+          }, 500)
         })
 
         // Применение изменений
@@ -95,6 +100,20 @@ function List( oListData, oBlockElem, sTemplate, bInit )
               u0ListCurrent.oBlockList.remove()
   					}, 500)
           })
+        })
+
+        // СОБЫТИЕ
+        // Запуск редактирования при создании
+        switch ( sEvent ) {
+          case 'add': // Добавление
+            u0ListCurrent.oBlockList.find('.__list_edit').click()
+            break;
+          default:
+        }
+        // Применение изменений по интеру
+        u0ListCurrent.oBlockList.find('.__elem_title').keyup(function(event) {
+          if ( event.key === "Enter" || event.which === 13 )
+            u0ListCurrent.oBlockList.find('.__list_editing').click()
         })
       })
     })

@@ -7,9 +7,12 @@
       background: linear-gradient(to right, $color_main_task 35%, rgba(255,255,255,0) 100%)
 
 .task
+  position: relative
   display: flex
   align-items: center
   justify-content: center
+  z-index: 1
+  overflow: hidden
 
   &._active_show_false
     @include active_show
@@ -101,6 +104,7 @@
       flex-direction: column
 
   ._path
+    margin-bottom: .5rem
 
   ._sub
     display: flex
@@ -123,6 +127,40 @@
         margin-right: auto
 
   &._show_
+
+  ._client_background
+    position: absolute
+    top: -20rem
+    right: -20rem
+    bottom: -20rem
+    width: 40rem
+    z-index: -2
+    opacity: .5
+
+    ._color
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      z-index: -1
+
+  ._project_background
+    position: absolute
+    top: -10rem
+    left: -10rem
+    bottom: -10rem
+    width: 20rem
+    z-index: -1
+    opacity: .5
+
+    ._color
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      z-index: -1
 
 .task_min
   display: flex

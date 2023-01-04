@@ -2,34 +2,10 @@
   position: relative
   display: flex
   flex-direction: column
-  padding: .5rem
+  padding: 0
   box-sizing: border-box
   border-radius: $border_radius
   margin-bottom: .8rem
-  z-index: 1
-
-  &:before,
-  &:after
-    content: ''
-    position: absolute
-    border-radius: $border_radius
-    overflow: hidden
-
-  &:before
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-    background: $color_main_dark
-    z-index: -1
-
-  &:after
-    top: -.15rem
-    left: -.15rem
-    right: -.15rem
-    bottom: -.15rem
-    background: linear-gradient(34deg, $color_sub_1 30%, $color_sub_2 60%)
-    z-index: -2
 
   ._list_head
     position: relative
